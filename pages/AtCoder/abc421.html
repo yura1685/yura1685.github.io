@@ -24,7 +24,7 @@
         </header>
     </header>
     <main class="atcoderproblems">
-        <h3>AtCoder Beginner Contest 421　結果</h3>
+        <h3>AtCoder Beginner Contest 421</h3>
         <p>A,B,C,Dの4完0ペナで、1012位でした！</p>
         <p>D問題を通したのは偉いけど、F問題もあと少しで通せたので悔しいです。</p>
         <hr>
@@ -34,13 +34,13 @@
         <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc421_b">B - Fibonacci Reversed</a></h3>
         <p>sx を文字列とすると、rev(sx) = sx[::-1] なので、ループを 8 回回せば良いです。</p>
         <hr>
-        <h3>    <a href="https://atcoder.jp/contests/abc421/tasks/abc421_c">C - Alternated</a></h3>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc421_c">C - Alternated</a></h3>
         <p>S の A, B が隣り合わないとは、S が ABAB... または BABA... となることと等しいです。
             A を移動させることを考えると、ある A は他の A をまたぐ移動をする必要が無いので、S[i] = Aとなるiを順にi1, i2, ... とすると、
             求める値は min( |i1-0| + |i2-2| + ..., |i1-1| + |i2-3| + ...) に等しいです。これ灰diffなんですか...。
         </p>
         <hr>
-        <h3>    <a href="https://atcoder.jp/contests/abc421/tasks/abc421_d">D - RLE Moving</a></h3>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc421_d">D - RLE Moving</a></h3>
         <p>移動回数が異なるものを比較すると面倒くさそうだったので、
             まずそれぞれの動きをdequeに入れて先頭から順に方向と移動回数を取得し、
             移動回数の小さい回数分移動することを考えます。あとは 16 通りの場合分けがありますが、
@@ -48,7 +48,7 @@
             あとはただ頑張るだけですが、①では常に同じ場所にいる場合、②では偶奇が異なる場合を除いてあげましょう。
         </p>
         <hr>
-        <h3>    <a href="https://atcoder.jp/contests/abc421/tasks/abc421_f">F - Erase between X and Y</a></h3>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc421_f">F - Erase between X and Y</a></h3>
         <p>割とやることは単純で、ある整数 A に対し、その後ろの整数 back[A] と、前の整数 front[A] を保持し、クエリ 1 ではただ更新するだけです。
             クエリ 2 に関しては、x と y のどちらが前か分からないですが、2 通りしか無いので両方試せば良いです。
             私はコンテスト中、back[x], back[back[x]]...を最後まで探索してから、back[y]...を探索していたのですが、
@@ -61,5 +61,6 @@
         <p>© 2025 ゆーらの勉強部屋</p>
     </footer>
 </body>
+
 
 </html>
