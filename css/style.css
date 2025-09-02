@@ -49,7 +49,7 @@ nav a:hover {
 body {
     display: flex; /* 要素の整列 */
     flex-direction: column; /* 要素を縦に並べる */
-    min-height: 101vh;
+    min-height: 101vh; /* 画面の縦を最小値に */
     margin: 0;         
     font-family: sans-serif;
 }
@@ -67,6 +67,16 @@ main {
 
 main a {
     color: black;
+}
+
+/* ガチで、これ以外学習記録のやりかた分からんかった */
+main2 {
+    width: 95%;
+    min-width: 375px;
+    max-width: 1000px;  /* 本文だけ最大幅を制限 */
+    margin: 0 auto;     /* 本文だけ中央寄せ */
+    line-height: 1.6;
+    box-sizing: border-box;
 }
 
 /* ------------------ フッター ------------------ */
@@ -157,23 +167,17 @@ footer {
 .side {
     width:20%;
     text-align:center;
+    width: 20%;
+    text-align: center;
+    padding: 10px 10px 0 10px;
 } 
 
+/* メインコンテンツ */
 .content {
-    width:80%;
-    text-align:left;
-}
-
-.side-content {
-    display:flex;
-    padding: 0px;
-    width: 100%;
-    max-width: 1000px;
-}
-
-.studytitle {
-    color: #494949;
-    padding: 0.25em;
+    width: 80%;
+    text-align: left;
+    padding: 0 10px;
+    box-sizing: border-box;
 }
 
 /* サイドバーとメインの横並び */
@@ -184,22 +188,15 @@ footer {
     margin: 0 auto; /* 中央寄せ */
 }
 
-/* サイドバー */
-.side {
-    width: 20%;
-    text-align: center;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
 /* タブボタン */
 .tab-button {
+    display: inline-block;
     cursor: pointer;
-    padding: 8px;
-    margin-bottom: 4px;
+    padding: 8px 12px;
     border-radius: 100px;
     user-select: none;
     transition: background-color 0.2s;
+    margin: 10px 0;
 }
 
 .tab-button.active {
@@ -210,26 +207,12 @@ footer {
     background-color: #e0e0e0; /* 少し濃いグレーに */
 }
 
-/* メインコンテンツ */
-.content {
-    width: 80%;
-    text-align: left;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
 /* タブコンテンツの切り替え */
 .tab-content {
     display: none;
 }
 .tab-content.active {
     display: block;
-}
-
-/* サイドバー見出し */
-.studytitle {
-    font-size: 1.2em;
-    margin-bottom: 10px;
 }
 
 /*こっからタイムラインの作成*/
@@ -272,4 +255,3 @@ footer {
   left: 0;
   z-index: 1;
 }
-
