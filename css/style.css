@@ -1,46 +1,44 @@
 @charset "utf-8";
 
 /* ------------------ ヘッダー ------------------ */
+
 .header-container {
-    display: flex;
+    display: flex; /* ヘッダーを横一列に並べる */
     justify-content: space-between; /* 左右に分ける */
-    align-items: center;            /* 縦方向中央揃え */
-    padding: 0 20px;
+    align-items: center; /* ヘッダーの要素の高さを合わせる */
 }
 
 header {
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
+    padding: 10px 0; /* ヘッダーの上下に余白 */
+    border-bottom: 1px solid #ddd; /* ヘッダーの下に横線 */
 }
 
 .site-title {
     font-size: 1.5em;
     font-weight: bold;
     margin: 0; /* デフォルト余白を消す */
-    margin-left: 20px;
+    margin-left: 20px; /* タイトルの左に余白 */
     color: #364e96;
 }
 
 /* ------------------ ナビゲーション ------------------ */
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    gap: 20px; /* 各リンクの間隔 */
-}
 
-nav li {
-    display: inline-block;
+nav ul {
+    list-style: none; /* 黒点を消す */
+    padding: 0; /* 上下の余白を消す */
+    margin: 0; /* 上下の余白を消す */
+    display: flex; /* 並べる */
+    justify-content: center; /* 中央に並べる */
+    gap: 5px; /* 各リンクの間隔 */
 }
 
 nav a {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 10px 20px; /* ナビのブロックのサイズ */ 
     color: black; /* 文字は黒 */
     text-decoration: none; /* 下線を消す */
-    border-radius: 6px;
-    transition: background-color 0.2s;
+    border-radius: 5px; /* ブロックの角の丸み */
+    transition: background-color 0.2s; /* 色が変わるまでの時間 */
 }
 
 nav a:hover {
@@ -49,19 +47,22 @@ nav a:hover {
 
 /* ------------------ 本文 ------------------ */
 body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    display: flex; /* 要素の整列 */
+    flex-direction: column; /* 要素を縦に並べる */
+    min-height: 100vh; /* 画面の縦を最小値に */
     margin: 0;         
     font-family: sans-serif;
 }
 
 main {
     flex: 1;
+    width: 95%;
+    min-width: 375px;
     max-width: 1000px;  /* 本文だけ最大幅を制限 */
     margin: 0 auto;     /* 本文だけ中央寄せ */
-    padding: 20px;
+    padding: 0 0 20px 0; /* 下に余白 */
     line-height: 1.6;
+    box-sizing: border-box;
 }
 
 main a {
@@ -74,7 +75,7 @@ footer {
     text-align: center;
     background-color: #364e96;
     padding: 10px 0;
-    width: 100%; /* 画面いっぱいに広げる */
+    width: 100%; /* 画面サイズに合わせて */
 }
 
 /*----------------------------------------------- */
@@ -90,28 +91,29 @@ footer {
     color: #364e96;
 }
 
-/*--------------------- 表 -------------------------*/
+/*----------------- リンクテーブル -------------------------*/
 
 .linktable {
     border-collapse: collapse;
-    width: 100%;
+    width: 90vw;
     max-width: 700px;
 }
 
 .linktable th, .linktable td {
-border-bottom: 2px solid #c1c7c6;
-padding: 1em;
+    border-bottom: 2px solid #c1c7c6;
+    padding: 1em;
 }
 .linktable th {
-border-bottom: 2px solid #364e96;;
-font-weight: bold;
-text-align: center;
-width: 20%;
-min-width: 4em;
+    border-bottom: 2px solid #364e96;;
+    font-weight: bold;
+    text-align: center;
+    width: 20%;
+    min-width: 4em;
 }
 
-.linktable a {
+.linktable td {
     color: black; /* 文字は黒 */
+    overflow-wrap: anywhere;
 }
 
 /*--------------------サブページ----------------------*/
