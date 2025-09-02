@@ -49,7 +49,7 @@ nav a:hover {
 body {
     display: flex; /* 要素の整列 */
     flex-direction: column; /* 要素を縦に並べる */
-    min-height: 100vh; /* 画面の縦を最小値に */
+    min-height: 101vh;
     margin: 0;         
     font-family: sans-serif;
 }
@@ -272,3 +272,4 @@ footer {
   left: 0;
   z-index: 1;
 }
+
