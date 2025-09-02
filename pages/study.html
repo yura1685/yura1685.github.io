@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="eja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆーらの勉強部屋</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+        <h2 class="site-title">ゆーらの勉強部屋</h2>
+        <nav>
+            <ul>
+                <li><a href="../index.html" id="ahome">ホーム</a></li>
+                <li><a href="study.html" id="astudy">学習記録</a></li>
+                <li><a href="atcoder.html" id="aatcoder">AtCoder</a></li>
+                <li><a href="math.html" id="amath">競技数学</a></li>
+            </ul>
+        </nav>
+        </div>
+        </header>
+    </header>
+
+    <main class="side-content">
+        <div class="side">
+            <h2 class="studytitle">学習記録</h2>
+            <!-- タブボタン -->
+            <p class="tab-button active" data-tab="tab-2025-9">2025年9月</p>
+            <p class="tab-button" data-tab="tab-2025-8">2025年8月</p>
+        </div>
+        <div class="content">
+            <div id="tab-2025-9" class="tab-content active">
+                <div class="timeline">
+                <h2>2025年9月2日</h2>
+                <p>このサイトを公開しました</p>
+                <h2>2025年9月1日</h2>
+                <p>このページを作ったよ</p>
+                </div>
+            </div>
+            <div id="tab-2025-8" class="tab-content">
+                <div class="timeline">
+                <h2>2025年8月31日</h2>
+                <p>メインページとAtCoderのページを作った</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- JS: タブ切り替え -->
+    <script>
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
+
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // ボタンの active 切り替え
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // コンテンツの表示切り替え
+            tabContents.forEach(content => content.classList.remove('active'));
+            const tabId = button.dataset.tab;
+            document.getElementById(tabId).classList.add('active');
+        });
+    });
+    </script>
+
+    <footer class="site-footer">
+        <p>© 2025 ゆーらの勉強部屋</p>
+    </footer>
+</body>
+
+
+</html>
