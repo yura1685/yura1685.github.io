@@ -142,16 +142,13 @@ footer {
     background-color: #fff;
 }
 .atcodertable th, .atcodertable td {
-    padding: 1em;
+    padding: 1em; /* 表の間隔 */
 }
 .atcodertable th {
     font-weight: bold;
     text-align: center;
-    width: auto;
-    min-width: 4em;
 }
-
-.atcoderproblems a{
+.atcoderproblems a {
     color: #0066c0;
 }
 
