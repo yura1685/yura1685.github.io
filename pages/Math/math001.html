@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆーらの勉強部屋</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+        <h2 class="site-title">ゆーらの勉強部屋</h2>
+        <nav>
+            <ul>
+                <li><a href="../../index.html" id="ahome">ホーム</a></li>
+                <li><a href="../study.html" id="astudy">学習記録</a></li>
+                <li><a href="../atcoder.html" id="aatcoder">AtCoder</a></li>
+                <li><a href="../math.html" id="amath">競技数学</a></li>
+            </ul>
+        </nav>
+        </div>
+        </header>
+    </header>
+
+    <main class="atcoderproblems">
+        <h3>Online Math Contest 054 (for beginners)</h3>
+        <p>
+            数オリ同様各問題の提出回数1回縛りで参加して、AB_DEFGH の7完で117位でした！全体的に易しめのセットで良かった。
+        </p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/15023">A - 100点（Writer：kusu394）</a></h3>
+        <p>最初何通りあるか求めるのかと思って、100点程度の考察で解けるんだ...となっていたのですが、問題文を最後まで読むと2の最大個数なので角から2を詰めていけば良い</p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/13719">B - 100点（Writer：sta_kun）</a></h3>
+        <p>三平方の定理で色々な辺の長さが求まります。あとはcos(ABC)を求めて余弦定理でfinish</p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/14732">C - 100点（Writer：Shota_1110）</a></h3>
+        <p>だいたいこういうのはnが平方数の周りにあるときなので、まずn=10000, 9999 の2つを調べて違う。次にn=8100, 8099 を調べたらn=8099で成立したので提出→WA！なぜかこのとき、10000の次に小さい平方数が8100と勘違いしてました(悲しい...)。99^2-1で提出してれば全完でした</p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/12045">D - 200点（Writer：peparoni）</a></h3>
+        <p>ABPとPCDが相似なので二次方程式を解くだけ</p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/12656">E - 200点（Writer：y0ne）</a></h3>
+        <p>平方数の条件は、各素因数の指数が全て偶数なので、2と3の指数部分の偶奇を見れば良い。小さい順に実験して周期性から n=4i, 4i-1 で平方数となる</p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/12071">F - 200点（Writer：Shota_1110）</a></h3>
+        <p>見るからに因数分解してくれというような式。あとは条件を満たす(m,n)のうちmが大きい順に見ていく</p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/10699">G - 300点（Writer：nmoon）</a></h3>
+        <p>小さい順に調べていったら意外と面倒くさくてa1で断念。なんかうまいやり方あるのかな～と思っていると、a_{n+1}=a_{n}±～なので、（a_iが全て異なるならば）総和は小さい順に倍々していけばいいので、お祈りエスパー。</p>
+        <hr>
+        <h3><a href="https://onlinemathcontest.com/contests/omcb054/tasks/13518">H - 300点（Writer：y0ne）</a></h3>
+        <p>順位表を見たらMARTHさんがFAだったので母関数かな～と思って問題を見ると、THE母関数。まじで公式解説のままだから省略するが、母関数の入口として良い問題だと思った。</p>        
+    </main>
+    
+    <footer class="site-footer">
+        <p>© 2025 ゆーらの勉強部屋</p>
+    </footer>
+</body>
+
+</html>
