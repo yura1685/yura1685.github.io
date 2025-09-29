@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆーらの勉強部屋</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header-container">
+        <h2 class="site-title">ゆーらの勉強部屋</h2>
+        <nav>
+            <ul>
+                <li><a href="../../index.html" id="ahome">ホーム</a></li>
+                <li><a href="../study.html" id="astudy">学習記録</a></li>
+                <li><a href="../atcoder.html" id="aatcoder">AtCoder</a></li>
+                <li><a href="../math.html" id="amath">競技数学</a></li>
+            </ul>
+        </nav>
+        </div>
+        </header>
+    </header>
+
+    <main class="atcoderproblems">
+        <h3>AtCoder Beginner Contest 424　結果</h3>
+        <p>A,B,C,Eの4完2ペナで1265位でした！</p>
+        <hr>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc424_a">A - Isosceles</a></h3>
+        <p>setに入れてサイズが1または2になれば良い。テストケースに正三角形があるの親切だなぁ。</p>
+        <hr>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc424_b">B - Perfect</a></h3>
+        <p>各参加者に対して何問正解したかを見てあげれば十分。AC数がMに達したら出力を繰り返す。</p>
+        <hr>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc424_c">C - New Skill Acquired</a></h3>
+        <p>スキル i を習得するにはスキル j が必要であるとき、j から i への有向辺を張ればDFS出来る。dfsが下手になったのか、TLEしてしまった()ちゃんと習得せねば。</p>
+        <hr>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc424_d">D - 2x2 Erasing 2</a></h3>
+        <p>最初貪欲法でやれば良いか～と思ったらWA。そのあと盤面が小さいことから Bit DP が思いついたものの、実装力がなさ過ぎて書けないという事態に</p>
+        <hr>
+        <h3><a href="https://atcoder.jp/contests/abc421/tasks/abc424_e">E - Cut in Half</a></h3>
+        <p>D 問題が書けなすぎてヤケクソで書いたらなぜか通って神。sortedsetとdefaultdictで現在の数とその個数を保持して、まとめて1/2倍する。計算量の見積もりはしてなかったから通るか分からなかったけどC++に翻訳したら通った。</p>
+    </main>
+    
+    <footer class="site-footer">
+        <p>© 2025 ゆーらの勉強部屋</p>
+    </footer>
+</body>
+
+</html>
