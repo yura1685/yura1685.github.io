@@ -1,6 +1,7 @@
 <h2 class="problem-title">C - AtCoder Riko</h2>
 　このようなことが起こり得る $L$ は，$\max(A)$ または $\min(A) + \max(A)$ のいずれかである
-ことが簡単な考察からわかります．よって，答えになりうる $L$ 全てについて実際に確かめれば良いです．<br>
+ことが簡単な考察からわかります．
+よって，答えになりうる $L$ 全てについて実際に確かめれば良いです．<br>
 【実装例】
 <pre><code class="language-python">
 from collections import Counter
@@ -66,7 +67,7 @@ print((n-N)//9)
 <h2 class="problem-title">E - Sparse Range</h2>
 　整数の組 $(L_1, R)$ が条件を満たしているとき，$L_1 \le L_2 \le R$ ならば $(L_2, R)$ も条件を満たします．
 よって，各 $R$ について $L$ の最小値が分かればよく，これは尺取り法を用いることで効率よく求められます．
-
+【実装例】
 <pre><code class="language-python">
 from atcoder.fenwicktree import FenwickTree
 from bisect import bisect_left, bisect_right
@@ -92,4 +93,3 @@ for r in range(N):
 print(ans)
 
 </code></pre>
-
