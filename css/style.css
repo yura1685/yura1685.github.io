@@ -1,0 +1,370 @@
+/* css/style.css */
+
+:root {
+    --bg-color: #f8fafc;
+    --text-main: #1e293b;
+    --text-sub: #64748b;
+    --accent-blue: #0ea5e9;
+    --dark-blue: #202f55;
+    --border-color: #e2e8f0;
+}
+
+body {
+    font-family: "Helvetica Neue", "Arial", "Hiragino Kaku Gothic ProN", sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* Navigation */
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    font-size: 1.4rem;
+    color: var(--dark-blue);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-sub);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent-blue);
+}
+
+/* Sections */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+main section {
+    margin-bottom: 50px;
+}
+
+main section:last-child {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent-blue);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* About Grid */
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 80px;
+}
+
+.about-text p {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+}
+
+.about-stats {
+    background: #ffffff;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.stat-item:last-child { border: none; }
+.stat-item span:first-child { color: var(--text-sub); }
+
+/* Card Grid */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-color: var(--accent-blue);
+}
+
+.card h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.3rem;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: var(--text-sub);
+    margin-bottom: 20px;
+}
+
+.card-link {
+    font-weight: bold;
+    color: var(--accent-blue);
+    font-size: 0.9rem;
+}
+
+.card-link.disabled { color: #cbd5e1; }
+
+footer {
+    text-align: center;
+    padding: 60px 0;
+    border-top: 1px solid var(--border-color);
+    color: var(--text-sub);
+    font-size: 0.8rem;
+}
+
+/* --- Blog Specific Styles --- */
+
+.archive-header {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 30px;
+}
+
+.archive-header h1 {
+    font-size: 2.5rem;
+    margin: 10px 0;
+    font-weight: 800;
+}
+
+.tab-nav {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.tab-button {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-sub);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.2s;
+    border-radius: 6px;
+}
+
+.tab-button.active {
+    background-color: var(--dark-blue);
+    color: #ffffff;
+    border-color: var(--dark-blue);
+}
+
+.tab-button:hover:not(.active) {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.month-group {
+    display: none;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.month-group.active {
+    display: block;
+}
+
+.post {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.post-date {
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    font-weight: bold;
+    margin-bottom: 15px;
+    font-family: monospace;
+}
+
+.post-content {
+    font-size: 1rem;
+    line-height: 1.8;
+    white-space: pre-wrap; /* スプレッドシート内の改行を反映 */
+    color: var(--text-main);
+}
+
+.loading {
+    text-align: center;
+    padding: 100px 0;
+    color: var(--text-sub);
+    font-style: italic;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* css/style.css 内のパンくずリストを上書き */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* 左に寄せる */
+    gap: 8px;                    /* 文字同士の隙間を狭く固定 */
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    color: var(--text-sub);
+}
+
+.breadcrumb a {
+    text-decoration: none;
+    color: var(--accent-blue);
+}
+
+.breadcrumb-separator {
+    color: #cbd5e1;
+    font-size: 0.7rem;
+}
+
+/* --- AtCoder Table Styles --- */
+.table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.stats-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.stats-table th, .stats-table td {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border-color);
+    text-align: center;
+    vertical-align: middle;
+}
+
+.stats-table th {
+    background-color: #f8fafc;
+    color: var(--text-sub);
+    font-weight: 600;
+    text-transform: uppercase;
+
+}
+
+.stats-table tr:last-child td { border-bottom: none; }
+
+.detail-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: bold;
+    border: 1px solid var(--accent-blue);
+    padding: 4px 12px;
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.detail-link:hover {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* --- Code Display Styles --- */
+.code-container {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 25px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    line-height: 1.5;
+}
+
+pre { margin: 0; }
+code { white-space: pre-wrap; }
+
+/* カード内のヘッダー（ロゴとタイトルを横並びにする） */
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+/* サイトアイコンのスタイル */
+.site-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px; /* 少し角を丸くするとクール */
+    object-fit: contain;
+}
+
+/* 元々あった h3 のマージンをリセットして位置を調整 */
+.card h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--dark-blue);
+}
+
+/* TeX */
+.problem-title {
+    margin-top: 0;
+}

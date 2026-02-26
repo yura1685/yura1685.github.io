@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtCoder Stats | yura1685</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">yura1685's Journal</div>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../articles/index.html">Articles</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+            <li><a href="index.html" class="active">AtCoder</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <nav class="breadcrumb">
+        <a href="../index.html">Home</a> <span class="breadcrumb-separator">＞</span> <span>AtCoder</span>
+    </nav>
+
+    <section class="archive-header">
+        <h1>AtCoder Results</h1>
+        <p>過去のコンテスト成績と提出コードの記録。</p>
+    </section>
+
+    <div class="table-wrapper">
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Contest</th>
+                    <th>Rank</th>
+                    <th>Performance</th>
+                    <th>New Rating</th>
+                    <th>Solution</th>
+                </tr>
+            </thead>
+            <tbody id="stats-body">
+                </tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1701339970&single=true&output=csv";
+
+    async function loadStats() {
+        try {
+            const response = await fetch(CSV_URL);
+            const csvText = await response.text();
+            const rows = csvText.split('\n').slice(1);
+            const tbody = document.getElementById('stats-body');
+
+            rows.forEach(row => {
+                const cols = row.split(',');
+                const fileName = (cols[5] && cols[5].trim() !== "") ? cols[5].trim() : null;
+                const detailButton = fileName 
+                    ? `<a href="details.html?file=${fileName}" class="detail-link">Detail</a>` 
+                    : "";
+
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${cols[0]}</td>
+                    <td>${cols[1]}</td>
+                    <td>${cols[2]}</td>
+                    <td>${cols[3]}</td>
+                    <td>${cols[4]}</td>
+                    <td>${detailButton}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } catch (e) {
+            console.error("Failed to load stats.");
+        }
+    }
+    loadStats();
+</script>
+
+</body>
+</html>

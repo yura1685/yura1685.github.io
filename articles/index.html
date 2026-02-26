@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles | yura1685</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 検索バーとタグのデザイン */
+        .search-container { margin-bottom: 30px; }
+        #tag-filter {
+            padding: 10px; width: 100%; max-width: 400px;
+            border: 1px solid var(--border-color); border-radius: 4px;
+        }
+        .tag-badge {
+            display: inline-block; background: #e0f2fe; color: #0369a1;
+            padding: 2px 8px; border-radius: 4px; font-size: 0.75rem;
+            margin-right: 5px; margin-top: 5px;
+        }
+        .article-card {
+            display: block; text-decoration: none; color: inherit;
+            padding: 20px; border: 1px solid var(--border-color);
+            border-radius: 8px; margin-bottom: 15px; transition: 0.2s;
+        }
+        .article-card:hover { border-color: var(--accent-blue); background: #f8fafc; }
+        .article-date { font-size: 0.8rem; color: var(--text-sub); }
+        .article-title { margin: 8px 0; font-size: 1.25rem; color: var(--dark-blue); }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">yura1685's Journal</div>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html" class="active">Articles</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+            <li><a href="../atcoder/index.html">AtCoder</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">＞</span>
+        <span>Articles</span>
+    </nav>
+
+    <section class="archive-header">
+        <h1>Articles</h1>
+        <div class="search-container">
+            <input type="text" id="tag-filter" placeholder="タグで検索 (例: 数学, Python)..." oninput="filterArticles()">
+        </div>
+    </section>
+
+    <div id="article-list">
+        </div>
+</main>
+
+<script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1417312107&single=true&output=csv";
+    let allArticles = [];
+
+    async function loadArticles() {
+        try {
+            const response = await fetch(CSV_URL);
+            const csvText = await response.text();
+            const rows = csvText.split('\n').slice(1).reverse();
+            
+            allArticles = rows.map(row => {
+                const cols = row.split(',');
+                if (cols.length < 4) return null;
+                return { date: cols[0], title: cols[1], tags: cols[2], file: cols[3], desc: cols[4] || "" };
+            }).filter(a => a);
+
+            displayArticles(allArticles);
+        } catch (e) { console.error(e); }
+    }
+
+    function displayArticles(articles) {
+        const list = document.getElementById('article-list');
+        list.innerHTML = "";
+        articles.forEach(article => {
+            const tagsHtml = article.tags.split('|').map(t => `<span class="tag-badge">${t.trim()}</span>`).join('');
+            const card = document.createElement('a');
+            card.className = 'article-card';
+            const encodedTitle = encodeURIComponent(article.title);
+            card.href = `details.html?file=${article.file}&title=${encodedTitle}`;
+            card.innerHTML = `
+                <div class="article-date">${article.date}</div>
+                <div class="article-title">${article.title}</div>
+                <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 10px;">${article.desc}</p>
+                <div class="article-tags">${tagsHtml}</div>
+            `;
+            list.appendChild(card);
+        });
+    }
+
+    function filterArticles() {
+        const query = document.getElementById('tag-filter').value.toLowerCase();
+        const filtered = allArticles.filter(a => a.tags.toLowerCase().includes(query) || a.title.toLowerCase().includes(query));
+        displayArticles(filtered);
+    }
+
+    loadArticles();
+</script>
+
+</body>
+</html>

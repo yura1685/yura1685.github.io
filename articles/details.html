@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Article Detail | yura1685</title>
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                processEscapes: true
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        .tex-display-area {
+            background: white; border: 1px solid var(--border-color);
+            padding: 40px; border-radius: 8px; line-height: 1.8;
+            color: var(--text-main); min-height: 300px;
+            text-align: left;
+        }
+        .tex-display-area pre {
+            margin: 20px 0; padding: 15px; border-radius: 6px;
+            background: #1d1f21 !important;
+        }
+        .tex-display-area code { font-family: 'Consolas', monospace; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">yura1685's Journal</div>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="index.html" class="active">Articles</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+            <li><a href="../atcoder/index.html">AtCoder</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <nav class="breadcrumb">
+        <a href="../index.html">Home</a> <span class="breadcrumb-separator">＞</span> <a href="index.html">Articles</a> <span class="breadcrumb-separator">＞</span> <span>Detail</span>
+    </nav>
+    <section class="archive-header">
+        <h1 id="display-title">Loading...</h1>
+    </section>
+    <div class="tex-display-area" id="tex-content">Loading...</div>
+</main>
+
+
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const fileName = params.get('file');
+    const pageTitle = params.get('title');
+
+    async function loadArticle() {
+        const targetDiv = document.getElementById('tex-content');
+        const titleElement = document.getElementById('display-title');
+
+        if (pageTitle) {
+            titleElement.innerText = pageTitle;
+            document.title = `${pageTitle} | yura1685`;
+        }
+
+        if (!fileName) {
+            targetDiv.innerText = "ファイルが指定されていません。";
+            return;
+        }
+
+        try {
+            const response = await fetch(`./pages/${fileName}`); // 記事用texの保存先
+            if (!response.ok) throw new Error("Not found");
+            const text = await response.text();
+
+            targetDiv.innerHTML = text;
+
+            targetDiv.querySelectorAll('pre code').forEach(codeBlock => {
+                codeBlock.textContent = codeBlock.textContent.trim();
+            });
+            // 各種レンダリング実行
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                window.MathJax.typesetPromise([targetDiv]);
+            }
+            if (window.Prism) {
+                Prism.highlightAllUnder(targetDiv);
+            }
+        } catch (e) {
+            targetDiv.innerHTML = "Error loading article.";
+        }
+    }
+    loadArticle();
+</script>
+</body>
+</html>

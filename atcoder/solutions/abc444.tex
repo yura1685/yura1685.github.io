@@ -1,0 +1,94 @@
+<h2 class="problem-title">C - AtCoder Riko</h2>
+　このようなことが起こり得る $L$ は，$\max(A)$ または $\min(A) + \max(A)$ のいずれかである
+ことが簡単な考察からわかります．<br>
+　よって，答えになりうる $L$ 全てについて実際に確かめれば良いです．<br>
+【実装例】
+<pre><code class="language-python">
+from collections import Counter
+
+N = int(input())
+A = list(map(int,input().split()))
+m, M = min(A), max(A)
+C = Counter(A)
+
+flag = True
+for c in C.keys():
+    if c == M:
+        continue
+    if 2*c == M:
+        if C[c] % 2 == 1:
+            flag = False
+            break
+    if C[c] != C[M-c]:
+        flag = False
+        break
+
+if flag:
+    print(M, end=' ')
+
+flag = True
+for c in C.keys():
+    if 2*c == m+M:
+        if C[c] % 2 == 1:
+            flag = False
+            break
+    if C[c] != C[M+m-c]:
+        flag = False
+        break
+
+if flag:
+    print(M+m)
+</code></pre>
+
+<h2 class="problem-title">D - Many Repunit Sum</h2>
+　$1$ を $A$ 個つなげた整数は，$\frac{10^A-1}{9}$ と書くことが出来ます．最後にまとめて $N$ を引いて $9$ で割るとすれば，
+$1$ 回の操作は $10^A$ の可算のみで $A$ の位に $1$ を足すだけで良いです．よって，$1$ の位，$10$ の位...の値を持つ配列の $A_i$ の位に $1$ を
+足し，筆算のような繰り上がりを計算すれば答えを求められます．<br>
+【実装例】
+<pre><code class="language-python">
+N = int(input())
+A = list(map(int,input().split()))
+L = [0] * (max(A)+10)
+ans = 0
+for a in A:
+    L[a] += 1
+    i = 0
+    while L[a+i] == 10:
+        L[a+i] = 0
+        L[a+i+1] += 1
+        i += 1
+
+L.reverse()
+L = map(str,L)
+n = int(''.join(L))
+print((n-N)//9)
+</code></pre>
+
+<h2 class="problem-title">E - Sparse Range</h2>
+　整数の組 $(L_1, R)$ が条件を満たしているとき，$L_1 \le L_2 \le R$ ならば $(L_2, R)$ も条件を満たします．
+よって，各 $R$ について $L$ の最小値が分かればよく，これは尺取り法を用いることで効率よく求められます．
+
+<pre><code class="language-python">
+from atcoder.fenwicktree import FenwickTree
+from bisect import bisect_left, bisect_right
+
+N, D = map(int,input().split())
+A = list(map(int,input().split()))
+B = sorted(set(A))
+d = {v:i for i, v in enumerate(B)}
+FT = FenwickTree(len(B)+1)
+
+ans = 0
+l = 0
+
+for r in range(N):
+    bl = bisect_right(B, A[r] - D)
+    br = bisect_left(B, A[r] + D)
+    while FT.sum(bl, br) > 0:
+        FT.add(d[A[l]], -1)
+        l += 1
+    FT.add(d[A[r]], 1)
+    ans += r - l + 1
+
+print(ans)
+</code></pre>
