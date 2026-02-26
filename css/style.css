@@ -162,7 +162,7 @@ main section:last-child {
 
 footer {
     text-align: center;
-    padding: 60px 0;
+    padding: 30px 0;
     border-top: 1px solid var(--border-color);
     color: var(--text-sub);
     font-size: 0.8rem;
@@ -367,4 +367,5 @@ code { white-space: pre-wrap; }
 /* TeX */
 .problem-title {
     margin-top: 0;
+
 }
