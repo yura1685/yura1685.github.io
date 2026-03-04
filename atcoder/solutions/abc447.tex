@@ -1,0 +1,99 @@
+<h1>ABC447の参加記</h1>
+
+<h2 class="problem-title">C - Insert and Erase A</h2>
+　最初に，$A$ を挿入・削除することで一致させることが可能かどうかを確かめる．これは $S, T$ の両方から $A$ を削除して判定すれば良い．
+ 次に $A$ 以外の文字で分割される区間ごとに $A$ の個数を調べ，その差の絶対値の総和が求めるべき最小値となる．$C$ 問題の割には実装が面倒くさくないか？<br>
+【実装例】
+<pre><code class="language-python">
+S = input()
+T = input()
+
+S2 = ''.join([s for s in S if s != 'A'])
+T2 = ''.join([t for t in T if t != 'A'])
+
+if S2 != T2:
+    exit(print(-1))
+
+def Count(X):
+    counter = []
+    cnt = 0
+    for x in X:
+        if x == 'A':
+            cnt += 1
+        else:
+            counter.append(cnt)
+            cnt = 0
+    counter.append(cnt)
+    return counter
+
+Sc, Tc = Count(S), Count(T)
+ans = 0
+for i in range(len(Sc)):
+    ans += abs(Sc[i] - Tc[i])
+
+print(ans)
+</code></pre>
+
+<h2 class="problem-title">D -  Take ABC 2</h2>
+　$A, B, C$ は左から順に取ったほうが最善であると分かります。よって文字列を左から見ていって，$"A", "AB", "ABC"$ の個数を持つカウンタを足し引きすれば良いです．<br>
+【実装例】
+<pre><code class="language-python">
+S = input()
+cnta, cntb, cntc = 0, 0, 0
+
+for s in S:
+    if s == 'A':
+        cnta += 1
+    if s == 'B':
+        if cnta > 0:
+            cntb += 1
+            cnta -= 1
+    if s == 'C':
+        if cntb > 0:
+            cntc += 1
+            cntb -= 1
+
+print(cntc)
+</code></pre>
+
+<h2 class="problem-title">E - Divide Graph</h2>
+　$2^0 + 2^1 + \cdots + 2^{n} < 2^{n+1}$ より，コストの大きい辺はなるべく削除せずに残しておきたいです．
+ よってコストの大きい順に連結成分の個数が $2$ になるまで辺を張っていき，その後連結成分が $1$ にならないように辺を張っていけば良い．<br>
+【実装例】
+<pre><code class="language-python">
+from atcoder.dsu import DSU
+
+N, M = map(int,input().split())
+uf = DSU(N)
+edge = []
+for _ in range(M):
+    U, V = map(int,input().split())
+    edge.append((U-1, V-1))
+edge.reverse()
+
+groups = N
+cost = []
+
+for i in range(M):
+    u, v = edge[i]
+    if i <= N-3:
+        if not uf.same(u, v):
+            groups -= 1
+        uf.merge(u, v)
+    else:
+        if groups > 2:
+            if not uf.same(u, v):
+                groups -= 1
+            uf.merge(u, v)
+        else:
+            if uf.same(u, v):
+                pass
+            else:
+                cost.append(M-i)
+
+mod = 998244353
+ans = 0
+for c in cost:
+    ans += pow(2, c, mod)
+print(ans % mod)
+</code></pre>
