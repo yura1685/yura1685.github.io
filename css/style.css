@@ -367,5 +367,7 @@ code { white-space: pre-wrap; }
 /* TeX */
 .problem-title {
     margin-top: 0;
-
+    text-decoration: none;
+    color: var(--text-main);
 }
+
