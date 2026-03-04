@@ -1,4 +1,6 @@
-<h2 class="problem-title">C - AtCoder Riko</h2>
+<h1>ABC444の解法記事</h1>
+
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc444/tasks/abc444_c" class="problem-title" target="_blank">C - AtCoder Riko</a></h2>
 　このようなことが起こり得る $L$ は，$\max(A)$ または $\min(A) + \max(A)$ のいずれかである
 ことが簡単な考察からわかります．
 よって，答えになりうる $L$ 全てについて実際に確かめれば良いです．<br>
@@ -40,7 +42,7 @@ if flag:
     print(M+m)
 </code></pre>
 
-<h2 class="problem-title">D - Many Repunit Sum</h2>
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc444/tasks/abc444_d" class="problem-title" target="_blank">D - Many Repunit Sum</a></h2>
 　$1$ を $A$ 個つなげた整数は，$\frac{10^A-1}{9}$ と書くことが出来ます．最後にまとめて $N$ を引いて $9$ で割るとすれば，
 $1$ 回の操作は $10^A$ の可算のみで $10^{A-1}$ の位に $1$ を足すだけで良いです．よって，$1$ の位，$10$ の位...の値を持つ配列の $10^{A_i-1}$ の位に $1$ を
 足し，筆算のような繰り上がりを計算すれば答えを求められます．<br>
@@ -64,7 +66,7 @@ n = int(''.join(L))
 print((n-N)//9)
 </code></pre>
 
-<h2 class="problem-title">E - Sparse Range</h2>
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc444/tasks/abc444_e" class="problem-title" target="_blank">E - Sparse Range</a></h2>
 　整数の組 $(L_1, R)$ が条件を満たしているとき，$L_1 \le L_2 \le R$ ならば $(L_2, R)$ も条件を満たします．
 よって，各 $R$ について $L$ の最小値が分かればよく，これは尺取り法を用いることで効率よく求められます．
 【実装例】
