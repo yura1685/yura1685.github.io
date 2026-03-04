@@ -1,6 +1,6 @@
-<h1>ABC447の参加記</h1>
+<h1>ABC447の解法記事</h1>
 
-<h2 class="problem-title">C - Insert and Erase A</h2>
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc447/tasks/abc447_c" class="problem-title" target="_blank">C - Insert and Erase A</a></h2>
 　最初に，$A$ を挿入・削除することで一致させることが可能かどうかを確かめる．これは $S, T$ の両方から $A$ を削除して判定すれば良い．
  次に $A$ 以外の文字で分割される区間ごとに $A$ の個数を調べ，その差の絶対値の総和が求めるべき最小値となる．$C$ 問題の割には実装が面倒くさくないか？<br>
 【実装例】
@@ -34,8 +34,8 @@ for i in range(len(Sc)):
 print(ans)
 </code></pre>
 
-<h2 class="problem-title">D -  Take ABC 2</h2>
-　$A, B, C$ は左から順に取ったほうが最善であると分かります。よって文字列を左から見ていって，$"A", "AB", "ABC"$ の個数を持つカウンタを足し引きすれば良いです．<br>
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc447/tasks/abc447_d" class="problem-title" target="_blank">D -  Take ABC 2</a></h2>
+　$A, B, C$ は左から順に取ったほうが最善であると分かります。よって文字列を左から見ていって，$A, AB, ABC$ の個数を持つカウンタを足し引きすれば良いです．<br>
 【実装例】
 <pre><code class="language-python">
 S = input()
@@ -56,7 +56,7 @@ for s in S:
 print(cntc)
 </code></pre>
 
-<h2 class="problem-title">E - Divide Graph</h2>
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc447/tasks/abc447_e" class="problem-title" target="_blank">E - Divide Graph</a></h2>
 　$2^0 + 2^1 + \cdots + 2^{n} < 2^{n+1}$ より，コストの大きい辺はなるべく削除せずに残しておきたいです．
  よってコストの大きい順に連結成分の個数が $2$ になるまで辺を張っていき，その後連結成分が $1$ にならないように辺を張っていけば良い．<br>
 【実装例】
