@@ -1,0 +1,92 @@
+<h1>ABC447の解法記事</h1>
+
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc448/tasks/abc448_c" class="problem-title" target="_blank">C - Except and Min</a></h2>
+　パット見計算量が厳しそうな問題。ただ $1 \le K \le 5$ という制約を見ると、$A$ の小さい順に $6$ 個の整数だけを確認すれば良いと分かる．<br>
+【実装例】
+<pre><code class="language-python">
+I = input().split()
+N, Q = int(I[0]), int(I[1])
+A = list(map(int, input().split()))
+minA = sorted(A)[:6]
+
+for _ in range(Q):
+    K = int(input())
+    B = list(map(int, input().split()))
+    s = minA.copy()
+    for b in B:
+        if A[b-1] in s:
+            s.pop(s.index(A[b-1]))
+    print(s[0])
+</code></pre>
+
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc448/tasks/abc448_d" class="problem-title" target="_blank">D - Integer-duplicated Path</a></h2>
+　DFSをやれと問題文が言っていますね。頂点 $1$ から書かれている整数を記録しつつDFSをして，$2$ 個以上書かれている整数の個数が正ならばその頂点の答えはYesとなる．<br>
+【実装例】
+<pre><code class="language-python">
+from collections import defaultdict
+
+N = int(input())
+A = list(map(int, input().split()))
+G = [[] for _ in range(N)]
+for _ in range(N-1):
+    U, V = map(int, input().split())
+    G[U-1].append(V-1)
+    G[V-1].append(U-1)
+
+count = defaultdict(int)
+cnt = 0
+ans = [False] * N
+
+stack = [(0, -1, True)]
+while stack:
+    u, p, f = stack.pop()
+    if f:
+        count[A[u]] += 1
+        if count[A[u]] == 2:
+            cnt += 1
+        if cnt > 0:
+            ans[u] = True
+        stack.append((u, p, False))
+        for v in G[u]:
+            if v != p:
+                stack.append((v, u, True))
+    
+    else:
+        if count[A[u]] == 2:
+            cnt -= 1
+        count[A[u]] -= 1
+
+for a in ans:
+    print('Yes' if a else 'No')
+</code></pre>
+
+<h2 class="problem-title"><a href="https://atcoder.jp/contests/abc448/tasks/abc448_e" class="problem-title" target="_blank">E - Simple Division</a></h2>
+　まず $\big\lfloor \frac{N}{M} \big\rfloor \pmod {10007}$ ですが，これは典型として $N \pmod {M\times 10007}$ を $M$ で割った商に等しいですね．
+肝心のレピュニット数についてですが，$\frac{10^n-1}{9}$ としてしまうと $\gcd(9, M\times 10007) > 1$ のときに非常にややこしくなってしまうので $\begin{pmatrix}
+a_{n+1} \\ 1 \end{pmatrix} = \begin{pmatrix} 10 & 1 \\ 0 & 1 \end{pmatrix} \cdot \begin{pmatrix} a_n \\ 1 \end{pmatrix}$ 
+を用いて繰り返し二乗法で簡単に計算できます（<a href="https://atcoder.jp/contests/abc293/tasks/abc293_e" target="_blank">類題1</a>, <a href="https://atcoder.jp/contests/arc050/tasks/arc050_c" target="_blank">類題2</a>, <a href="https://atcoder.jp/contests/arc020/tasks/arc020_3" target="_blank">類題3</a>）．<br>
+【実装例】
+<pre><code class="language-python">
+K, M = map(int, input().split())
+MOD = 10007 * M
+
+def f(r, n, mod):
+    res = 0
+    sum = 1
+    pow = r
+    while n > 0:
+        if n % 2 == 1:
+            res = (res * pow + sum) % mod
+        sum = sum * (1 + pow) % mod
+        pow = pow ** 2 % mod
+        n //= 2
+    return res
+
+ans = 0
+for _ in range(K):
+    c, l = map(int, input().split())
+    hoge = c * f(10, l, MOD) % MOD
+    ans = (ans * pow(10, l, MOD) + hoge) % MOD
+
+print(ans // M)
+</code></pre>
