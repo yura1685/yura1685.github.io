@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucket List | yura1685</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">yura1685's Journal</div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="articles/index.html">Articles</a></li>
+            <li><a href="blog/index.html">Blog</a></li>
+            <li><a href="atcoder/index.html">AtCoder</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <nav class="breadcrumb">
+        <a href="index.html">Home</a> <span class="breadcrumb-separator">＞</span> <span>Bucket List</span>
+    </nav>
+
+    <section class="archive-header">
+        <h1>Bucket List</h1>
+        <p>人生で一度はやってみたいことのまとめ。</p>
+    </section>
+
+    <div class="table-wrapper">
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th class="col-id">No.</th>
+                    <th>やりたいこと</th>
+                </tr>
+            </thead>
+            <tbody id="bucket-list-body">
+                </tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+    const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1999464993&single=true&output=csv";
+
+    async function loadBucketList() {
+        try {
+            const response = await fetch(CSV_URL);
+            const csvText = await response.text();
+            const rows = csvText.split('\n').slice(1);
+            const tbody = document.getElementById('bucket-list-body');
+
+            rows.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="col-id">${index + 1}</td>
+                    <td>${row}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } catch (e) {
+            console.error("Failed to load bucket list.");
+        }
+    }
+    loadBucketList();
+</script>
+
+<footer>
+    <p>&copy; 2026 yura1685</p>
+</footer>
+
+</body>
+</html>
