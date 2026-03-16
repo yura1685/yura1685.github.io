@@ -27,7 +27,7 @@
 
     <section class="archive-header">
         <h1>Bucket List</h1>
-        <p>人生で一度はやってみたいことのまとめ。</p>
+        <p>死ぬまでにやりたいことリスト。表示順はランダム</p>
     </section>
 
     <div class="table-wrapper">
@@ -51,8 +51,13 @@
         try {
             const response = await fetch(CSV_URL);
             const csvText = await response.text();
-            const rows = csvText.split('\n').slice(1);
+            let rows = csvText.split('\n').slice(1);
             const tbody = document.getElementById('bucket-list-body');
+
+            for (let i = rows.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [rows[i], rows[j]] = [rows[j], rows[i]];
+            }
 
             rows.forEach((row, index) => {
                 const tr = document.createElement('tr');
