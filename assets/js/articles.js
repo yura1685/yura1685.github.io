@@ -3,7 +3,7 @@ let allArticles = [];
 
 function normalizeArticleFileName(fileName) {
     const name = fileName.trim();
-    return name.endsWith('.tex') ? `${name.slice(0, -4)}.html` : name;
+    return name.replace(/\.(?:tex|html)$/i, '.md');
 }
 
 async function loadArticles() {
