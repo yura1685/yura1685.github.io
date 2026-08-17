@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | yura1685</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="logo">yura1685's Journal</div>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../articles/index.html">Articles</a></li>
+            <li><a href="index.html" class="active">Blog</a></li>
+            <li><a href="../atcoder/index.html">AtCoder</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">＞</span>
+        <span>Blog</span>
+    </nav>
+
+    <section class="archive-header">
+        <h1>Latest Blog</h1>
+        <p>日々の開発記録と、どうでもいいこと。</p>
+    </section>
+
+    <div id="tab-container" class="tab-nav"></div>
+
+    <div id="blog-container">
+        <div class="loading">Fetching data from spreadsheet...</div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2026 yura1685</p>
+</footer>
+
+<script src="../assets/js/blog.js"></script>
+
+</body>
+</html>
