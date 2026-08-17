@@ -1,77 +1,53 @@
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1417312107&single=true&output=csv";
-let allArticles = [];
+const params = new URLSearchParams(window.location.search);
+const requestedFileName = params.get('file');
+const pageTitle = params.get('title');
 
 function normalizeArticleFileName(fileName) {
-    const name = fileName.trim();
-    return name.replace(/\.(?:tex|html)$/i, '.md');
+    return fileName.replace(/\.(?:tex|html)$/i, '.md');
 }
 
-async function loadArticles() {
+async function loadArticle() {
+    const targetDiv = document.getElementById('article-content');
+    const titleElement = document.getElementById('display-title');
+
+    if (pageTitle) {
+        titleElement.textContent = pageTitle;
+        document.title = `${pageTitle} | yura1685`;
+    }
+
+    if (!requestedFileName) {
+        targetDiv.textContent = 'ファイルが指定されていません。';
+        return;
+    }
+
+    const fileName = normalizeArticleFileName(requestedFileName);
+    if (!/^[A-Za-z0-9_-]+\.md$/.test(fileName)) {
+        targetDiv.textContent = '不正なファイル名です。';
+        return;
+    }
+
     try {
-        const response = await fetch(CSV_URL);
+        const response = await fetch(`./contents/${fileName}`);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-        const csvText = await response.text();
-        const rows = parseCSV(csvText).slice(1).reverse();
+        const markdown = await response.text();
+        targetDiv.innerHTML = marked.parse(markdown);
 
-        allArticles = rows.map(cols => {
-            if (cols.length < 4 || !cols[0] || !cols[1] || !cols[3]) return null;
-            return {
-                date: cols[0].trim(),
-                title: cols[1].trim(),
-                tags: (cols[2] || '').trim(),
-                file: normalizeArticleFileName(cols[3]),
-                desc: (cols[4] || '').trim()
-            };
-        }).filter(Boolean);
+        targetDiv.querySelectorAll('a[href^="http"]').forEach(link => {
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+        });
 
-        displayArticles(allArticles);
+        if (window.MathJax && window.MathJax.typesetPromise) {
+            await window.MathJax.typesetPromise([targetDiv]);
+        }
+        if (window.Prism) {
+            Prism.highlightAllUnder(targetDiv);
+        }
     } catch (error) {
-        console.error('Failed to load articles.', error);
+        targetDiv.textContent = '記事の読み込みに失敗しました。';
+        console.error(error);
     }
 }
 
-function displayArticles(articles) {
-    const list = document.getElementById('article-list');
-    list.replaceChildren();
-
-    articles.forEach(article => {
-        const card = document.createElement('a');
-        card.className = 'article-card';
-        card.href = `details.html?file=${encodeURIComponent(article.file)}&title=${encodeURIComponent(article.title)}`;
-
-        const date = document.createElement('div');
-        date.className = 'article-date';
-        date.textContent = article.date;
-
-        const title = document.createElement('div');
-        title.className = 'article-title';
-        title.textContent = article.title;
-
-        const desc = document.createElement('p');
-        desc.className = 'article-desc';
-        desc.textContent = article.desc;
-
-        const tags = document.createElement('div');
-        tags.className = 'article-tags';
-        article.tags.split('|').map(tag => tag.trim()).filter(Boolean).forEach(tag => {
-            const badge = document.createElement('span');
-            badge.className = 'tag-badge';
-            badge.textContent = tag;
-            tags.appendChild(badge);
-        });
-
-        card.append(date, title, desc, tags);
-        list.appendChild(card);
-    });
-}
-
-function filterArticles() {
-    const query = document.getElementById('tag-filter').value.toLowerCase();
-    const filtered = allArticles.filter(article =>
-        article.tags.toLowerCase().includes(query) || article.title.toLowerCase().includes(query)
-    );
-    displayArticles(filtered);
-}
-
-loadArticles();
+loadArticle();
