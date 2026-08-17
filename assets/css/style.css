@@ -487,7 +487,7 @@ footer {
 
 /* Pythonのif / for / while / def / return / importなど */
 .article-content .token.keyword {
-    color: #7c3aed !important;
+    color: #fa96e1 !important;
     font-weight: 600;
 }
 
