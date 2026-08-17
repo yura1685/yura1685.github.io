@@ -527,3 +527,41 @@ footer {
     max-width: 100%;
     overflow-x: auto;
 }
+
+/* AtCoder code block */
+.article-content pre[class*="language-"] {
+    background: #1e1e1e !important;
+}
+
+/* コメント */
+.article-content .token.comment,
+.article-content .token.prolog,
+.article-content .token.doctype,
+.article-content .token.cdata {
+    color: #6a9955 !important;
+}
+
+/* 文字列 */
+.article-content .token.string {
+    color: #ce9178 !important;
+}
+
+/* キーワード: if, for, def など */
+.article-content .token.keyword {
+    color: #c586c0 !important;
+}
+
+/* 数値 */
+.article-content .token.number {
+    color: #b5cea8 !important;
+}
+
+/* 関数名 */
+.article-content .token.function {
+    color: #dcdcaa !important;
+}
+
+/* 演算子 */
+.article-content .token.operator {
+    color: #d4d4d4 !important;
+}
