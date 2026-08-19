@@ -1,6 +1,9 @@
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1701339970&single=true&output=csv";
+const ATCODER_RESULTS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1701339970&single=true&output=csv";
 
-// 修正: AtCoderのPerformance / Ratingだけ公式の色区分に合わせる
+// 修正: Homeの更新一覧と同じCSVを使い、type=atcoderの記事を独立して取得する
+const ATCODER_ARTICLES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=0&single=true&output=csv";
+
+// AtCoderのPerformance / Ratingだけ公式の色区分に合わせる
 function getRatingClass(text) {
     if (!text.trim()) return '';
     const value = Number(text.replace(/,/g, ''));
@@ -18,15 +21,20 @@ function getRatingClass(text) {
 
 async function loadStats() {
     const tbody = document.getElementById('stats-body');
+    if (!tbody) return;
 
     try {
-        const response = await fetch(CSV_URL);
+        const response = await fetch(ATCODER_RESULTS_CSV_URL);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const csvText = await response.text();
-        const rows = parseCSV(csvText).slice(1)
+        let rows = parseCSV(csvText).slice(1)
             .filter(cols => cols.length >= 5 && !cols.every(value => value.trim() === ''))
             .sort((a, b) => (b[0] || '').trim().localeCompare((a[0] || '').trim()));
+
+        // 修正: data-limit があるページだけ表示件数を制限する
+        const limit = Number(tbody.dataset.limit || 0);
+        if (limit > 0) rows = rows.slice(0, limit);
 
         tbody.replaceChildren();
 
@@ -71,4 +79,117 @@ async function loadStats() {
     }
 }
 
+function getColumnIndex(header, name) {
+    return header.indexOf(name.toLowerCase());
+}
+
+function getFallbackSolutionTitle(content, file) {
+    if (content) return content;
+    return file.replace(/\.md$/i, '').toUpperCase() + ' の解法記事';
+}
+
+// 修正: MarkdownのH1を実際の記事タイトルとして使う
+async function getSolutionTitle(file, fallback) {
+    try {
+        const response = await fetch(`./solutions/${file}`);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const markdown = await response.text();
+        return markdown.match(/^#\s+(.+)$/m)?.[1]?.trim() || fallback;
+    } catch (error) {
+        console.warn(`Failed to load title from ${file}.`, error);
+        return fallback;
+    }
+}
+
+async function loadSolutions() {
+    const list = document.getElementById('solution-list');
+    if (!list) return;
+
+    try {
+        const response = await fetch(ATCODER_ARTICLES_CSV_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const csvText = await response.text();
+        const csv = parseCSV(csvText);
+        if (csv.length === 0) throw new Error('CSV is empty.');
+
+        const header = csv[0].map(value => value.trim().toLowerCase());
+        const dateIndex = getColumnIndex(header, 'date');
+        const contentIndex = getColumnIndex(header, 'content');
+        const typeIndex = getColumnIndex(header, 'type');
+        const fileIndex = getColumnIndex(header, 'file');
+
+        if (dateIndex === -1 || typeIndex === -1 || fileIndex === -1) {
+            throw new Error('CSV must contain Date, Type and File columns.');
+        }
+
+        // 同じ記事が複数回更新欄に登場しても、一覧には最新の1件だけ載せる
+        const solutionMap = new Map();
+        csv.slice(1).forEach(cols => {
+            const date = (cols[dateIndex] ?? '').trim();
+            const type = (cols[typeIndex] ?? '').trim().toLowerCase();
+            const file = (cols[fileIndex] ?? '').trim();
+            const content = contentIndex === -1 ? '' : (cols[contentIndex] ?? '').trim();
+
+            if (!date || type !== 'atcoder' || !/^[A-Za-z0-9_-]+\.md$/.test(file)) return;
+
+            const current = solutionMap.get(file);
+            if (!current || date.localeCompare(current.date) > 0) {
+                solutionMap.set(file, { date, file, content });
+            }
+        });
+
+        let solutions = [...solutionMap.values()].sort((a, b) => b.date.localeCompare(a.date));
+
+        // 修正: data-limit があるページだけ表示件数を制限する
+        const limit = Number(list.dataset.limit || 0);
+        if (limit > 0) solutions = solutions.slice(0, limit);
+
+        solutions = await Promise.all(solutions.map(async solution => ({
+            ...solution,
+            title: await getSolutionTitle(solution.file, getFallbackSolutionTitle(solution.content, solution.file))
+        })));
+
+        renderSolutions(solutions);
+    } catch (error) {
+        list.replaceChildren();
+        const empty = document.createElement('div');
+        empty.className = 'empty-state';
+        empty.textContent = '解法記事一覧の読み込みに失敗しました。';
+        list.appendChild(empty);
+        console.error('Failed to load solutions.', error);
+    }
+}
+
+function renderSolutions(solutions) {
+    const list = document.getElementById('solution-list');
+    list.replaceChildren();
+
+    if (solutions.length === 0) {
+        const empty = document.createElement('div');
+        empty.className = 'empty-state';
+        empty.textContent = '解法記事はまだありません。';
+        list.appendChild(empty);
+        return;
+    }
+
+    solutions.forEach(solution => {
+        const item = document.createElement('a');
+        item.className = 'recent-update recent-update-link';
+        item.href = `details.html?file=${encodeURIComponent(solution.file)}`;
+
+        const date = document.createElement('time');
+        date.className = 'recent-update-date';
+        date.textContent = solution.date;
+
+        const title = document.createElement('div');
+        title.className = 'recent-update-content';
+        title.textContent = solution.title;
+
+        item.append(date, title);
+        list.appendChild(item);
+    });
+}
+
 loadStats();
+loadSolutions();

@@ -27,26 +27,45 @@
     </nav>
 
     <section class="archive-header">
-        <h1>AtCoder Results</h1>
-        <p>過去のコンテストの記録と解法記事など</p>
+        <h1>AtCoder</h1>
+        <p>コンテスト参加記録や解法記事など</p>
     </section>
 
-    <div class="table-wrapper">
-        <table class="stats-table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Contest</th>
-                    <th>Rank</th>
-                    <th>Performance</th>
-                    <th>New Rating</th>
-                    <th>Solution</th>
-                </tr>
-            </thead>
-            <tbody id="stats-body">
-                </tbody>
-        </table>
-    </div>
+    <!-- 修正: AtCoderトップでは直近5件だけ表示 -->
+    <section>
+        <div class="section-title-row">
+            <h2 class="section-title">Recent Contests</h2>
+            <a class="section-more-link" href="results.html">View all →</a>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Contest</th>
+                        <th>Rank</th>
+                        <th>Performance</th>
+                        <th>New Rating</th>
+                        <th>Solution</th>
+                    </tr>
+                </thead>
+                <tbody id="stats-body" data-limit="5"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- 修正: コンテスト成績とは独立して最近の解法記事を表示 -->
+    <section>
+        <div class="section-title-row">
+            <h2 class="section-title">Recent Solutions</h2>
+            <a class="section-more-link" href="articles.html">View all →</a>
+        </div>
+
+        <div id="solution-list" class="recent-updates-list" data-limit="5">
+            <div class="recent-updates-loading">Loading...</div>
+        </div>
+    </section>
 </main>
 
 <script src="../assets/js/csv.js"></script>
@@ -58,4 +77,3 @@
 
 </body>
 </html>
-
