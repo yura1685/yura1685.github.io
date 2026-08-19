@@ -621,3 +621,230 @@ footer {
         max-width: none;
     }
 }
+
+/* --- 2026-08 UI Updates --- */
+
+/* 修正: ロゴをHomeリンクとして扱う */
+.logo {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.logo:hover {
+    color: var(--accent-blue);
+}
+
+/* Home: Recent Updates */
+.section-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.section-title-row .section-title {
+    margin-bottom: 0;
+}
+
+.section-more-link {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.section-more-link:hover {
+    text-decoration: underline;
+}
+
+.recent-updates-list {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.recent-update {
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 20px;
+    align-items: start;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+    color: inherit;
+}
+
+.recent-update:last-child {
+    border-bottom: none;
+}
+
+.recent-update-link {
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.recent-update-link:hover {
+    background: #f8fafc;
+}
+
+.recent-update-date {
+    color: var(--accent-blue);
+    font-family: monospace;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.recent-update-content {
+    color: var(--text-main);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    white-space: pre-line;
+}
+
+.recent-updates-loading {
+    padding: 30px 20px;
+}
+
+/* Articles: clickable tags / empty state */
+.article-card-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+}
+
+.tag-button {
+    font-family: inherit;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tag-button:hover,
+.article-meta-tag:hover {
+    background: #bae6fd;
+    color: #075985;
+}
+
+.empty-state {
+    padding: 35px 20px;
+    text-align: center;
+    color: var(--text-sub);
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* Article Detail: date / tags / table of contents */
+.article-header {
+    margin-bottom: 24px;
+}
+
+.article-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    margin-top: 14px;
+    color: var(--text-sub);
+    font-size: 0.85rem;
+}
+
+.article-meta[hidden] {
+    display: none;
+}
+
+.article-meta time {
+    font-family: monospace;
+}
+
+.article-meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.article-meta-tag {
+    margin: 0;
+    text-decoration: none;
+}
+
+.article-toc {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+
+.article-toc[hidden] {
+    display: none;
+}
+
+.article-toc-title {
+    color: var(--dark-blue);
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.article-toc ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.article-toc li {
+    margin: 5px 0;
+    line-height: 1.55;
+}
+
+.article-toc .toc-level-2 {
+    padding-left: 16px;
+}
+
+.article-toc .toc-level-3 {
+    padding-left: 32px;
+}
+
+.article-toc a {
+    color: var(--text-sub);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.article-toc a:hover {
+    color: var(--accent-blue);
+    text-decoration: underline;
+}
+
+.article-content h1,
+.article-content h2,
+.article-content h3 {
+    scroll-margin-top: 100px;
+}
+
+/* AtCoder: Performance / New Ratingのみ色分け */
+.rating-value {
+    font-weight: 700;
+}
+
+.rating-gray { color: #808080; }
+.rating-brown { color: #804000; }
+.rating-green { color: #008000; }
+.rating-cyan { color: #00c0c0; }
+.rating-blue { color: #0000ff; }
+.rating-yellow { color: #c0c000; }
+.rating-orange { color: #ff8000; }
+.rating-red { color: #ff0000; }
+
+@media (max-width: 700px) {
+    .recent-update {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .article-toc {
+        padding: 18px 20px;
+    }
+}

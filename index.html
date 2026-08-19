@@ -12,7 +12,7 @@
 
 <header>
     <nav>
-        <div class="logo">yura1685's Journal</div>
+        <a class="logo" href="index.html">yura1685's Journal</a>
         <ul>
             <li><a href="index.html" class="active">Home</a></li>
             <li><a href="articles/index.html">Articles</a></li>
@@ -49,6 +49,17 @@
         </div>
     </section>
 
+    <!-- 修正: Blog用スプレッドシートから最新の更新を表示 -->
+    <section class="recent-updates">
+        <div class="section-title-row">
+            <div class="section-title">Recent Updates</div>
+            <a href="blog/index.html" class="section-more-link">View all →</a>
+        </div>
+        <div id="recent-updates-list" class="recent-updates-list">
+            <div class="loading recent-updates-loading">Fetching latest updates...</div>
+        </div>
+    </section>
+
     <section class="links">
         <div class="section-title">Content</div>
         <div class="card-grid">
@@ -58,7 +69,7 @@
                 <span class="card-link">Explore →</span>
             </a>
             <a href="blog/index.html" class="card">
-                <h3>Latest Blog</h3>
+                <h3>Blog</h3>
                 <p>日記とかサイトの更新報告をしています。</p>
                 <span class="card-link">Explore →</span>
             </a>
@@ -106,6 +117,8 @@
     <p>&copy; 2026 yura1685</p>
 </footer>
 
+<script src="assets/js/csv.js"></script>
+<script src="assets/js/home.js"></script>
 </body>
 </html>
 

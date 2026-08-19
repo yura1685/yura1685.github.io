@@ -1,5 +1,21 @@
 const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1701339970&single=true&output=csv";
 
+// 修正: AtCoderのPerformance / Ratingだけ公式の色区分に合わせる
+function getRatingClass(text) {
+    if (!text.trim()) return '';
+    const value = Number(text.replace(/,/g, ''));
+    if (!Number.isFinite(value)) return '';
+
+    if (value < 400) return 'rating-gray';
+    if (value < 800) return 'rating-brown';
+    if (value < 1200) return 'rating-green';
+    if (value < 1600) return 'rating-cyan';
+    if (value < 2000) return 'rating-blue';
+    if (value < 2400) return 'rating-yellow';
+    if (value < 2800) return 'rating-orange';
+    return 'rating-red';
+}
+
 async function loadStats() {
     const tbody = document.getElementById('stats-body');
 
@@ -18,7 +34,15 @@ async function loadStats() {
             const tr = document.createElement('tr');
             for (let i = 0; i < 5; i++) {
                 const td = document.createElement('td');
-                td.textContent = (cols[i] || '').trim();
+                const text = (cols[i] || '').trim();
+                td.textContent = text;
+
+                // Performance(3), New Rating(4)のみ色付け
+                if (i === 3 || i === 4) {
+                    const ratingClass = getRatingClass(text);
+                    if (ratingClass) td.classList.add('rating-value', ratingClass);
+                }
+
                 tr.appendChild(td);
             }
 

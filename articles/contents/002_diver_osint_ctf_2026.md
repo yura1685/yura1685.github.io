@@ -1,5 +1,9 @@
+# はじめに
+
 先日行われました **DIVER OSINT CTF 2026** に私 yura1685 はチーム Sugar_Beets として参加して，$7951$pt・$53$位 ／ $867$チーム を獲得しました．Writeup として，私が解いた問題の解法を共有しようと思います．
 ![成績表](/articles/assets/002/DIVER_OSINT_CTF_2026_Sugar_Beets_certificate_page-0001.jpg)
+
+**注意**　この記事は DIVER OSINT CTF 2026 のネタバレを含みます．また，内容が間違っている可能性があります．
 
 # introduction
 ---
@@ -67,9 +71,9 @@ Geminiにニュースについて調べさせたところ，該当ニュース�
 #### 解法
 
 路上喫煙禁止の看板から世田谷区のものであると考えられます．こんなん絶対誰かがツイートしてるだろと思いTwitterで検索をしてみると無事Hit．
-<blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/ncBxipGTZJ">pic.twitter.com/ncBxipGTZJ</a></p>&mdash; 三谷 (@mitanimmk) <a href="https://x.com/mitanimmk/status/1964671758197498128?ref_src=twsrc%5Etfw">September 7, 2025</a></blockquote> <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="zxx" dir="ltr"><a href="https://t.co/ncBxipGTZJ">pic.twitter.com/ncBxipGTZJ</a></p>&mdash; 三谷 (@mitanimmk) <a href="https://x.com/mitanimmk/status/1964671758197498128?ref_src=twsrc%5Etfw">September 7, 2025</a></blockquote>
 この画像右上のパチンコ「◯ナミ」について調べると，下北沢にある電柱であると分かりました．さらに，このツイートの引用リツイート欄を見ると，
-<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">待ってこれ下北沢だよね<br>1年前より文字増えてる <a href="https://t.co/RDTFcKu1nL">https://t.co/RDTFcKu1nL</a> <a href="https://t.co/r1awudqOiP">pic.twitter.com/r1awudqOiP</a></p>&mdash; 考え中…💭 (@chocomint_1031) <a href="https://x.com/chocomint_1031/status/1964944887813718166?ref_src=twsrc%5Etfw">September 8, 2025</a></blockquote> <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="ja" dir="ltr">待ってこれ下北沢だよね<br>1年前より文字増えてる <a href="https://t.co/RDTFcKu1nL">https://t.co/RDTFcKu1nL</a> <a href="https://t.co/r1awudqOiP">pic.twitter.com/r1awudqOiP</a></p>&mdash; 考え中…💭 (@chocomint_1031) <a href="https://x.com/chocomint_1031/status/1964944887813718166?ref_src=twsrc%5Etfw">September 8, 2025</a></blockquote>
 この画像の左側にタルトらしき物を扱っている建物があるので，「下北沢　タルト」で検索をかけると無事場所が特定出来ました．kaitai1はここからが本番で，地番を解答する必要があります．地番が載っている公図ビューアとにらめっこしながら $3$ 回という少ない提出上限で，なんとか $3$ 回目で正解できました（流石に脳汁）．
 
 ![chiban](/articles/assets/002/chiban.png)
@@ -140,4 +144,5 @@ Geminiにニュースについて調べさせたところ，該当ニュース�
 DIVER OSINT CTF に参加するのは今回が初めてだったのですが，めちゃくちゃ楽しかったです．作問能力がやばい．
 
 今回はチームで参加しましたが，チームメンバーにもかなり助けてもらいました．自分だけでは辿り着けなかった情報を見つけてもらったりと，OSINTをチームでやる面白さもかなり感じられました．今回は6人チームだったものの，常に6人全員がアクティブというわけではなかったので来年はもっと万全の状態で，チーム全体で全力を出して挑戦したいです．
-### あと、AIが強い。
+
+**あと、AIが強い。**
