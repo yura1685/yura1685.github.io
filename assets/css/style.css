@@ -442,6 +442,15 @@ footer {
     text-align: left;
 }
 
+/* AtCoder記事の問題リンク */
+#markdown-content h2 a {
+    color: var(--dark-blue);
+}
+
+#markdown-content h2 a:hover {
+    color: var(--accent-blue);
+}
+
 /* コードブロック */
 .article-content pre,
 .article-content pre[class*="language-"] {
