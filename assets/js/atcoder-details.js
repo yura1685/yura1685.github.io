@@ -19,7 +19,6 @@ async function loadArticle() {
         return;
     }
 
-    // solutions以下のMarkdown以外は読み込まない
     if (!/^[A-Za-z0-9_-]+\.md$/.test(fileName)) {
         targetDiv.textContent = '不正なファイル名です。';
         return;
@@ -32,13 +31,13 @@ async function loadArticle() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const markdown = await response.text();
 
-        // Markdown先頭のH1をページタイトルにも反映する
         const heading = markdown.match(/^#\s+(.+)$/m)?.[1]?.trim();
         if (heading) document.title = `${heading} | yura1685`;
 
-        targetDiv.innerHTML = marked.parse(markdown);
+        const protectedMath = protectMarkdownMath(markdown);
+        const html = marked.parse(protectedMath.markdown);
+        targetDiv.innerHTML = restoreMarkdownMath(html, protectedMath.mathSegments);
 
-        // 外部リンクは別タブで開く
         targetDiv.querySelectorAll('a[href^="http"]').forEach(link => {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';

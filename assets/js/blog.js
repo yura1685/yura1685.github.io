@@ -1,7 +1,6 @@
 const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=0&single=true&output=csv";
 
 function buildPostLink(type, file) {
-    // スプレッドシートにはType / Fileだけを保存し、URLはここで生成する
     if (!file || !/^[A-Za-z0-9_-]+\.md$/.test(file)) return null;
 
     if (type === 'article') {
@@ -23,7 +22,6 @@ async function loadData() {
         const csv = parseCSV(csvText);
         if (csv.length === 0) throw new Error('CSV is empty.');
 
-        // 列順を変更しても動くよう、ヘッダー名から位置を取得する
         const header = csv[0].map(value => value.trim().toLowerCase());
         const dateIndex = header.indexOf('date');
         const contentIndex = header.indexOf('content');
@@ -95,7 +93,6 @@ function renderInterface(postsByMonth) {
                 content.className = 'post-content';
                 content.append(document.createTextNode(post.content));
 
-                // Type / Fileが有効な投稿だけリンクを表示する
                 if (post.link) {
                     content.append(document.createTextNode(' 詳細は'));
 

@@ -23,7 +23,6 @@ async function loadArticleMetadata(fileName) {
         const rows = parseCSV(csvText);
         if (rows.length === 0) return null;
 
-        // 修正: 列順に依存せず、日付・タグも取得する
         const header = rows[0].map(value => value.trim().toLowerCase());
         const dateIndex = header.indexOf('date');
         const titleIndex = header.indexOf('title');
@@ -96,7 +95,6 @@ function buildTableOfContents(targetDiv) {
     const tocList = document.getElementById('article-toc-list');
     if (!toc || !tocList) return;
 
-    // h4の「解法」など細かすぎる見出しは除外する
     const headings = [...targetDiv.querySelectorAll('h1, h2, h3')];
     tocList.replaceChildren();
 
@@ -131,7 +129,6 @@ function buildTableOfContents(targetDiv) {
 }
 
 function renderTwitterEmbeds(targetDiv) {
-    // 古いMarkdownにscriptが残っていても二重読込しない
     targetDiv.querySelectorAll('script[src*="platform.x.com/widgets.js"], script[src*="platform.twitter.com/widgets.js"]').forEach(script => script.remove());
 
     if (!targetDiv.querySelector('.twitter-tweet')) return;
@@ -162,7 +159,6 @@ async function loadArticle() {
         return;
     }
 
-    // contents以下のMarkdown以外は読み込まない
     if (!/^[A-Za-z0-9_-]+\.md$/.test(requestedFileName)) {
         titleElement.textContent = 'Article';
         targetDiv.textContent = '不正なファイル名です。';
@@ -171,7 +167,6 @@ async function loadArticle() {
 
     setCanonicalUrl(requestedFileName);
 
-    // Blogなど、titleパラメータを持たないリンクからでもタイトルを表示できるようにする
     const metadataPromise = loadArticleMetadata(requestedFileName);
 
     try {
@@ -179,14 +174,15 @@ async function loadArticle() {
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const markdown = await response.text();
-        targetDiv.innerHTML = marked.parse(markdown);
+        const protectedMath = protectMarkdownMath(markdown);
+        const html = marked.parse(protectedMath.markdown);
+        targetDiv.innerHTML = restoreMarkdownMath(html, protectedMath.mathSegments);
 
         targetDiv.querySelectorAll('a[href^="http"]').forEach(link => {
             link.target = '_blank';
             link.rel = 'noopener noreferrer';
         });
 
-        // 修正: 見出しから目次を生成し、X埋め込みを本文挿入後に明示的に描画
         buildTableOfContents(targetDiv);
         renderTwitterEmbeds(targetDiv);
 

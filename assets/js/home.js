@@ -1,4 +1,3 @@
-// 修正: Blog用スプレッドシートからHomeに最新5件を表示
 const HOME_BLOG_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=0&single=true&output=csv";
 const RECENT_UPDATE_LIMIT = 5;
 

@@ -26,7 +26,6 @@ async function loadArticles() {
             };
         }).filter(Boolean).sort((a, b) => b.date.localeCompare(a.date));
 
-        // 修正: 詳細ページのタグから戻った場合は、そのタグで絞り込む
         const initialTag = new URLSearchParams(window.location.search).get('tag');
         if (initialTag) {
             document.getElementById('tag-filter').value = initialTag;
@@ -44,7 +43,6 @@ function displayArticles(articles) {
     const list = document.getElementById('article-list');
     list.replaceChildren();
 
-    // 修正: 検索結果が0件のときに空欄にしない
     if (articles.length === 0) {
         const empty = document.createElement('div');
         empty.className = 'empty-state';
@@ -54,7 +52,6 @@ function displayArticles(articles) {
     }
 
     articles.forEach(article => {
-        // 修正: タグをクリック可能にするため、カード全体の<a>をarticle要素へ変更
         const card = document.createElement('article');
         card.className = 'article-card';
 
@@ -103,7 +100,6 @@ function filterArticles(keepTagParam = false) {
     );
     displayArticles(filtered);
 
-    // 手入力検索ではURLの古いtag指定を残さない
     if (!keepTagParam) {
         history.replaceState(null, '', window.location.pathname);
     }

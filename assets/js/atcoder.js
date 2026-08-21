@@ -88,7 +88,6 @@ function getFallbackSolutionTitle(content, file) {
     return file.replace(/\.md$/i, '').toUpperCase() + ' の解法記事';
 }
 
-// 修正: MarkdownのH1を実際の記事タイトルとして使う
 async function getSolutionTitle(file, fallback) {
     try {
         const response = await fetch(`./solutions/${file}`);
@@ -123,7 +122,6 @@ async function loadSolutions() {
             throw new Error('CSV must contain Date, Type and File columns.');
         }
 
-        // 同じ記事が複数回更新欄に登場しても、一覧には最新の1件だけ載せる
         const solutionMap = new Map();
         csv.slice(1).forEach(cols => {
             const date = (cols[dateIndex] ?? '').trim();
@@ -141,7 +139,6 @@ async function loadSolutions() {
 
         let solutions = [...solutionMap.values()].sort((a, b) => b.date.localeCompare(a.date));
 
-        // 修正: data-limit があるページだけ表示件数を制限する
         const limit = Number(list.dataset.limit || 0);
         if (limit > 0) solutions = solutions.slice(0, limit);
 
