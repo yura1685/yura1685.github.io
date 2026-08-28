@@ -160,13 +160,6 @@ term = term * invfact[i] % mod
 term = term * invfact[d - i] % mod
 ```
 
-が，$$\frac{1}{i!(d-i)!}$$ に対応しています．最後に，$(-1)^{d-i}$ を，
-
-```python
-if (d - i) & 1:
-    term = -term
-```
-
-で処理しています．
+が，$$\frac{1}{i!(d-i)!}$$ に対応しています．
 
 `pre`，`suf`，階乗，逆階乗はいずれも $O(d)$ で計算でき，逆階乗を求めるための `pow` が $O(\log\mathrm{mod})$ なので，全体の時間計算量は，$$O(d+\log\mathrm{mod})$$ です．空間計算量は $O(d)$ です．
