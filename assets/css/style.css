@@ -497,7 +497,6 @@ footer {
 /* Pythonのif / for / while / def / return / importなど */
 .article-content .token.keyword {
     color: #cd4187 !important;
-    font-weight: 600;
 }
 
 /* 数値 */
@@ -782,7 +781,7 @@ footer {
 .article-toc {
     background: #ffffff;
     border: 1px solid var(--border-color);
-    border-left: 4px solid var(--dark-blue);
+    border-left: 4px solid #4f6f8f;
     border-radius: 8px;
     padding: 20px 24px;
     margin-bottom: 24px;
@@ -832,6 +831,31 @@ footer {
 .article-content h2,
 .article-content h3 {
     scroll-margin-top: 100px;
+}
+
+.article-content h1 {
+    position: relative;
+    margin: 0 0 0.8em;
+    padding-bottom: 0.45em;
+    border-bottom: 1px solid #d8e0e7;
+    color: #243b53;
+    font-size: 1.8rem;
+}
+
+.article-content h1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 110px;
+    height: 3px;
+    background: #4f6f8f;
+}
+
+.article-content h2 {
+    padding: 0.1em 0.8em;
+    border-left: 4px solid #4f6f8f;
+    color: #243b53;
 }
 
 /* AtCoder: Performance / New Ratingのみ色分け */
