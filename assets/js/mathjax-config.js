@@ -3,6 +3,9 @@ window.MathJax = {
         inlineMath: [['$', '$'], ['\\(', '\\)']],
         displayMath: [['$$', '$$'], ['\\[', '\\]']],
         processEscapes: true
+    },
+    options: {
+        enableExplorer: false
     }
 };
 
