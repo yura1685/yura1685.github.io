@@ -7,7 +7,3 @@ order: 1
 
 - `merge(a, b)`: $a$ と $b$ の属する集合を併合
 - 計算量: ならし $O(\alpha(N))$
-
-```python
-{% include_relative union_find.py %}
-```
