@@ -13,6 +13,3 @@ defaults:
     values:
       layout: library
       library: true
-
-# front matter のない .md（記事本文）を勝手に HTML ページ化しない
-require_front_matter: true
