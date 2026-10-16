@@ -5,7 +5,11 @@ window.MathJax = {
         processEscapes: true
     },
     options: {
-        enableExplorer: false
+        menuOptions: {
+            settings: {
+                enrich: false
+            }
+        }
     }
 };
 
