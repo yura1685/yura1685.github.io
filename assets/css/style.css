@@ -964,3 +964,26 @@ footer {
     color: var(--accent-blue);
     opacity: 1;
 }
+
+/* --- 一覧ページの上部をコンパクトに --- */
+.breadcrumb {
+    margin-bottom: 0;
+    padding: 0 0 8px;
+}
+
+.archive-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+}
+
+.archive-header h1 {
+    margin: 0 0 12px;
+}
+
+.archive-header p {
+    margin: 0;
+}
+
+.archive-header .search-container {
+    margin-bottom: 0;
+}
