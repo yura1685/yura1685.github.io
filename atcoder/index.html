@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -62,6 +64,23 @@
 
         <div id="solution-list" class="recent-updates-list" data-limit="5">
             <div class="recent-updates-loading">Loading...</div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title-row">
+            <h2 class="section-title">Library</h2>
+            <a class="section-more-link" href="library.html">View all →</a>
+        </div>
+
+        <div class="recent-updates-list">
+            {% assign libs = site.pages | where: "library", true | sort: "order" %}
+            {% for lib in libs limit: 5 %}
+            <a class="recent-update recent-update-link" href="{{ lib.url | relative_url }}">
+                <span class="recent-update-date">{{ lib.category }}</span>
+                <div class="recent-update-content">{{ lib.title }}</div>
+            </a>
+            {% endfor %}
         </div>
     </section>
 </main>

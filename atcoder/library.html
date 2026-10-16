@@ -1,0 +1,64 @@
+---
+title: AtCoder Library
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AtCoder Library | yura1685</title>
+    <meta name="description" content="yura1685がAtCoderで使っているPythonライブラリの一覧です。">
+    <link rel="icon" type="image/png" href="../assets/images/favicon.png">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <a class="logo" href="../index.html">yura1685's Journal</a>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../articles/index.html">Articles</a></li>
+            <li><a href="../blog/index.html">Blog</a></li>
+            <li><a href="index.html" class="active">AtCoder</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">＞</span>
+        <a href="index.html">AtCoder</a>
+        <span class="breadcrumb-separator">＞</span>
+        <span>Library</span>
+    </nav>
+
+    <section class="archive-header">
+        <h1>AtCoder Library</h1>
+        <p>コンテストで使っているライブラリ</p>
+    </section>
+
+    {% assign groups = site.pages | where: "library", true | group_by: "category" %}
+    {% for group in groups %}
+    <section>
+        <h2 class="section-title">{{ group.name | default: "その他" }}</h2>
+        <div class="recent-updates-list">
+            {% assign items = group.items | sort: "order" %}
+            {% for lib in items %}
+            <a class="recent-update recent-update-link" href="{{ lib.url | relative_url }}">
+                <span class="recent-update-date">{{ lib.title }}</span>
+                <div class="recent-update-content">{{ lib.description }}</div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</main>
+
+<footer>
+    <p>&copy; 2026 yura1685</p>
+</footer>
+
+</body>
+</html>
