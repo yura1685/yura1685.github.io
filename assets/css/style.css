@@ -924,3 +924,18 @@ footer {
 .article-content blockquote p {
     margin: 0;
 }
+
+/* AtCoder Library 一覧: 長いタイトルでも説明文と重ならないようにする */
+.library-item {
+    grid-template-columns: 220px minmax(0, 1fr);
+}
+
+.library-item .recent-update-date {
+    white-space: normal;
+}
+
+@media (max-width: 700px) {
+    .library-item {
+        grid-template-columns: 1fr;
+    }
+}

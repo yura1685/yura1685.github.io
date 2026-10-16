@@ -1,21 +1,18 @@
 plugins:
   - jekyll-sitemap
 
-# ライブラリ: _library/*.md → /atcoder/library/<ファイル名>.html を生成
-collections:
-  library:
-    output: true
-    permalink: /atcoder/library/:path.html
-
-# コードブロックを <pre><code class="language-python"> のまま出力し、Prism でハイライトする
+# .md 内の ``` コードブロックを Jekyll ではなく Prism でハイライトする
 kramdown:
-  input: GFM
   syntax_highlighter_opts:
     disable: true
 
-# _library のファイルには自動で _layouts/library.html を適用
+# atcoder/library/*.md に _layouts/library.html を自動で適用し、一覧にも載せる
 defaults:
   - scope:
-      type: library
+      path: "atcoder/library"
     values:
       layout: library
+      library: true
+
+# front matter のない .md（記事本文）を勝手に HTML ページ化しない
+require_front_matter: true

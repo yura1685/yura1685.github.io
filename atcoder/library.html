@@ -1,5 +1,4 @@
 ---
-title: AtCoder Library
 ---
 <!DOCTYPE html>
 <html lang="ja">
@@ -46,7 +45,7 @@ title: AtCoder Library
         <div class="recent-updates-list">
             {% assign items = group.items | sort: "order" %}
             {% for lib in items %}
-            <a class="recent-update recent-update-link" href="{{ lib.url | relative_url }}">
+            <a class="recent-update recent-update-link library-item" href="{{ lib.url | relative_url }}">
                 <span class="recent-update-date">{{ lib.title }}</span>
                 <div class="recent-update-content">{{ lib.description }}</div>
             </a>
