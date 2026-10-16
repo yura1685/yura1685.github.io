@@ -49,6 +49,7 @@ async function loadArticle() {
         if (window.Prism) {
             Prism.highlightAllUnder(targetDiv);
         }
+        addCopyButtons(targetDiv);
     } catch (error) {
         targetDiv.textContent = '記事の読み込みに失敗しました。';
         console.error(error);
