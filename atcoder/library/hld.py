@@ -63,6 +63,17 @@ class HLD:
             k -= self.pos[v] - self.pos[h] + 1
             v = self.par[h]
 
+    def jump(self, u, v, k):
+        # u から v へのパスで、u から k 番目（0-indexed）の頂点（k が距離より大きければ -1）
+        w = self.lca(u, v)
+        du = self.depth[u] - self.depth[w]
+        dv = self.depth[v] - self.depth[w]
+        if k <= du:
+            return self.kth_ancestor(u, k)
+        if k <= du + dv:
+            return self.kth_ancestor(v, du + dv - k)
+        return -1
+
     def path(self, u, v, edge=False):
         # u-v パス上の頂点の位置を、半開区間 [l, r) のリストで返す（区間の順番はばらばら）
         # edge=True なら LCA を除く（辺 (par[x], x) を位置 pos[x] に置いたときの、パス上の辺）
