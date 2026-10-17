@@ -15,4 +15,4 @@ $0!$ から $N!$ までの階乗とその逆元を前計算します。 mod は 
 - `inv(n)`: $n^{-1}$（ $1 \le n \le N$）
 - 計算量: とくに書いていないものは各クエリ $O(1)$
 
-mod をとらずに正確な値がほしいときは、`multinomial` と同じ式を `math.factorial` で計算します（`permutations` で全部並べて `set` に入れる必要はありません）。
+mod をとらずに正確な値がほしいときは、`multinomial` と同じ式を `math.factorial` で計算します。並びそのものを列挙するときは [同じものを含む順列の列挙](multiset_permutations.html) を使います。
