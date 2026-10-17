@@ -3,21 +3,27 @@ def cross(a, b, c):
     return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
 
 
-def convex_hull(ps):
-    # 凸包の頂点を反時計回りに返す（辺上の点は含めない）
+def convex_hull(ps, include_collinear=False):
+    # 凸包の頂点を反時計回りに返す（include_collinear=True なら辺上の点も含める）
     ps = sorted(set(ps))
     if len(ps) <= 2:
         return ps
-    lower = []
-    for p in ps:
-        while len(lower) >= 2 and cross(lower[-2], lower[-1], p) <= 0:
-            lower.pop()
-        lower.append(p)
-    upper = []
-    for p in reversed(ps):
-        while len(upper) >= 2 and cross(upper[-2], upper[-1], p) <= 0:
-            upper.pop()
-        upper.append(p)
+    if include_collinear and all(cross(ps[0], ps[-1], p) == 0 for p in ps):
+        return ps
+
+    def chain(qs):
+        res = []
+        for p in qs:
+            while len(res) >= 2:
+                c = cross(res[-2], res[-1], p)
+                if c > 0 or (c == 0 and include_collinear):
+                    break
+                res.pop()
+            res.append(p)
+        return res
+
+    lower = chain(ps)
+    upper = chain(reversed(ps))
     return lower[:-1] + upper[:-1]
 
 
