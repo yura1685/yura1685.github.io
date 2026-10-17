@@ -2,8 +2,8 @@
 layout: base
 library: false
 math: true
-title: AtCoder Library
-description: yura1685がAtCoderで使っているPythonライブラリの一覧です。
+title: yura1685's Library
+description: AtCoderで使っているPythonライブラリの一覧です。
 ---
 <main>
     <nav class="breadcrumb">
@@ -15,14 +15,14 @@ description: yura1685がAtCoderで使っているPythonライブラリの一覧�
     </nav>
 
     <section class="archive-header">
-        <h1>AtCoder Library</h1>
+        <h1>yura1685's Library</h1>
         <p>コンテストで使っているライブラリ</p>
     </section>
 
     {% assign groups = site.pages | where: "library", true | group_by: "category" %}
     {% for group in groups %}
     <section>
-        <h2 class="section-title">{{ group.name | default: "その他" }}</h2>
+        <h2 class="section-title library-category">{{ group.name | default: "その他" }}</h2>
         <div class="recent-updates-list">
             {% assign items = group.items | sort: "order" %}
             {% for lib in items %}
