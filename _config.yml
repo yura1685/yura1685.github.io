@@ -7,9 +7,13 @@ kramdown:
     disable: true
 
 # atcoder/library/*.md に _layouts/library.html を自動で適用し、一覧にも載せる
+# （コードの色付け・数式と Copy ボタンも読み込む）
 defaults:
   - scope:
       path: "atcoder/library"
     values:
       layout: library
       library: true
+      code_and_math: true
+      scripts:
+        - /assets/js/copy-code.js
