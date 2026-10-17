@@ -976,3 +976,47 @@ footer {
     color: var(--accent-blue);
     opacity: 1;
 }
+/* AtCoderページの Library: 分類ごとの数のタグと説明文 */
+.library-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.library-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.library-tag:hover {
+    border-color: var(--accent-blue);
+}
+
+.library-tag-count {
+    color: var(--accent-blue);
+    font-weight: 700;
+}
+
+.library-summary {
+    white-space: normal;
+}
+
+.library-name {
+    font-weight: 600;
+}
+
+.library-desc {
+    margin-top: 2px;
+    color: var(--text-sub);
+    font-size: 0.85rem;
+    line-height: 1.6;
+}

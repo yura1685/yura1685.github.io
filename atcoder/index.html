@@ -1,6 +1,7 @@
 ---
 layout: base
 title: AtCoder
+math: true
 scripts:
   - /assets/js/csv.js
   - /assets/js/atcoder.js
@@ -55,12 +56,24 @@ scripts:
             <a class="section-more-link" href="library.html">View all →</a>
         </div>
 
+        {% assign all_libs = site.pages | where: "library", true %}
+        {% assign lib_groups = all_libs | group_by: "category" | sort: "size" | reverse %}
+        <div class="library-tags">
+            {% for group in lib_groups %}
+            {% assign cat = group.name | default: "その他" %}
+            <a class="library-tag" href="library.html#{{ cat | uri_escape }}">{{ cat }}<span class="library-tag-count">{{ group.size }}</span></a>
+            {% endfor %}
+        </div>
+
         <div class="recent-updates-list">
-            {% assign libs = site.pages | where: "library", true | sort: "order" %}
+            {% assign libs = all_libs | sort: "order" %}
             {% for lib in libs limit: 5 %}
             <a class="recent-update recent-update-link" href="{{ lib.url | relative_url }}">
                 <span class="recent-update-date">{{ lib.category }}</span>
-                <div class="recent-update-content">{{ lib.title }}</div>
+                <div class="recent-update-content library-summary">
+                    <div class="library-name">{{ lib.title }}</div>
+                    {% if lib.description %}<div class="library-desc">{{ lib.description | escape }}</div>{% endif %}
+                </div>
             </a>
             {% endfor %}
         </div>

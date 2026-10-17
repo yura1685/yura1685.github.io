@@ -22,7 +22,8 @@ description: AtCoderで使っているPythonライブラリの一覧です。
     {% assign groups = site.pages | where: "library", true | group_by: "category" %}
     {% for group in groups %}
     <section>
-        <h2 class="section-title library-category">{{ group.name | default: "その他" }}</h2>
+        {% assign cat = group.name | default: "その他" %}
+        <h2 class="section-title library-category" id="{{ cat }}">{{ cat }}</h2>
         <div class="recent-updates-list">
             {% assign items = group.items | sort: "order" %}
             {% for lib in items %}
