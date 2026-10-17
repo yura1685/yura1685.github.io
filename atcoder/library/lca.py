@@ -42,3 +42,14 @@ class LCA:
 
     def dist(self, u, v):
         return self.depth[u] + self.depth[v] - 2 * self.depth[self.lca(u, v)]
+
+    def jump(self, u, v, k):
+        # u から v へのパスで、u から k 番目（0-indexed）の頂点（k が距離より大きければ -1）
+        w = self.lca(u, v)
+        du = self.depth[u] - self.depth[w]
+        dv = self.depth[v] - self.depth[w]
+        if k <= du:
+            return self.kth_ancestor(u, k)
+        if k <= du + dv:
+            return self.kth_ancestor(v, du + dv - k)
+        return -1
