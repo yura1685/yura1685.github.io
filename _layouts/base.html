@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if page.url == "/" %}<meta name="google-site-verification" content="gOdxz6NZ3DkWmFxC-IvDxI5jMVLLcHTQXvmfDthesBI" />{% endif %}
-    <title>{% if page.title %}{{ page.title }}{% if page.library %} | AtCoder Library{% endif %} | yura1685{% else %}yura1685's Journal{% endif %}</title>
+    <title>{% if page.title %}{{ page.title }}{% if page.library %} | yura1685's Library{% endif %} | yura1685{% else %}yura1685's Journal{% endif %}</title>
     {% if page.description %}<meta name="description" id="page-description" content="{{ page.description | remove: "$" | escape }}">{% endif %}
     {% comment %} 記事・解法ページは JS が ?file=… 付きの URL を入れる {% endcomment %}
     {% if page.canonical_by_js %}<link rel="canonical" id="canonical-link">{% else %}<link rel="canonical" href="{{ page.url | absolute_url }}">{% endif %}

@@ -931,7 +931,7 @@ footer {
     margin: 0;
 }
 
-/* AtCoder Library 一覧: 長いタイトルでも説明文と重ならないようにする */
+/* ライブラリ一覧（yura1685's Library）: 長いタイトルでも説明文と重ならないようにする */
 .library-item {
     grid-template-columns: 220px minmax(0, 1fr);
 }
@@ -944,6 +944,12 @@ footer {
     .library-item {
         grid-template-columns: 1fr;
     }
+}
+
+/* ライブラリ一覧のカテゴリ見出し: ページ見出しと同じ色で、少し大きく */
+.section-title.library-category {
+    font-size: 1.4rem;
+    color: var(--text-main);
 }
 
 /* コードブロックのコピーボタン */
