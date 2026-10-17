@@ -24,5 +24,12 @@ class Combination:
             return 1
         return self.C(n + r - 1, r)
 
+    def multinomial(self, a):
+        # a[0] 個の 0、a[1] 個の 1、... を並べる方法の数 (a[0] + a[1] + ...)! / (a[0]! a[1]! ...)
+        res = self.fact[sum(a)]
+        for x in a:
+            res = res * self.inv_fact[x] % self.mod
+        return res
+
     def inv(self, n):
         return self.inv_fact[n] * self.fact[n - 1] % self.mod
