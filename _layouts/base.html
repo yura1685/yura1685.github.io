@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% if page.url == "/" %}<meta name="google-site-verification" content="gOdxz6NZ3DkWmFxC-IvDxI5jMVLLcHTQXvmfDthesBI" />{% endif %}
     <title>{% if page.title %}{{ page.title }}{% if page.library %} | AtCoder Library{% endif %} | yura1685{% else %}yura1685's Journal{% endif %}</title>
-    {% if page.description %}<meta name="description" id="page-description" content="{{ page.description | escape }}">{% endif %}
+    {% if page.description %}<meta name="description" id="page-description" content="{{ page.description | remove: "$" | escape }}">{% endif %}
     {% comment %} 記事・解法ページは JS が ?file=… 付きの URL を入れる {% endcomment %}
     {% if page.canonical_by_js %}<link rel="canonical" id="canonical-link">{% else %}<link rel="canonical" href="{{ page.url | absolute_url }}">{% endif %}
     <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
@@ -17,7 +17,8 @@
     {% endif %}
     {% if page.marked %}<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>{% endif %}
     {% if page.x_embed %}<script id="twitter-wjs" async src="https://platform.x.com/widgets.js" charset="utf-8"></script>{% endif %}
-    {% if page.code_and_math %}
+    {% comment %} math: true なら数式（MathJax）だけを読み込む {% endcomment %}
+    {% if page.code_and_math or page.math %}
     <script src="{{ '/assets/js/mathjax-config.js' | relative_url }}"></script>
     <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
     {% endif %}
