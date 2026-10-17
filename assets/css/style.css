@@ -639,9 +639,6 @@ footer {
     }
 }
 
-/* --- 2026-08 UI Updates --- */
-
-/* 修正: ロゴをHomeリンクとして扱う */
 .logo {
     text-decoration: none;
     transition: color 0.2s ease;
