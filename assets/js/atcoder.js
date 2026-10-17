@@ -1,9 +1,7 @@
 const ATCODER_RESULTS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1701339970&single=true&output=csv";
 
-// 修正: Homeの更新一覧と同じCSVを使い、type=atcoderの記事を独立して取得する
 const ATCODER_ARTICLES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=0&single=true&output=csv";
 
-// AtCoderのPerformance / Ratingだけ公式の色区分に合わせる
 function getRatingClass(text) {
     if (!text.trim()) return '';
     const value = Number(text.replace(/,/g, ''));
@@ -32,7 +30,6 @@ async function loadStats() {
             .filter(cols => cols.length >= 5 && !cols.every(value => value.trim() === ''))
             .sort((a, b) => (b[0] || '').trim().localeCompare((a[0] || '').trim()));
 
-        // 修正: data-limit があるページだけ表示件数を制限する
         const limit = Number(tbody.dataset.limit || 0);
         if (limit > 0) rows = rows.slice(0, limit);
 
@@ -45,7 +42,6 @@ async function loadStats() {
                 const text = (cols[i] || '').trim();
                 td.textContent = text;
 
-                // Performance(3), New Rating(4)のみ色付け
                 if (i === 3 || i === 4) {
                     const ratingClass = getRatingClass(text);
                     if (ratingClass) td.classList.add('rating-value', ratingClass);

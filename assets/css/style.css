@@ -185,15 +185,23 @@ footer {
 /* --- Blog Specific Styles --- */
 
 .archive-header {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     border-bottom: 1px solid var(--border-color);
-    padding-bottom: 30px;
+    padding-bottom: 16px;
 }
 
 .archive-header h1 {
     font-size: 2.5rem;
-    margin: 10px 0;
+    margin: 0 0 12px;
     font-weight: 800;
+}
+
+.archive-header p {
+    margin: 0;
+}
+
+.archive-header .search-container {
+    margin-bottom: 0;
 }
 
 .tab-nav {
@@ -284,11 +292,12 @@ footer {
 .breadcrumb {
     max-width: 1000px;
     margin: 0 auto 20px;
+    margin-bottom: 0;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 8px;
-    padding: 15px 0;
+    padding: 0 0 8px;
     font-size: 0.8rem;
     color: var(--text-sub);
 }
@@ -630,9 +639,6 @@ footer {
     }
 }
 
-/* --- 2026-08 UI Updates --- */
-
-/* 修正: ロゴをHomeリンクとして扱う */
 .logo {
     text-decoration: none;
     transition: color 0.2s ease;
@@ -963,27 +969,4 @@ footer {
 .copy-button:hover {
     color: var(--accent-blue);
     opacity: 1;
-}
-
-/* --- 一覧ページの上部をコンパクトに --- */
-.breadcrumb {
-    margin-bottom: 0;
-    padding: 0 0 8px;
-}
-
-.archive-header {
-    margin-bottom: 24px;
-    padding-bottom: 16px;
-}
-
-.archive-header h1 {
-    margin: 0 0 12px;
-}
-
-.archive-header p {
-    margin: 0;
-}
-
-.archive-header .search-container {
-    margin-bottom: 0;
 }
