@@ -1,7 +1,7 @@
 ---
 title: Warshall–Floyd
 category: グラフ
-description: 全点対間の最短距離を O(N^3) で求める（負の辺・負閉路の検出に対応）
+description: 全点対間の最短距離を $O(N^3)$ で求める（負の辺・負閉路の検出に対応）
 order: 4
 ---
 

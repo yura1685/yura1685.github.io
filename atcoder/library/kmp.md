@@ -1,7 +1,7 @@
 ---
 title: KMP
 category: 文字列
-description: 接頭辞と接尾辞が一致する長さを求め、文字列検索や最小周期の計算を O(N) で行う
+description: 接頭辞と接尾辞が一致する長さを求め、文字列検索や最小周期の計算を $O(N)$ で行う
 order: 2
 ---
 

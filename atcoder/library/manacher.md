@@ -1,7 +1,7 @@
 ---
 title: Manacher
 category: 文字列
-description: 各位置を中心とする最長回文の長さを O(N) で求める
+description: 各位置を中心とする最長回文の長さを $O(N)$ で求める
 order: 3
 ---
 

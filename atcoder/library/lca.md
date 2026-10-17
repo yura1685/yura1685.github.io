@@ -1,7 +1,7 @@
 ---
 title: LCA
 category: 木
-description: ダブリングで最小共通祖先・2 頂点間の距離・k 個上の祖先を求める
+description: ダブリングで最小共通祖先・2 頂点間の距離・$k$ 個上の祖先を求める
 order: 1
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: LIS
 category: DP
-description: 最長増加部分列を二分探索で O(N log N) で求める（復元付き）
+description: 最長増加部分列を二分探索で $O(N \log N)$ で求める（復元付き）
 order: 1
 ---
 

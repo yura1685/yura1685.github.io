@@ -1,7 +1,7 @@
 ---
 title: 重み付きUnion-Find
 category: データ構造
-description: 「b の値 − a の値 = w」という条件を管理し、矛盾の検出や差の計算を行う
+description: 「$b$ の値 $-$ $a$ の値 $= w$」という条件を管理し、矛盾の検出や差の計算を行う
 order: 3
 ---
 

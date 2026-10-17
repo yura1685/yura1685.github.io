@@ -1,7 +1,7 @@
 ---
 title: 行列累乗
 category: 数学
-description: 行列の積と累乗を mod で計算し、線形漸化式の第 N 項を求める
+description: 行列の積と累乗を mod で計算し、線形漸化式の第 $N$ 項を求める
 order: 1
 ---
 

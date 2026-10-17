@@ -1,7 +1,7 @@
 ---
 title: グリッドBFS・0-1 BFS
 category: グラフ
-description: グリッド上の最短距離を BFS で、辺の重みが 0 か 1 のグラフの最短距離を 0-1 BFS で求める
+description: グリッド上の最短距離を BFS で、辺の重みが $0$ か $1$ のグラフの最短距離を 0-1 BFS で求める
 order: 6
 ---
 
