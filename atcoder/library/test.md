@@ -7,3 +7,5 @@ order: 1
 
 - `merge(a, b)`: $a$ と $b$ の属する集合を併合
 - 計算量: ならし $O(\alpha(N))$
+
+{% include code.html file="/test.py" %}

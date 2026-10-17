@@ -1,0 +1,2 @@
+{% capture code %}{% include_relative {{ include.file }} %}{% endcapture %}
+<pre><code class="language-python">{{ code | strip | escape }}</code></pre>

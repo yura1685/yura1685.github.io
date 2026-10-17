@@ -44,11 +44,13 @@
         {% if page.github %}<p><a href="{{ page.github }}" target="_blank" rel="noopener noreferrer">GitHubで見る</a></p>{% endif %}
         {{ content }}
 
-        {% comment %} 同じ名前の .py（test.md なら test.py）を読み込んで表示 {% endcomment %}
-        {% assign code_file = page.name | replace: ".md", ".py" %}
-        {% capture code %}{% include_relative {{ code_file }} %}{% endcapture %}
+        {% comment %} 同じ名前の .py（union_find.md なら union_find.py）があれば「コード」として表示 {% endcomment %}
+        {% assign code_path = page.path | replace: ".md", ".py" | prepend: "/" %}
+        {% assign code_file = site.static_files | where: "path", code_path | first %}
+        {% if code_file %}
         <h2>コード</h2>
-        <pre><code class="language-python">{{ code | strip | escape }}</code></pre>
+        {% include code.html file=code_file.name %}
+        {% endif %}
     </article>
 </main>
 
