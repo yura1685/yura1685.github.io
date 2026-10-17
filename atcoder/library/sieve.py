@@ -1,7 +1,10 @@
+from math import isqrt
+
+
 class Sieve:
     def __init__(self, n):
         spf = list(range(n + 1))
-        for i in range(2, int(n ** 0.5) + 1):
+        for i in range(2, isqrt(n) + 1):
             if spf[i] == i:
                 for j in range(i * i, n + 1, i):
                     if spf[j] == j:
@@ -35,3 +38,20 @@ class Sieve:
                     res.append(res[i] * q)
         res.sort()
         return res
+
+
+def segment_sieve(l, r):
+    # l <= x < r の素数のリスト
+    if r <= l:
+        return []
+    k = isqrt(r - 1)
+    small = bytearray([1]) * (k + 1)
+    is_p = bytearray([1]) * (r - l)
+    for x in range(l, min(r, 2)):
+        is_p[x - l] = 0
+    for i in range(2, k + 1):
+        if small[i]:
+            small[i * i::i] = bytearray(len(range(i * i, k + 1, i)))
+            start = max(i * i, (l + i - 1) // i * i) - l
+            is_p[start::i] = bytearray(len(range(start, r - l, i)))
+    return [l + i for i in range(r - l) if is_p[i]]
