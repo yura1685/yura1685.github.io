@@ -1,7 +1,7 @@
 ---
 title: Union-Find
 category: データ構造
-description: 経路圧縮とunion by sizeを行うUnion-Find
+description: 経路圧縮とunion by sizeを行うUnion-Find $e^x$
 order: 1
 ---
 
