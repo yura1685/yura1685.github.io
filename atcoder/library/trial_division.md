@@ -1,7 +1,7 @@
 ---
 title: 試し割り
 category: 整数論
-description: √N までの試し割りで素数判定・約数列挙・素因数分解を行う
+description: $\sqrt{N}$ までの試し割りで素数判定・約数列挙・素因数分解を行う
 order: 3
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 二項係数 (nCr)
 category: 整数論
-description: 階乗テーブルを前計算して nCr・nPr・nHr を mod 素数で求める
+description: 階乗テーブルを前計算して ${}_n\mathrm{C}_r$・${}_n\mathrm{P}_r$・${}_n\mathrm{H}_r$ を素数 $p$ を法として求める
 order: 1
 ---
 

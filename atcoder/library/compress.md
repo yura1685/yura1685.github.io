@@ -1,7 +1,7 @@
 ---
 title: 座標圧縮
 category: 基礎
-description: 値を大小関係を保ったまま 0, 1, 2, ... に振り直す
+description: 値を大小関係を保ったまま $0, 1, 2, \ldots$ に振り直す
 order: 2
 ---
 

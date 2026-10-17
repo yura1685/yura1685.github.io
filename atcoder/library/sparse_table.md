@@ -1,7 +1,7 @@
 ---
 title: スパーステーブル
 category: データ構造
-description: 区間の最小値・最大値などを、前計算 O(N log N)・クエリ O(1) で求める
+description: 区間の最小値・最大値などを、前計算 $O(N \log N)$・クエリ $O(1)$ で求める
 order: 4
 ---
 
