@@ -1,6 +1,7 @@
 ---
 layout: base
 library: false
+math: true
 title: AtCoder Library
 description: yura1685がAtCoderで使っているPythonライブラリの一覧です。
 ---
@@ -27,7 +28,7 @@ description: yura1685がAtCoderで使っているPythonライブラリの一覧�
             {% for lib in items %}
             <a class="recent-update recent-update-link library-item" href="{{ lib.url | relative_url }}">
                 <span class="recent-update-date">{{ lib.title }}</span>
-                <div class="recent-update-content">{{ lib.description }}</div>
+                <div class="recent-update-content">{{ lib.description | escape }}</div>
             </a>
             {% endfor %}
         </div>
