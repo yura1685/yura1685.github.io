@@ -10,6 +10,9 @@
     {% if page.canonical_by_js %}<link rel="canonical" id="canonical-link">{% else %}<link rel="canonical" href="{{ page.url | absolute_url }}">{% endif %}
     <link rel="icon" type="image/png" href="{{ '/assets/images/favicon.png' | relative_url }}">
     {% if page.code_and_math %}<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">{% endif %}
+    {% for style in page.styles %}
+    <link rel="stylesheet" href="{{ style | relative_url }}">
+    {% endfor %}
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     {% if page.code_and_math %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
@@ -22,8 +25,10 @@
     <script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@4.1.3/tex-mml-chtml.js"></script>
     {% endif %}
 </head>
-<body>
+{% comment %} fullscreen: true のページ（Playground）はメニューとフッターを出さず、画面全体を使う {% endcomment %}
+<body{% if page.fullscreen %} class="fullscreen"{% endif %}>
 
+{% unless page.fullscreen %}
 <header>
     <nav>
         <a class="logo" href="{{ '/index.html' | relative_url }}">yura1685's Journal</a>
@@ -35,12 +40,15 @@
         </ul>
     </nav>
 </header>
+{% endunless %}
 
 {{ content }}
 
+{% unless page.fullscreen %}
 <footer>
     <p>&copy; 2026 yura1685</p>
 </footer>
+{% endunless %}
 
 {% for script in page.scripts %}
 <script src="{{ script | relative_url }}"></script>
