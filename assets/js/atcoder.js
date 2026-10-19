@@ -1,7 +1,3 @@
-const ATCODER_RESULTS_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1701339970&single=true&output=csv";
-
-const ATCODER_ARTICLES_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=0&single=true&output=csv";
-
 function getRatingClass(text) {
     if (!text.trim()) return '';
     const value = Number(text.replace(/,/g, ''));
@@ -22,7 +18,7 @@ async function loadStats() {
     if (!tbody) return;
 
     try {
-        const response = await fetch(ATCODER_RESULTS_CSV_URL);
+        const response = await fetch(SHEET_ATCODER_RESULTS_CSV_URL);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const csvText = await response.text();
@@ -75,10 +71,6 @@ async function loadStats() {
     }
 }
 
-function getColumnIndex(header, name) {
-    return header.indexOf(name.toLowerCase());
-}
-
 function getFallbackSolutionTitle(content, file) {
     if (content) return content;
     return file.replace(/\.md$/i, '').toUpperCase() + ' の解法記事';
@@ -101,7 +93,7 @@ async function loadSolutions() {
     if (!list) return;
 
     try {
-        const response = await fetch(ATCODER_ARTICLES_CSV_URL);
+        const response = await fetch(SHEET_UPDATES_CSV_URL);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const csvText = await response.text();
@@ -109,10 +101,10 @@ async function loadSolutions() {
         if (csv.length === 0) throw new Error('CSV is empty.');
 
         const header = csv[0].map(value => value.trim().toLowerCase());
-        const dateIndex = getColumnIndex(header, 'date');
-        const contentIndex = getColumnIndex(header, 'content');
-        const typeIndex = getColumnIndex(header, 'type');
-        const fileIndex = getColumnIndex(header, 'file');
+        const dateIndex = findColumn(header, 'date');
+        const contentIndex = findColumn(header, 'content');
+        const typeIndex = findColumn(header, 'type');
+        const fileIndex = findColumn(header, 'file');
 
         if (dateIndex === -1 || typeIndex === -1 || fileIndex === -1) {
             throw new Error('CSV must contain Date, Type and File columns.');

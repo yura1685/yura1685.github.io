@@ -1,5 +1,3 @@
-/* assets/css/style.css */
-
 * {
     box-sizing: border-box;
 }
@@ -50,6 +48,12 @@ header nav {
     letter-spacing: -0.5px;
     font-size: 1.4rem;
     color: var(--dark-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.logo:hover {
+    color: var(--accent-blue);
 }
 
 header nav ul {
@@ -182,7 +186,7 @@ footer {
     font-size: 0.8rem;
 }
 
-/* --- Blog Specific Styles --- */
+/* --- Page Header (h1 at the top of each list page) --- */
 
 .archive-header {
     margin-bottom: 24px;
@@ -203,6 +207,8 @@ footer {
 .archive-header .search-container {
     margin-bottom: 0;
 }
+
+/* --- Blog --- */
 
 .tab-nav {
     display: flex;
@@ -291,8 +297,7 @@ footer {
 /* Breadcrumb */
 .breadcrumb {
     max-width: 1000px;
-    margin: 0 auto 20px;
-    margin-bottom: 0;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -343,6 +348,11 @@ footer {
     color: var(--text-sub);
     font-weight: 600;
     text-transform: uppercase;
+}
+
+/* 日付（1列目）は途中で折り返さない */
+.stats-table td:first-child {
+    white-space: nowrap;
 }
 
 .stats-table tr:last-child td {
@@ -589,11 +599,6 @@ footer {
         gap: 20px;
     }
 
-    .archive-header {
-        margin-bottom: 30px;
-        padding-bottom: 22px;
-    }
-
     .archive-header h1 {
         font-size: 2rem;
     }
@@ -637,15 +642,6 @@ footer {
     #tag-filter {
         max-width: none;
     }
-}
-
-.logo {
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.logo:hover {
-    color: var(--accent-blue);
 }
 
 /* Home: Recent Updates */

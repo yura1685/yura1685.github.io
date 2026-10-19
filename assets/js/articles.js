@@ -1,30 +1,15 @@
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1417312107&single=true&output=csv";
 let allArticles = [];
 
 async function loadArticles() {
     const list = document.getElementById('article-list');
 
     try {
-        const response = await fetch(CSV_URL);
+        const response = await fetch(SHEET_ARTICLES_CSV_URL);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-        const csvText = await response.text();
-        const rows = parseCSV(csvText).slice(1);
-
-        allArticles = rows.map(cols => {
-            if (cols.length < 4 || !cols[0] || !cols[1] || !cols[3]) return null;
-
-            const file = cols[3].trim();
-            if (!/^[A-Za-z0-9_-]+\.md$/.test(file)) return null;
-
-            return {
-                date: cols[0].trim(),
-                title: cols[1].trim(),
-                tags: (cols[2] || '').trim(),
-                file,
-                desc: (cols[4] || '').trim()
-            };
-        }).filter(Boolean).sort((a, b) => b.date.localeCompare(a.date));
+        allArticles = parseArticlesCSV(await response.text())
+            .filter(article => article.date)
+            .sort((a, b) => b.date.localeCompare(a.date));
 
         const initialTag = new URLSearchParams(window.location.search).get('tag');
         if (initialTag) {
@@ -75,7 +60,7 @@ function displayArticles(articles) {
 
         const tags = document.createElement('div');
         tags.className = 'article-tags';
-        article.tags.split('|').map(tag => tag.trim()).filter(Boolean).forEach(tag => {
+        article.tags.forEach(tag => {
             const badge = document.createElement('button');
             badge.type = 'button';
             badge.className = 'tag-badge tag-button';
@@ -96,7 +81,7 @@ function displayArticles(articles) {
 function filterArticles(keepTagParam = false) {
     const query = document.getElementById('tag-filter').value.trim().toLowerCase();
     const filtered = allArticles.filter(article =>
-        article.tags.toLowerCase().includes(query) || article.title.toLowerCase().includes(query)
+        article.tags.join('|').toLowerCase().includes(query) || article.title.toLowerCase().includes(query)
     );
     displayArticles(filtered);
 

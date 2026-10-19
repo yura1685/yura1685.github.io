@@ -1,24 +1,10 @@
-const HOME_BLOG_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=0&single=true&output=csv";
 const RECENT_UPDATE_LIMIT = 5;
-
-function buildRecentUpdateLink(type, file) {
-    if (!file || !/^[A-Za-z0-9_-]+\.md$/.test(file)) return null;
-
-    if (type === 'article') {
-        return `articles/details.html?file=${encodeURIComponent(file)}`;
-    }
-    if (type === 'atcoder') {
-        return `atcoder/details.html?file=${encodeURIComponent(file)}`;
-    }
-
-    return null;
-}
 
 async function loadRecentUpdates() {
     const list = document.getElementById('recent-updates-list');
 
     try {
-        const response = await fetch(HOME_BLOG_CSV_URL);
+        const response = await fetch(SHEET_UPDATES_CSV_URL);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const csvText = await response.text();
@@ -46,7 +32,7 @@ async function loadRecentUpdates() {
             return {
                 date,
                 content,
-                link: buildRecentUpdateLink(type, file)
+                link: buildDetailLink(type, file)
             };
         }).filter(Boolean)
             .sort((a, b) => b.date.localeCompare(a.date))

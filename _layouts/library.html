@@ -14,7 +14,6 @@ layout: base
 
     <article class="article-content">
         <h1>{{ page.title }}</h1>
-        {% if page.github %}<p><a href="{{ page.github }}" target="_blank" rel="noopener noreferrer">GitHubで見る</a></p>{% endif %}
         {{ content }}
 
         {% comment %} 同じ名前の .py（union_find.md なら union_find.py）があれば「コード」として表示 {% endcomment %}
