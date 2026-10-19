@@ -50,7 +50,7 @@ Geminiにニュースについて調べさせたところ，該当ニュース�
 
 ## sprej (178pt / 203solves)
 
-![sprej](/articles/assets/002/sprej.png)
+![sprej](/articles/assets/002/sprej.jpg)
 
 > 映像 / Video : https://www.youtube.com/watch?v=RzIPP5BcsyI&t=73s
 この動画の1:13に映る落書きされた物件の、2026年時点での所有者は誰か。
@@ -75,7 +75,7 @@ Geminiにニュースについて調べさせたところ，該当ニュース�
 <blockquote class="twitter-tweet"><p lang="ja" dir="ltr">待ってこれ下北沢だよね<br>1年前より文字増えてる <a href="https://t.co/RDTFcKu1nL">https://t.co/RDTFcKu1nL</a> <a href="https://t.co/r1awudqOiP">pic.twitter.com/r1awudqOiP</a></p>&mdash; 考え中…💭 (@chocomint_1031) <a href="https://x.com/chocomint_1031/status/1964944887813718166?ref_src=twsrc%5Etfw">September 8, 2025</a></blockquote>
 この画像の左側にタルトらしき物を扱っている建物があるので，「下北沢　タルト」で検索をかけると無事場所が特定出来ました．kaitai1はここからが本番で，地番を解答する必要があります．地番が載っている公図ビューアとにらめっこしながら $3$ 回という少ない提出上限で，なんとか $3$ 回目で正解できました（流石に脳汁）．
 
-![chiban](/articles/assets/002/chiban.png)
+![chiban](/articles/assets/002/chiban.jpg)
 
 ↑地番カオスすぎるだろ
 
@@ -105,7 +105,7 @@ Geminiにニュースについて調べさせたところ，該当ニュース�
 
 問題文の場所は，赤城山にある大沼です．Geminiに投げたら「赤城氷上トライアル」というものを教えてくれました．そこから先は意味不明な事を言っていたので無視しました．1970年の赤城氷上トライアルについて調べても全く情報が出てこなかったのですが，youtubeで調べたらまさかの動画が出てきました（[こちら](https://youtu.be/3uFqEu3dvzA?si=Fg9dDofTVNqN35qc)）．動画内に該当の車両がバッチリ写っていて，コメント欄の有識者により正解が得られました．
 
-![39](/articles/assets/002/39.png)
+![39](/articles/assets/002/39.jpg)
 
 # misc
 
@@ -128,7 +128,7 @@ Geminiにニュースについて調べさせたところ，該当ニュース�
 
 **解法**
 
-![telelens](/articles/assets/002/telelens.png)
+![telelens](/articles/assets/002/telelens.jpg)
 
 動画内に特徴的な飛行機が写っていますね．これをGoogle レンズで検索すると，ニューギニア航空の独立50周年記念の機体であることが分かりました．また，これが日本に飛来したのは 2026年2月9,10,11日のみだそうです．奥のJGASから羽田空港であることも分かるので，そのときの羽田空港の天気を調べると2月11日だけ雨が降っていました．
 

@@ -1,17 +1,6 @@
 const params = new URLSearchParams(window.location.search);
 const fileName = params.get('file');
 
-function setCanonicalUrl(file) {
-    const canonical = document.getElementById('canonical-link');
-    if (!canonical) return;
-
-    const url = new URL(window.location.href);
-    url.search = '';
-    url.hash = '';
-    url.searchParams.set('file', file);
-    canonical.href = url.href;
-}
-
 async function loadArticle() {
     const targetDiv = document.getElementById('markdown-content');
     if (!fileName) {
@@ -34,22 +23,8 @@ async function loadArticle() {
         const heading = markdown.match(/^#\s+(.+)$/m)?.[1]?.trim();
         if (heading) document.title = `${heading} | yura1685`;
 
-        const protectedMath = protectMarkdownMath(markdown);
-        const html = marked.parse(protectedMath.markdown);
-        targetDiv.innerHTML = restoreMarkdownMath(html, protectedMath.mathSegments);
-
-        targetDiv.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-        });
-
-        if (window.MathJax && window.MathJax.typesetPromise) {
-            await window.MathJax.typesetPromise([targetDiv]);
-        }
-        if (window.Prism) {
-            Prism.highlightAllUnder(targetDiv);
-        }
-        addCopyButtons(targetDiv);
+        renderMarkdown(targetDiv, markdown);
+        await finishMarkdown(targetDiv);
     } catch (error) {
         targetDiv.textContent = '記事の読み込みに失敗しました。';
         console.error(error);

@@ -1,21 +1,6 @@
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=0&single=true&output=csv";
-
-function buildPostLink(type, file) {
-    if (!file || !/^[A-Za-z0-9_-]+\.md$/.test(file)) return null;
-
-    if (type === 'article') {
-        return `../articles/details.html?file=${encodeURIComponent(file)}`;
-    }
-    if (type === 'atcoder') {
-        return `../atcoder/details.html?file=${encodeURIComponent(file)}`;
-    }
-
-    return null;
-}
-
 async function loadData() {
     try {
-        const response = await fetch(CSV_URL);
+        const response = await fetch(SHEET_UPDATES_CSV_URL);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
         const csvText = await response.text();
@@ -41,7 +26,7 @@ async function loadData() {
             const content = (cols[contentIndex] ?? '').trim();
             const type = typeIndex === -1 ? '' : (cols[typeIndex] ?? '').trim().toLowerCase();
             const file = fileIndex === -1 ? '' : (cols[fileIndex] ?? '').trim();
-            const link = buildPostLink(type, file);
+            const link = buildDetailLink(type, file);
             const month = dateStr.substring(0, 7);
 
             if (!postsByMonth[month]) postsByMonth[month] = [];

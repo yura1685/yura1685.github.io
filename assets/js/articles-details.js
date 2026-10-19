@@ -1,48 +1,14 @@
-const ARTICLE_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRvW2DrRQWYruMIFZxdCcyma3Hp-bDMKP_Y860hJaJWBvdGP2Hli-KnCdABHL-sq30BlcO5CMr8-3x1/pub?gid=1417312107&single=true&output=csv";
 const params = new URLSearchParams(window.location.search);
 const requestedFileName = params.get('file');
 const legacyPageTitle = params.get('title');
 
-function setCanonicalUrl(fileName) {
-    const canonical = document.getElementById('canonical-link');
-    if (!canonical) return;
-
-    const url = new URL(window.location.href);
-    url.search = '';
-    url.hash = '';
-    url.searchParams.set('file', fileName);
-    canonical.href = url.href;
-}
-
 async function loadArticleMetadata(fileName) {
     try {
-        const response = await fetch(ARTICLE_CSV_URL);
+        const response = await fetch(SHEET_ARTICLES_CSV_URL);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-        const csvText = await response.text();
-        const rows = parseCSV(csvText);
-        if (rows.length === 0) return null;
-
-        const header = rows[0].map(value => value.trim().toLowerCase());
-        const dateIndex = header.indexOf('date');
-        const titleIndex = header.indexOf('title');
-        const tagsIndex = header.indexOf('tags') !== -1 ? header.indexOf('tags') : header.indexOf('tag');
-        const fileIndex = header.indexOf('file');
-        const descIndex = header.indexOf('description') !== -1
-            ? header.indexOf('description')
-            : header.indexOf('desc');
-
-        if (titleIndex === -1 || fileIndex === -1) return null;
-
-        const row = rows.slice(1).find(cols => (cols[fileIndex] || '').trim() === fileName);
-        if (!row) return null;
-
-        return {
-            date: dateIndex === -1 ? '' : (row[dateIndex] || '').trim(),
-            title: (row[titleIndex] || '').trim(),
-            tags: tagsIndex === -1 ? [] : (row[tagsIndex] || '').split('|').map(tag => tag.trim()).filter(Boolean),
-            desc: descIndex === -1 ? '' : (row[descIndex] || '').trim()
-        };
+        const articles = parseArticlesCSV(await response.text());
+        return articles.find(article => article.file === fileName) || null;
     } catch (error) {
         console.error('Failed to load article metadata.', error);
         return null;
@@ -128,24 +94,17 @@ function buildTableOfContents(targetDiv) {
     toc.hidden = tocList.children.length === 0;
 }
 
+// X のポスト埋め込みがある記事だけ widgets.js を読み込む（読み込み後に自動で表示される）
 function renderTwitterEmbeds(targetDiv) {
     targetDiv.querySelectorAll('script[src*="platform.x.com/widgets.js"], script[src*="platform.twitter.com/widgets.js"]').forEach(script => script.remove());
 
     if (!targetDiv.querySelector('.twitter-tweet')) return;
 
-    const loadWidgets = () => {
-        if (window.twttr?.widgets?.load) {
-            window.twttr.widgets.load(targetDiv);
-        }
-    };
-
-    if (window.twttr?.widgets?.load) {
-        loadWidgets();
-        return;
-    }
-
-    const script = document.getElementById('twitter-wjs');
-    if (script) script.addEventListener('load', loadWidgets, { once: true });
+    const script = document.createElement('script');
+    script.src = 'https://platform.x.com/widgets.js';
+    script.async = true;
+    script.charset = 'utf-8';
+    document.body.appendChild(script);
 }
 
 async function loadArticle() {
@@ -173,26 +132,10 @@ async function loadArticle() {
         const response = await fetch(`./contents/${requestedFileName}`);
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
-        const markdown = await response.text();
-        const protectedMath = protectMarkdownMath(markdown);
-        const html = marked.parse(protectedMath.markdown);
-        targetDiv.innerHTML = restoreMarkdownMath(html, protectedMath.mathSegments);
-
-        targetDiv.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-        });
-
+        renderMarkdown(targetDiv, await response.text());
         buildTableOfContents(targetDiv);
         renderTwitterEmbeds(targetDiv);
-
-        if (window.MathJax && window.MathJax.typesetPromise) {
-            await window.MathJax.typesetPromise([targetDiv]);
-        }
-        if (window.Prism) {
-            Prism.highlightAllUnder(targetDiv);
-        }
-        addCopyButtons(targetDiv);
+        await finishMarkdown(targetDiv);
     } catch (error) {
         targetDiv.textContent = '記事の読み込みに失敗しました。';
         console.error(error);
