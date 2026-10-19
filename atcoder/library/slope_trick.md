@@ -1,7 +1,7 @@
 ---
 title: Slope Trick
 category: DP
-description: 区分線形な凸関数を 2 つのヒープで持ち、$\max(0, x - a)$ や $\lvert x - a \rvert$ を足す・累積 min をとる・平行移動するといった操作を $O(\log N)$ で行う
+description: 区分線形な凸関数を 2 つのヒープで持ち、 $\max(0, x - a)$ や $\lvert x - a \rvert$ を足す・累積 min をとる・平行移動するといった操作を $O(\log N)$ で行う
 order: 7
 ---
 
