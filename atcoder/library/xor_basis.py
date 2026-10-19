@@ -13,9 +13,13 @@ class XorBasis:
 
     def can_make(self, x):
         # x が基底のいくつかの XOR で作れるか（何も選ばないと 0）
+        return self.min_xor(x) == 0
+
+    def min_xor(self, x):
+        # x に基底のいくつかを XOR してできる最小値
         for b in self.basis:
             x = min(x, x ^ b)
-        return x == 0
+        return x
 
     def max_xor(self, x=0):
         # x に基底のいくつかを XOR してできる最大値

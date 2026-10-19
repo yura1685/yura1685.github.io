@@ -31,3 +31,20 @@ def find_all(t, p):
 def min_period(s):
     # すべての i で s[i] == s[i + p] となる最小の p
     return len(s) - prefix_function(s)[-1] if s else 0
+
+
+def z_algorithm(s):
+    # z[i] = s と s[i:] の最長共通接頭辞の長さ（z[0] = len(s)）
+    n = len(s)
+    z = [0] * n
+    if n:
+        z[0] = n
+    l = r = 0  # s[l:r] = s[:r - l] である、r が最大の区間
+    for i in range(1, n):
+        k = min(r - i, z[i - l]) if i < r else 0
+        while i + k < n and s[k] == s[i + k]:
+            k += 1
+        z[i] = k
+        if i + k > r:
+            l, r = i, i + k
+    return z

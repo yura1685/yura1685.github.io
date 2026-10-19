@@ -66,6 +66,10 @@ class WaveletMatrix:
                 l, r = self.zeros[j] + o[l], self.zeros[j] + o[r]
         return res + (k + 1) * val
 
+    def sum_largest(self, l, r, k):
+        # a[l:r] の大きい方から k 個の和
+        return self.pre[r] - self.pre[l] - self.sum_smallest(l, r, r - l - k)
+
     def _less(self, l, r, upper):
         # a[l:r] のうち upper 未満の値の (個数, 和)
         if upper <= 0:

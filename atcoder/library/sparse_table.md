@@ -9,3 +9,18 @@ order: 4
 
 - `SparseTable(a, op)`: 列 $a$ と演算 `op`（既定は `min`）から前計算。 $O(N \log N)$
 - `prod(l, r)`: `op(a[l], ..., a[r - 1])`（ $l < r$）。 $O(1)$
+- `max_right(l, f)`: `f(prod(l, r))` が `True` となる最大の $r$（ $r = l$ のときは `True` とみなす）。 $O(\log N)$
+- `min_left(r, f)`: `f(prod(l, r))` が `True` となる最小の $l$（ $l = r$ のときは `True` とみなす）。 $O(\log N)$
+
+`max_right` と `min_left` に渡す `f` は、区間を広げると `True` から `False` に変わることはあっても、`False` から `True` には戻らないものとします（ACL のセグ木と同じです）。中では `prod` を使って二分探索しています。
+
+例（ $\gcd$ が $1$ になる区間の個数）:
+
+```python
+from math import gcd
+
+st = SparseTable(a, gcd)
+ans = 0
+for l in range(n):
+    ans += n - st.max_right(l, lambda g: g > 1)
+```

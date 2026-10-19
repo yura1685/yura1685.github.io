@@ -18,3 +18,17 @@ def linear_congruence(a, b, m):
         return None
     m //= g
     return x * (b // g) % m, m
+
+
+def crt(r, m):
+    # x ≡ r[i] (mod m[i]) をすべて満たす x を x ≡ x0 (mod M) として (x0, M) で返す（M = lcm(m)）。解がなければ None
+    x, M = 0, 1
+    for ri, mi in zip(r, m):
+        # x + M t ≡ ri (mod mi) となる t を求める
+        res = linear_congruence(M, ri - x, mi)
+        if res is None:
+            return None
+        t, k = res  # t は k = mi / gcd(M, mi) を法として決まる
+        x += M * t
+        M *= k
+    return x, M

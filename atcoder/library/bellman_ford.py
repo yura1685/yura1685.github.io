@@ -15,7 +15,11 @@ def bellman_ford(n, edges, s):
         if not updated:
             return dist
     for _ in range(n):
+        updated = False
         for u, v, w in edges:
-            if dist[u] != INF and dist[u] + w < dist[v]:
+            if dist[u] != INF and dist[v] != -INF and dist[u] + w < dist[v]:
                 dist[v] = -INF
+                updated = True
+        if not updated:
+            break
     return dist

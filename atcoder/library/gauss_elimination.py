@@ -63,6 +63,15 @@ def det_mod(A, p):
     return det % p
 
 
+def inverse_mod(A, p):
+    # 正方行列 A の mod p での逆行列。正則でなければ None
+    n = len(A)
+    M = [[x % p for x in A[i]] + [int(i == j) for j in range(n)] for i in range(n)]
+    if len(_eliminate(M, n, p)) < n:
+        return None
+    return [row[n:] for row in M]
+
+
 def solve_mod(A, b, p):
     # A x ≡ b (mod p) の解を 1 つと、A x ≡ 0 の解全体の基底を (x, basis) で返す。解がなければ None
     n, m = len(A), len(A[0])

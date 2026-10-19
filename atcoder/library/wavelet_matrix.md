@@ -15,7 +15,7 @@ order: 9
 - `range_sum(l, r, lower, upper)`: `a[l:r]` のうち $\mathrm{lower}$ 以上 $\mathrm{upper}$ 未満の値の和
 - `prev_value(l, r, upper)`: `a[l:r]` のうち $\mathrm{upper}$ 未満の最大値（なければ `None`）
 - `next_value(l, r, lower)`: `a[l:r]` のうち $\mathrm{lower}$ 以上の最小値（なければ `None`）
-- `sum_smallest(l, r, k)`: `a[l:r]` の小さい方から $k$ 個の和（ $0 \le k \le r - l$）
+- `sum_smallest(l, r, k)`, `sum_largest(l, r, k)`: `a[l:r]` の小さい方・大きい方から $k$ 個の和（ $0 \le k \le r - l$）
 - 計算量: 前計算以外はどれも $O(\log A)$
 
 負の値があるときは、すべての値に同じ数を足して $0$ 以上にしてから使います。値の種類が少ないときは [座標圧縮](compress.html) すると段が減って速くなります（このとき和は圧縮したあとの値の和になります）。

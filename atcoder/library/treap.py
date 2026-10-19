@@ -15,20 +15,21 @@ class Treap:
         self.sum = [e]   # 部分木の値を左から順に op でまとめたもの
         self.rsum = [e]  # 右から順にまとめたもの（op が可換でないときの反転用）
         self.rev = [False]  # 子の部分木を反転する予定があるか
-        # Cartesian tree として O(N) で作る
+        # Cartesian tree として O(N) で作る（st は右端の経路。st から外れたノードは部分木が確定する）
         st = []
         for x in a:
             v = self._new(x)
             last = 0
             while st and self.pri[st[-1]] < self.pri[v]:
                 last = st.pop()
+                self._update(last)
             self.lch[v] = last
             if st:
                 self.rch[st[-1]] = v
             st.append(v)
-        self.root = st[0] if st else 0
-        for v in sorted(range(1, len(self.pri)), key=self.pri.__getitem__):
+        for v in reversed(st):
             self._update(v)
+        self.root = st[0] if st else 0
 
     def _new(self, x):
         self.lch.append(0)
