@@ -1,0 +1,74 @@
+---
+layout: base
+title: Playground
+description: 数式入りのMarkdownを書きながら、表示をリアルタイムで確かめられるページです。
+code_and_math: true
+marked: true
+scripts:
+  - /assets/js/copy-code.js
+  - /assets/js/markdown.js
+  - /assets/js/playground.js
+---
+<main class="playground-main">
+    <nav class="breadcrumb">
+        <a href="../index.html">Home</a>
+        <span class="breadcrumb-separator">＞</span>
+        <span>Playground</span>
+    </nav>
+
+    <section class="archive-header">
+        <h1>Playground</h1>
+        <p>左に数式入りのMarkdownを書くと、右にすぐ表示されます。名前をつけてこのブラウザに保存できます。</p>
+    </section>
+
+    <section>
+        <div class="playground-toolbar">
+            <input type="text" id="playground-name" class="playground-name" placeholder="名前" maxlength="60" aria-label="名前">
+            <button type="button" id="playground-save" class="playground-button playground-button-primary">保存</button>
+            <select id="playground-docs" class="playground-docs" aria-label="保存したもの"></select>
+            <button type="button" id="playground-delete" class="playground-button">削除</button>
+            <button type="button" id="playground-new" class="playground-button">新規</button>
+            <span id="playground-status" class="playground-status" role="status"></span>
+        </div>
+
+        {% comment %} textarea の中身は最初に表示する見本（Liquid に読まれるので、波かっこを2つ続けて書かない） {% endcomment %}
+        <div id="playground" class="playground">
+            <textarea id="playground-editor" class="playground-editor" spellcheck="false" aria-label="Markdown">
+# Markdown の遊び場
+
+左に **Markdown** を書くと、右にすぐ表示されます。
+記事と同じ見た目で表示されるので、下書きにも使えます。
+
+## 数式
+
+文中の数式は `$...$` で書きます。例えば $e^{i\pi} + 1 = 0$ です。
+
+独立した数式は `$$...$$` で書きます。
+
+$$
+\sum_{k=1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}
+$$
+
+## コード
+
+```python
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+```
+
+## 表
+
+| 記号 | 意味 |
+| --- | --- |
+| $\mathbb{Z}$ | 整数全体の集合 |
+| $\mathbb{F}_p$ | 位数 $p$ の有限体 |
+
+> 上の欄に名前を入れて「保存」を押すと、このブラウザに保存されます。
+</textarea>
+            <div id="playground-divider" class="playground-divider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="左右の幅を変える" aria-valuemin="20" aria-valuemax="80" aria-valuenow="50"></div>
+            <div id="playground-preview" class="playground-preview article-content"></div>
+        </div>
+    </section>
+</main>

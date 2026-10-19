@@ -972,3 +972,174 @@ footer {
     color: var(--accent-blue);
     opacity: 1;
 }
+
+/* --- Playground（左に Markdown、右に表示） --- */
+
+main.playground-main {
+    max-width: 1400px;
+}
+
+.playground-main .breadcrumb {
+    max-width: none;
+}
+
+.playground-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.playground-name,
+.playground-docs,
+.playground-button {
+    height: 36px;
+    padding: 0 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--text-main);
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+
+.playground-name {
+    width: 220px;
+}
+
+.playground-docs {
+    max-width: 240px;
+    cursor: pointer;
+}
+
+.playground-button {
+    color: var(--text-sub);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.playground-button:hover {
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+}
+
+.playground-button-primary,
+.playground-button-primary:hover {
+    background: var(--dark-blue);
+    border-color: var(--dark-blue);
+    color: #ffffff;
+}
+
+.playground-button-primary:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.playground-status {
+    color: var(--text-sub);
+    font-size: 0.85rem;
+}
+
+.playground {
+    --playground-split: 50%;
+    display: flex;
+    height: max(420px, calc(100vh - 380px));
+}
+
+.playground-editor {
+    flex: 0 0 var(--playground-split);
+    min-width: 0;
+    margin: 0;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--text-main);
+    font-family: "Consolas", "Courier New", monospace;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    tab-size: 4;
+    resize: none;
+}
+
+.playground-name:focus,
+.playground-docs:focus,
+.playground-editor:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+/* 中央のつまみ（ドラッグで左右の幅を変える） */
+.playground-divider {
+    flex: 0 0 14px;
+    position: relative;
+    cursor: col-resize;
+    touch-action: none;
+}
+
+.playground-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 4px;
+    height: 48px;
+    border-radius: 2px;
+    background: #cbd5e1;
+    transform: translate(-50%, -50%);
+    transition: background-color 0.2s ease;
+}
+
+.playground-divider:hover::before,
+.playground-divider:focus-visible::before,
+.playground-resizing .playground-divider::before {
+    background: var(--accent-blue);
+}
+
+.playground-divider:focus-visible {
+    outline: none;
+}
+
+.playground-resizing {
+    cursor: col-resize;
+    user-select: none;
+}
+
+.playground-preview.article-content {
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 0;
+    padding: 24px 28px;
+    overflow: auto;
+}
+
+/* スマホでは上下に並べる */
+@media (max-width: 700px) {
+    .playground-name {
+        flex: 1 1 100%;
+        width: auto;
+    }
+
+    .playground {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .playground-editor {
+        flex: none;
+        height: 50vh;
+    }
+
+    .playground-divider {
+        display: none;
+    }
+
+    .playground-preview.article-content {
+        flex: none;
+        min-height: 40vh;
+        margin-top: 12px;
+        padding: 18px;
+    }
+}
