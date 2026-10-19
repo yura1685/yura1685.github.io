@@ -2,38 +2,107 @@
 layout: base
 title: Playground
 description: 数式入りのMarkdownを書きながら、表示をリアルタイムで確かめられるページです。
+fullscreen: true
 code_and_math: true
 marked: true
+# エディタ（CodeMirror 5）: 行番号・Markdown の色分け・見出しの折りたたみ
+styles:
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/lib/codemirror.css
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/addon/fold/foldgutter.css
 scripts:
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/lib/codemirror.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/mode/xml/xml.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/mode/python/python.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/mode/markdown/markdown.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/addon/selection/active-line.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/addon/fold/foldcode.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/addon/fold/foldgutter.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/addon/fold/markdown-fold.js
+  - https://cdn.jsdelivr.net/npm/codemirror@5.65.21/addon/display/placeholder.js
   - /assets/js/copy-code.js
   - /assets/js/markdown.js
   - /assets/js/playground.js
 ---
-<main class="playground-main">
-    <nav class="breadcrumb">
-        <a href="../index.html">Home</a>
-        <span class="breadcrumb-separator">＞</span>
-        <span>Playground</span>
-    </nav>
+{% comment %} mathjax_ignore / mathjax_process: 数式に変換するのはプレビューの中だけ {% endcomment %}
+<div id="pg-app" class="pg-app mathjax_ignore" data-view="split">
+    <div class="pg-topbar">
+        <a class="logo pg-logo" href="{{ '/index.html' | relative_url }}">yura1685's Journal</a>
+        <span class="pg-app-name">Playground</span>
 
-    <section class="archive-header">
-        <h1>Playground</h1>
-        <p>左に数式入りのMarkdownを書くと、右にすぐ表示されます。名前をつけてこのブラウザに保存できます。</p>
-    </section>
-
-    <section>
-        <div class="playground-toolbar">
-            <input type="text" id="playground-name" class="playground-name" placeholder="名前" maxlength="60" aria-label="名前">
-            <button type="button" id="playground-save" class="playground-button playground-button-primary">保存</button>
-            <select id="playground-docs" class="playground-docs" aria-label="保存したもの"></select>
-            <button type="button" id="playground-delete" class="playground-button">削除</button>
-            <button type="button" id="playground-new" class="playground-button">新規</button>
-            <span id="playground-status" class="playground-status" role="status"></span>
+        <div class="pg-view-switch" role="group" aria-label="表示">
+            <button type="button" class="pg-view-button" data-view-button="edit" title="エディタだけ" aria-label="エディタだけ">
+                <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            </button>
+            <button type="button" class="pg-view-button" data-view-button="split" title="左右に並べる" aria-label="左右に並べる">
+                <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M12 4v16"/></svg>
+            </button>
+            <button type="button" class="pg-view-button" data-view-button="preview" title="プレビューだけ" aria-label="プレビューだけ">
+                <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>
+            </button>
         </div>
 
-        {% comment %} textarea の中身は最初に表示する見本（Liquid に読まれるので、波かっこを2つ続けて書かない） {% endcomment %}
-        <div id="playground" class="playground">
-            <textarea id="playground-editor" class="playground-editor" spellcheck="false" aria-label="Markdown">
+        <input type="text" id="pg-title" class="pg-title" placeholder="タイトル（保存するときの名前）" maxlength="60" aria-label="タイトル">
+
+        <div class="pg-actions">
+            <button type="button" id="pg-new" class="pg-button">新規</button>
+            <button type="button" id="pg-save" class="pg-button pg-button-primary" title="保存（Ctrl+S）">保存</button>
+        </div>
+    </div>
+
+    <div class="pg-body">
+        <aside class="pg-sidebar">
+            <button type="button" id="pg-sidebar-toggle" class="pg-sidebar-toggle" aria-expanded="true" title="一覧をたたむ" aria-label="一覧をたたむ">
+                <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/></svg>
+            </button>
+            <div class="pg-sidebar-content">
+                <div class="pg-sidebar-title">保存したもの</div>
+                <ul id="pg-doc-list" class="pg-doc-list"></ul>
+            </div>
+        </aside>
+
+        <div id="pg-workspace" class="pg-workspace">
+            <div class="pg-pane pg-editor-pane">
+                <div class="pg-pane-header">
+                    <span class="pg-pane-title">本文 <span class="pg-pane-note">(Markdown)</span></span>
+                    <span id="pg-count" class="pg-pane-note"></span>
+                </div>
+
+                <div class="pg-toolbar" role="toolbar" aria-label="入力補助">
+                    <button type="button" class="pg-tool" data-action="heading" title="見出し" aria-label="見出し">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4v16M18 4v16M6 12h12"/></svg>
+                    </button>
+                    <button type="button" class="pg-tool" data-action="bold" title="太字（Ctrl+B）" aria-label="太字">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h6a3.5 3.5 0 0 1 0 7H7zM7 12h7a3.5 3.5 0 0 1 0 7H7z"/></svg>
+                    </button>
+                    <button type="button" class="pg-tool" data-action="code" title="コード（文中）" aria-label="コード（文中）">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg>
+                    </button>
+                    <span class="pg-toolbar-separator"></span>
+                    <button type="button" class="pg-tool" data-action="math" title="数式（文中）" aria-label="数式（文中）">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M17 7V5H7l5 7-5 7h10v-2"/></svg>
+                    </button>
+                    <button type="button" class="pg-tool" data-action="displayMath" title="数式（独立した行）" aria-label="数式（独立した行）">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M15 8H9l3 4-3 4h6"/></svg>
+                    </button>
+                    <span class="pg-toolbar-separator"></span>
+                    <button type="button" class="pg-tool" data-action="codeBlock" title="コードブロック" aria-label="コードブロック">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 9-3 3 3 3M14 9l3 3-3 3"/></svg>
+                    </button>
+                    <button type="button" class="pg-tool" data-action="table" title="表" aria-label="表">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 15h18M12 10v10"/></svg>
+                    </button>
+                    <span class="pg-toolbar-separator"></span>
+                    <button type="button" class="pg-tool" data-action="link" title="リンク" aria-label="リンク">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+                    </button>
+                    <button type="button" class="pg-tool" data-action="image" title="画像" aria-label="画像">
+                        <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/></svg>
+                    </button>
+                </div>
+
+                {% comment %} textarea の中身は最初に表示する見本（Liquid に読まれるので、波かっこを2つ続けて書かない） {% endcomment %}
+                <div class="pg-editor">
+                    <textarea id="pg-editor" aria-label="本文（Markdown）">
 # Markdown の遊び場
 
 左に **Markdown** を書くと、右にすぐ表示されます。
@@ -65,10 +134,40 @@ def gcd(a, b):
 | $\mathbb{Z}$ | 整数全体の集合 |
 | $\mathbb{F}_p$ | 位数 $p$ の有限体 |
 
-> 上の欄に名前を入れて「保存」を押すと、このブラウザに保存されます。
+> 上の欄にタイトルを入れて「保存」（Ctrl+S）を押すと、このブラウザに保存されます。
 </textarea>
-            <div id="playground-divider" class="playground-divider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="左右の幅を変える" aria-valuemin="20" aria-valuemax="80" aria-valuenow="50"></div>
-            <div id="playground-preview" class="playground-preview article-content"></div>
+                </div>
+            </div>
+
+            <div id="pg-divider" class="pg-divider" role="separator" tabindex="0" aria-orientation="vertical" aria-label="左右の幅を変える" aria-valuemin="20" aria-valuemax="80" aria-valuenow="50"></div>
+
+            <div class="pg-pane pg-preview-pane">
+                <div class="pg-pane-header">
+                    <span class="pg-pane-title">プレビュー</span>
+                </div>
+                <div id="pg-preview" class="pg-preview article-content mathjax_process"></div>
+            </div>
         </div>
-    </section>
-</main>
+    </div>
+
+    <div class="pg-statusbar">
+        <span id="pg-status" class="pg-status" role="status"></span>
+        <span>このブラウザにだけ保存されます</span>
+    </div>
+</div>
+
+{% comment %} 左の一覧の1行分（JS が複製して使う） {% endcomment %}
+<template id="pg-doc-template">
+    <li class="pg-doc">
+        <button type="button" class="pg-doc-open">
+            <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></svg>
+            <span class="pg-doc-text">
+                <span class="pg-doc-title"></span>
+                <span class="pg-doc-date"></span>
+            </span>
+        </button>
+        <button type="button" class="pg-doc-delete" title="削除">
+            <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
+        </button>
+    </li>
+</template>
