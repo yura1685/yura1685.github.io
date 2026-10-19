@@ -6,10 +6,18 @@ DIR8 = DIR4 + [(1, 1), (1, -1), (-1, 1), (-1, -1)]
 
 def grid_bfs(grid, sy, sx, wall="#", dirs=DIR4):
     # grid は文字列のリスト。到達できないマスは -1
+    return grid_bfs_multi(grid, [(sy, sx)], wall, dirs)
+
+
+def grid_bfs_multi(grid, starts, wall="#", dirs=DIR4):
+    # starts = [(y, x), ...] のどれかから各マスへの最短手数。到達できないマスは -1
     h, w = len(grid), len(grid[0])
     dist = [[-1] * w for _ in range(h)]
-    dist[sy][sx] = 0
-    q = [(sy, sx)]
+    q = []
+    for y, x in starts:
+        if dist[y][x] == -1:
+            dist[y][x] = 0
+            q.append((y, x))
     for y, x in q:
         d = dist[y][x] + 1
         for dy, dx in dirs:
