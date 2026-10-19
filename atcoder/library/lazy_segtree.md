@@ -15,7 +15,7 @@ ACL（`atcoder.lazysegtree`）の遅延セグ木は、列の値をまとめる�
 - `id_`: 何もしない作用
 - `v`: 初期の列（または長さ $N$ を渡すとすべて `e`）
 
-おもなメソッドは `apply(l, r, f)`（区間に作用）、`apply(p, f)`（1 点に作用）、`prod(l, r)`、`all_prod()`、`get(p)`、`set(p, x)`、`max_right(l, g)`、`min_left(r, g)` です。
+おもなメソッドは `apply(l, r, f)`（区間に作用）、`apply(p, f=f)`（1 点に作用）、`prod(l, r)`、`all_prod()`、`get(p)`、`set(p, x)`、`max_right(l, g)`、`min_left(r, g)` です。1 点に作用させるときは `f=` を付けて渡します（`apply(p, f)` と書くと `f` が区間の右端だと思われて、エラーになります）。
 
 和を求めるときは、足す量が区間の長さに比例するので、値を (和, 区間の長さ) の組にして、初期の列を `[(x, 1) for x in a]` とします。区間更新では、何もしない作用を `None` で表します。
 
