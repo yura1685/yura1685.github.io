@@ -13,6 +13,7 @@ $0!$ から $N!$ までの階乗とその逆元を前計算します。 mod は 
 - `H(n, r)`: 重複組合せ $\binom{n+r-1}{r}$（ $n + r - 1 \le N$ の範囲で使う）
 - `multinomial(a)`: 同じものを含む順列の個数 $\frac{(a_0 + a_1 + \cdots)!}{a_0! a_1! \cdots}$（ $a_0$ 個の $0$、 $a_1$ 個の $1$、… を並べる方法の数）。 $a_0 + a_1 + \cdots \le N$ の範囲で使う。 $O(\mathrm{len}(a))$
 - `inv(n)`: $n^{-1}$（ $1 \le n \le N$）
+- `fact[n]`, `inv_fact[n]`: $n!$ とその逆元（ $0 \le n \le N$）
 - 計算量: とくに書いていないものは各クエリ $O(1)$
 
 mod をとらずに正確な値がほしいときは、`multinomial` と同じ式を `math.factorial` で計算します。並びそのものを列挙するときは [同じものを含む順列の列挙](multiset_permutations.html) を使います。
