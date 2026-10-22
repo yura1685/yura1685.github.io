@@ -17,6 +17,7 @@
     {% if page.code_and_math %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="{{ '/assets/js/code-math.js' | relative_url }}"></script>
     {% endif %}
     {% if page.marked %}<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>{% endif %}
     {% comment %} math: true なら数式（MathJax）だけを読み込む {% endcomment %}

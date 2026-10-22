@@ -9,13 +9,16 @@ function addCopyButtons(root = document) {
         pre.before(wrapper);
         wrapper.appendChild(pre);
 
+        // コード中の数式を表示した後でも、元のコードをそのままコピーできるようにしておく
+        const text = code.textContent;
+
         const button = document.createElement('button');
         button.type = 'button';
         button.className = 'copy-button';
         button.textContent = 'Copy';
         button.addEventListener('click', async () => {
             try {
-                await navigator.clipboard.writeText(code.textContent);
+                await navigator.clipboard.writeText(text);
                 button.textContent = 'Copied!';
             } catch (error) {
                 button.textContent = 'Failed';
