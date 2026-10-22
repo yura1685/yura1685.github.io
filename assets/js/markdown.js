@@ -80,4 +80,5 @@ async function finishMarkdown(targetDiv) {
         Prism.highlightAllUnder(targetDiv);
     }
     addCopyButtons(targetDiv);
+    await typesetCodeMath(targetDiv);
 }
