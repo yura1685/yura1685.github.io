@@ -44,6 +44,21 @@ scripts:
         <input type="text" id="pg-title" class="pg-title" placeholder="タイトル（保存するときの名前）" maxlength="60" aria-label="タイトル">
 
         <div class="pg-actions">
+            <div class="pg-download">
+                <button type="button" id="pg-download" class="pg-button pg-icon-button" title="ダウンロード" aria-label="ダウンロード" aria-haspopup="menu" aria-expanded="false" aria-controls="pg-download-menu">
+                    <svg class="pg-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>
+                </button>
+                <div id="pg-download-menu" class="pg-download-menu" role="menu" hidden>
+                    <button type="button" class="pg-download-item" role="menuitem" data-download="md">
+                        <span class="pg-download-ext">.md</span>
+                        <span class="pg-download-note">Markdown のまま保存</span>
+                    </button>
+                    <button type="button" class="pg-download-item" role="menuitem" data-download="pdf">
+                        <span class="pg-download-ext">.pdf</span>
+                        <span class="pg-download-note">印刷画面で「PDFに保存」を選ぶ</span>
+                    </button>
+                </div>
+            </div>
             <button type="button" id="pg-new" class="pg-button">新規</button>
             <button type="button" id="pg-save" class="pg-button pg-button-primary" title="保存（Ctrl+S）">保存</button>
         </div>

@@ -1110,6 +1110,71 @@ body.fullscreen {
     border-color: var(--accent-blue);
 }
 
+/* ダウンロードボタンと、押すと出るメニュー */
+.pg-download {
+    position: relative;
+}
+
+.pg-icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    padding: 0;
+}
+
+.pg-download-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    z-index: 30;
+    min-width: 240px;
+    padding: 6px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.pg-download-menu[hidden] {
+    display: none;
+}
+
+.pg-download-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    border-radius: 6px;
+    background: none;
+    color: var(--text-main);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+}
+
+.pg-download-item:hover,
+.pg-download-item:focus-visible {
+    background: var(--bg-color);
+    outline: none;
+}
+
+.pg-download-ext {
+    flex: none;
+    width: 36px;
+    color: var(--dark-blue);
+    font-family: monospace;
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.pg-download-note {
+    color: var(--text-sub);
+    font-size: 0.8rem;
+}
+
 /* 本体（左の一覧と作業エリア） */
 .pg-body {
     flex: 1;
@@ -1580,6 +1645,15 @@ body.fullscreen {
         order: 1;
     }
 
+    /* ダウンロードのメニューは画面の右端にそろえる（左にはみ出さないように） */
+    .pg-actions {
+        position: relative;
+    }
+
+    .pg-download {
+        position: static;
+    }
+
     .pg-view-switch {
         order: 3;
     }
@@ -1628,5 +1702,75 @@ body.fullscreen {
     .pg-preview.article-content,
     .pg-app[data-view="preview"] .pg-preview.article-content {
         padding: 20px;
+    }
+}
+
+/* PDF にするとき（印刷画面）: プレビューの中身だけを A4 に出す */
+@media print {
+    @page {
+        size: A4;
+        margin: 16mm 15mm;
+    }
+
+    body.fullscreen {
+        height: auto;
+        overflow: visible;
+        background: #ffffff;
+    }
+
+    .pg-topbar,
+    .pg-sidebar,
+    .pg-editor-pane,
+    .pg-divider,
+    .pg-pane-header,
+    .pg-statusbar,
+    .pg-preview .copy-button {
+        display: none !important;
+    }
+
+    /* 「エディタだけ」の表示中でもプレビューを出す */
+    .pg-app,
+    .pg-body,
+    .pg-workspace,
+    .pg-app .pg-preview-pane {
+        display: block !important;
+        height: auto;
+    }
+
+    .pg-preview.article-content,
+    .pg-app[data-view="preview"] .pg-preview.article-content {
+        padding: 0;
+        overflow: visible;
+    }
+
+    /* コードの背景色も画面と同じに出す */
+    .pg-preview pre,
+    .pg-preview code {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* 長い行は切れないように折り返す */
+    .pg-preview pre,
+    .pg-preview pre code {
+        white-space: pre-wrap !important;
+        word-break: break-all;
+        overflow: visible !important;
+    }
+
+    /* ページの切れ目で途中から分かれないようにする */
+    .pg-preview pre,
+    .pg-preview tr,
+    .pg-preview img,
+    .pg-preview blockquote,
+    .pg-preview mjx-container[display="true"] {
+        break-inside: avoid;
+    }
+
+    .pg-preview h1,
+    .pg-preview h2,
+    .pg-preview h3,
+    .pg-preview h4 {
+        break-after: avoid;
     }
 }
