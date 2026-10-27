@@ -165,6 +165,7 @@ document.querySelectorAll('.pg-tool').forEach(button => {
 let isRendering = false;
 let needsRender = false;
 let previewIsStale = false;
+let renderDone = Promise.resolve(); // 今の表示が終わったら解決する
 
 // 右を左と同じ割合までスクロールする（左がスクロールできないときは何もしない）
 function syncPreviewScroll() {
@@ -175,18 +176,20 @@ function syncPreviewScroll() {
     return true;
 }
 
-async function updatePreview() {
+async function updatePreview(force = false) {
     // エディタだけの表示中は、プレビューに戻ったときに表示する
-    if (app.dataset.view === 'edit') {
+    if (app.dataset.view === 'edit' && !force) {
         previewIsStale = true;
         return;
     }
     if (isRendering) {
         needsRender = true;
-        return;
+        return renderDone;
     }
     isRendering = true;
     previewIsStale = false;
+    let finishRender;
+    renderDone = new Promise(resolve => { finishRender = resolve; });
 
     const scrollTop = preview.scrollTop;
     try {
@@ -204,8 +207,9 @@ async function updatePreview() {
     isRendering = false;
     if (needsRender) {
         needsRender = false;
-        updatePreview();
+        await updatePreview(force);
     }
+    finishRender();
 }
 
 let editTimer = null;
@@ -221,6 +225,71 @@ cm.on('change', () => {
 });
 
 cm.on('scroll', syncPreviewScroll);
+
+// --- ダウンロード（.md はそのまま、.pdf はブラウザの印刷画面で「PDFに保存」を選ぶ） ---
+
+const pageTitle = document.title;
+const downloadButton = document.getElementById('pg-download');
+const downloadMenu = document.getElementById('pg-download-menu');
+
+// ファイル名に使えない文字を除く
+function fileBaseName() {
+    return (titleInput.value.trim() || '無題').replace(/[\\/:*?"<>|]/g, '_');
+}
+
+function downloadMarkdown() {
+    const blob = new Blob([cm.getValue()], { type: 'text/markdown;charset=utf-8' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = `${fileBaseName()}.md`;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(link.href), 1000);
+}
+
+async function printPdf() {
+    // エディタだけの表示中でも、最新の内容で印刷する
+    await updatePreview(true);
+    // 保存するときのファイル名の候補はページのタイトルになるので、入力したタイトルにしておく
+    document.title = fileBaseName();
+    window.print();
+}
+
+// 印刷画面を閉じたら元に戻す
+window.addEventListener('afterprint', () => {
+    document.title = pageTitle;
+});
+
+function setDownloadMenuOpen(open) {
+    downloadMenu.hidden = !open;
+    downloadButton.setAttribute('aria-expanded', open);
+}
+
+downloadButton.addEventListener('click', () => setDownloadMenuOpen(downloadMenu.hidden));
+
+downloadMenu.querySelectorAll('.pg-download-item').forEach(item => {
+    item.addEventListener('click', () => {
+        setDownloadMenuOpen(false);
+        if (item.dataset.download === 'md') {
+            downloadMarkdown();
+        } else {
+            printPdf();
+        }
+    });
+});
+
+// メニューの外を触るか Esc で閉じる
+document.addEventListener('pointerdown', event => {
+    if (!downloadMenu.hidden && !event.target.closest('.pg-download')) setDownloadMenuOpen(false);
+});
+
+document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && !downloadMenu.hidden) {
+        setDownloadMenuOpen(false);
+        downloadButton.focus();
+    }
+});
 
 // --- 保存・開く・削除 ---
 
