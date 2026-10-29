@@ -3,6 +3,8 @@ layout: base
 math: true
 title: yura1685's Library
 description: AtCoderで使っているPythonライブラリの一覧です。
+scripts:
+  - /assets/js/library-search.js
 ---
 <main>
     <nav class="breadcrumb">
@@ -15,7 +17,9 @@ description: AtCoderで使っているPythonライブラリの一覧です。
 
     <section class="archive-header">
         <h1>yura1685's Library</h1>
-        <p>コンテストで使っているライブラリ</p>
+        <div class="search-container">
+            <input type="search" id="library-search" placeholder="名前・説明・コードで検索" oninput="filterLibraries()">
+        </div>
     </section>
 
     {% assign groups = site.pages | where: "library", true | group_by: "category" %}
@@ -33,4 +37,6 @@ description: AtCoderで使っているPythonライブラリの一覧です。
         </div>
     </section>
     {% endfor %}
+
+    <div id="library-empty" class="empty-state" hidden>条件に一致するライブラリがありません。</div>
 </main>
