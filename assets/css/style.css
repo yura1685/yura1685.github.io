@@ -396,7 +396,8 @@ footer {
     margin-bottom: 30px;
 }
 
-#tag-filter {
+#tag-filter,
+#library-search {
     width: 100%;
     max-width: 400px;
     padding: 10px;
@@ -639,7 +640,8 @@ footer {
         padding: 20px;
     }
 
-    #tag-filter {
+    #tag-filter,
+    #library-search {
         max-width: none;
     }
 }
@@ -930,6 +932,10 @@ footer {
 /* ライブラリ一覧（yura1685's Library）: 長いタイトルでも説明文と重ならないようにする */
 .library-item {
     grid-template-columns: 220px minmax(0, 1fr);
+}
+
+.library-item[hidden] {
+    display: none;
 }
 
 .library-item .recent-update-date {

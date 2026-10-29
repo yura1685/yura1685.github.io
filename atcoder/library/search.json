@@ -1,0 +1,24 @@
+---
+layout: null
+library: false
+code_and_math: false
+scripts: []
+sitemap: false
+---
+{% comment %}
+ライブラリ一覧の検索ボックス用データ。各ライブラリの .md の中身（include したコードも含む）と
+同じ名前の .py をまとめて JSON にする。atcoder/library/ 内に置くのは、.md の中の
+コード読み込み（include code.html）がこのフォルダからの相対パスで行われるため。
+{% endcomment %}
+{%- assign libs = site.pages | where: "library", true -%}
+[
+{%- for lib in libs -%}
+{%- capture text -%}{% include_relative {{ lib.name }} %}{%- endcapture -%}
+{%- assign code_path = lib.path | replace: ".md", ".py" | prepend: "/" -%}
+{%- assign code_file = site.static_files | where: "path", code_path | first -%}
+{%- assign code = "" -%}
+{%- if code_file -%}{%- capture code -%}{% include_relative {{ code_file.name }} %}{%- endcapture -%}{%- endif -%}
+{%- assign text = text | append: " " | append: code | replace: '<pre><code class="language-python">', "" | replace: "</code></pre>", "" -%}
+{"url": {{ lib.url | relative_url | jsonify }}, "text": {{ text | jsonify }}}{% unless forloop.last %},{% endunless %}
+{%- endfor -%}
+]
