@@ -1,11 +1,11 @@
 ---
 title: 2次元BIT
 category: データ構造
-description: H×W のマス目で、1 点加算または長方形加算と、長方形の和を $O(\log H \log W)$ で求める
+description: H×W のマス目で、1 点加算・長方形の和、長方形加算・長方形の和、長方形加算・1 点取得を $O(\log H \log W)$ で行う
 order: 15
 ---
 
-$H \times W$ のマス目の値について、加算と長方形の和をそれぞれ $O(\log H \log W)$ で行います。添字はすべて 0-indexed で、長方形は $\mathrm{x1} \le x < \mathrm{x2}$ かつ $\mathrm{y1} \le y < \mathrm{y2}$ の半開区間で指定します。使う方のクラスだけを貼れば動きます。メモリは $O(HW)$ です。
+$H \times W$ のマス目の値について、加算と和の取得をそれぞれ $O(\log H \log W)$ で行います。添字はすべて 0-indexed で、長方形は $\mathrm{x1} \le x < \mathrm{x2}$ かつ $\mathrm{y1} \le y < \mathrm{y2}$ の半開区間で指定します。使う方のクラスだけを貼れば動きます。メモリは $O(HW)$ です。
 
 `BIT2D`（1 点加算・長方形の和）:
 
@@ -22,6 +22,14 @@ $H \times W$ のマス目の値について、加算と長方形の和をそれ�
 - `add(x1, y1, x2, y2, v)`: 長方形の中のすべての値に $v$ を足す
 - `sum(x1, y1, x2, y2)`, `prefix(x, y)`, `get(x, y)`: `BIT2D` と同じ
 
+`DualBIT2D`（長方形加算・1 点取得）:
+
+- `DualBIT2D(h, w)`: すべて $0$ で構築
+- `add(x1, y1, x2, y2, v)`: 長方形の中のすべての値に $v$ を足す
+- `get(x, y)`: `a[x][y]`
+
+`DualBIT2D` は 2 次元の差分を BIT で持ち、 $(x, y)$ までの累積和を値とします。`RangeBIT2D` でも同じことができますが、BIT が 1 つなので速くて軽いです。
+
 `RangeBIT2D` は、2 次元の差分 $d$ に対して、 $[0, X) \times [0, Y)$ の和が $\sum d_{x,y} (X - x + 1)(Y - y + 1)$（ $x, y$ は 1-indexed）と書けることを使い、 $d,\ d \cdot y,\ d \cdot x,\ d \cdot xy$ の 4 つを BIT で持ちます。
 
 例:
@@ -34,4 +42,8 @@ print(b.sum(0, 0, 2, 3))  # 5
 r = RangeBIT2D(3, 4)
 r.add(0, 0, 2, 2, 1)
 print(r.sum(0, 0, 3, 4))  # 4
+
+q = DualBIT2D(3, 4)
+q.add(1, 1, 3, 3, 2)
+print(q.get(2, 2))  # 2
 ```

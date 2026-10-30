@@ -133,3 +133,47 @@ class RangeBIT2D:
 
     def get(self, x, y):
         return self.sum(x, y, x + 1, y + 1)
+
+
+class DualBIT2D:
+    # 長方形加算・一点取得
+    def __init__(self, h, w):
+        self.h = h
+        self.w = w
+        self.d = [0] * ((h + 1) * (w + 1))
+
+    def _add(self, x, y, v):
+        # 1-indexedの差分点 (x, y) に v を加算
+        d = self.d
+        h, w = self.h, self.w
+        W = w + 1
+        i = x
+        while i <= h:
+            base = i * W
+            j = y
+            while j <= w:
+                d[base + j] += v
+                j += j & -j
+            i += i & -i
+
+    def add(self, x1, y1, x2, y2, v):
+        # [x1, x2) × [y1, y2) の全要素に v を加算
+        self._add(x1 + 1, y1 + 1, v)
+        self._add(x1 + 1, y2 + 1, -v)
+        self._add(x2 + 1, y1 + 1, -v)
+        self._add(x2 + 1, y2 + 1, v)
+
+    def get(self, x, y):
+        # a[x][y]
+        d = self.d
+        W = self.w + 1
+        s = 0
+        i = x + 1
+        while i > 0:
+            base = i * W
+            j = y + 1
+            while j > 0:
+                s += d[base + j]
+                j -= j & -j
+            i -= i & -i
+        return s
