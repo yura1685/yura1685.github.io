@@ -17,10 +17,13 @@ scripts:
 
     <section class="archive-header">
         <h1>yura1685's Problems</h1>
-        <div class="problem-filter" role="group" aria-label="種類で絞り込み">
-            <button type="button" class="tab-button active" data-kind="all">すべて</button>
-            <button type="button" class="tab-button" data-kind="math">数学</button>
-            <button type="button" class="tab-button" data-kind="programming">プログラミング</button>
+        <div class="problem-toolbar">
+            <div class="problem-filter" role="group" aria-label="種類で絞り込み">
+                <button type="button" class="tab-button active" data-kind="all">すべて</button>
+                <button type="button" class="tab-button" data-kind="math">数学</button>
+                <button type="button" class="tab-button" data-kind="programming">プログラミング</button>
+            </div>
+            <nav class="problem-pages problem-pages-top" aria-label="ページ切り替え" hidden></nav>
         </div>
     </section>
 
@@ -55,5 +58,5 @@ scripts:
     </div>
 
     <div id="problem-empty" class="empty-state"{% if problems.size > 0 %} hidden{% endif %}>まだ問題がありません。</div>
-    <nav id="problem-pages" class="problem-pages" aria-label="ページ切り替え" hidden></nav>
+    <nav class="problem-pages problem-pages-bottom" aria-label="ページ切り替え" hidden></nav>
 </main>

@@ -1783,6 +1783,16 @@ body.fullscreen {
 
 /* --- Problems（自作問題ページ） --- */
 
+/* 絞り込みボタンの段。右端にページ番号ボタン */
+.problem-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 20px;
+    scroll-margin-top: 20px;
+}
+
 .problem-filter {
     display: flex;
     flex-wrap: wrap;
@@ -1793,18 +1803,18 @@ body.fullscreen {
     display: flex;
     flex-direction: column;
     gap: 36px;
-    scroll-margin-top: 20px;
 }
 
-/* 左端の帯の色が難易度（AtCoder と同じ色＋未決定の黒） */
+/* 左端の帯の色が難易度（AtCoder と同じ色＋未決定の黒）。
+   太い border-left だと角の丸みで帯の内側も曲がるので、背景のグラデーションで幅 6px の帯を描き、内側をまっすぐにする */
 .problem-box {
     --problem-color: #000000;
     position: relative;
-    background: #ffffff;
+    background: linear-gradient(90deg, var(--problem-color) 0 6px, #ffffff 6px);
     border: 1px solid var(--border-color);
-    border-left: 6px solid var(--problem-color);
+    border-left-color: var(--problem-color);
     border-radius: 8px;
-    padding: 20px 28px 24px;
+    padding: 20px 28px 24px 33px;
 }
 
 .problem-box[hidden] {
@@ -1924,8 +1934,15 @@ body.fullscreen {
 .problem-pages {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 8px;
+}
+
+.problem-pages-top {
+    margin-left: auto;
+}
+
+.problem-pages-bottom {
+    justify-content: center;
     margin-top: 40px;
 }
 
@@ -1961,7 +1978,7 @@ body.fullscreen {
 
 @media (max-width: 700px) {
     .problem-box {
-        padding: 16px 18px 22px;
+        padding: 16px 18px 22px 23px;
     }
 
     .problem-source {

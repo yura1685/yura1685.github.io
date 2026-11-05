@@ -1,12 +1,14 @@
 // 自作問題ページ（problems/index.html）
 // ・問題文を Markdown として表示する（数式は MathJax が読み込み時にまとめて表示する）
 // ・「すべて / 数学 / プログラミング」で絞り込み、1ページ10問ずつ番号ボタンで切り替える（URL は変わらない）
+//   番号ボタンは絞り込みボタンの段の右端と、一覧の下の2か所に出す
 // ・問題文が長い箱は途中で切り、下の真ん中の「全て表示」で全文を出す
 const PROBLEMS_PER_PAGE = 10;
 
 const problemBoxes = Array.from(document.querySelectorAll('.problem-box'));
 const problemList = document.getElementById('problem-list');
-const problemPages = document.getElementById('problem-pages');
+const problemPageNavs = document.querySelectorAll('.problem-pages');
+const problemToolbar = document.querySelector('.problem-toolbar');
 const problemEmpty = document.getElementById('problem-empty');
 const problemFilterButtons = document.querySelectorAll('.problem-filter .tab-button');
 
@@ -26,9 +28,9 @@ function updateAllExpandButtons() {
     problemBoxes.forEach(updateExpandButton);
 }
 
-function renderPageButtons(pageCount) {
-    problemPages.innerHTML = '';
-    problemPages.hidden = pageCount <= 1;
+function renderPageButtons(nav, pageCount) {
+    nav.innerHTML = '';
+    nav.hidden = pageCount <= 1;
     for (let page = 1; page <= pageCount; page++) {
         const button = document.createElement('button');
         button.type = 'button';
@@ -42,9 +44,12 @@ function renderPageButtons(pageCount) {
             if (page === problemPage) return;
             problemPage = page;
             showProblems();
-            problemList.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // 下の番号ボタンで切り替えたときは、一覧の頭（絞り込みボタンの段）まで戻す
+            if (nav.classList.contains('problem-pages-bottom')) {
+                problemToolbar.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
-        problemPages.appendChild(button);
+        nav.appendChild(button);
     }
 }
 
@@ -62,7 +67,7 @@ function showProblems() {
         ? 'まだ問題がありません。'
         : 'この種類の問題はまだありません。';
 
-    renderPageButtons(pageCount);
+    problemPageNavs.forEach(nav => renderPageButtons(nav, pageCount));
     updateAllExpandButtons();
 }
 
