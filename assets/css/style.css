@@ -208,16 +208,7 @@ footer {
     margin-bottom: 0;
 }
 
-/* --- Blog --- */
-
-.tab-nav {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 30px;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-color);
-}
+/* --- Tab buttons --- */
 
 .tab-button {
     background: #ffffff;
@@ -243,55 +234,11 @@ footer {
     color: var(--accent-blue);
 }
 
-.month-group {
-    display: none;
-    animation: fadeIn 0.5s ease forwards;
-}
-
-.month-group.active {
-    display: block;
-}
-
-.post {
-    background: #ffffff;
-    border: 1px solid var(--border-color);
-    padding: 30px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-}
-
-.post-date {
-    font-size: 0.8rem;
-    color: var(--accent-blue);
-    font-weight: bold;
-    margin-bottom: 15px;
-    font-family: monospace;
-}
-
-.post-content {
-    font-size: 1rem;
-    line-height: 1.8;
-    white-space: pre-wrap;
-    color: var(--text-main);
-}
-
 .loading {
     text-align: center;
     padding: 100px 0;
     color: var(--text-sub);
     font-style: italic;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 /* Breadcrumb */
@@ -608,10 +555,6 @@ footer {
         padding: 24px;
     }
 
-    .post {
-        padding: 22px;
-    }
-
     .stats-table th,
     .stats-table td {
         padding: 12px 14px;
@@ -635,8 +578,7 @@ footer {
         padding: 18px;
     }
 
-    .card,
-    .post {
+    .card {
         padding: 20px;
     }
 
