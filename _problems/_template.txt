@@ -1,0 +1,15 @@
+---
+# 新しい問題を足すときの見本です（名前が _ で始まるファイルはページに出ません）。
+# このファイルをコピーして 001.txt, 002.txt, … のように3桁の番号を付けて保存します。
+# 番号が大きいものほどページの上に並びます。
+#
+# 拡張子を .md ではなく .txt にしているのは、.md だと数式の中の \{ や _ が
+# Jekyll に書き換えられて崩れるためです（.txt ならそのまま残ります）。
+title: 問題のタイトル
+kind: math          # math（数学）か programming（プログラミング）
+color: black        # black（未決定）, gray, brown, green, cyan, blue, yellow, orange, red
+link: https://onlinemathcontest.com/contests/xxx/tasks/yyy
+# source: OMC       # 「〇〇で解く」の〇〇。省略すると link のサイトから自動で決まる
+---
+ここから下に問題文を Markdown で書きます。数式は $1 \le N \le 10^9$ のように $…$ で、
+別の行に大きく出したいときは $$…$$ で書けます。

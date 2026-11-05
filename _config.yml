@@ -17,3 +17,8 @@ defaults:
       code_and_math: true
       scripts:
         - /assets/js/copy-code.js
+
+# _problems/ の問題（自作問題ページ）。1問ずつのページは作らず、problems/index.html に箱として並べる
+collections:
+  problems:
+    output: false

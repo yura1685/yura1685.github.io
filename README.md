@@ -13,4 +13,5 @@
 - `atcoder/solutions/`: AtCoder solution files
 - `atcoder/assets/<contest>/`: images used by each solution
 - `atcoder/library/`: library pages (`<name>.md`) and their code (`<name>.py`)
+- `problems/`: original problems page; each problem is `_problems/<number>.txt` (front matter + Markdown statement, see `_problems/_template.txt`; `assets/js/problems.js`)
 - `playground/`: live Markdown + math preview page (`assets/js/playground.js`; saves to the browser's localStorage)
