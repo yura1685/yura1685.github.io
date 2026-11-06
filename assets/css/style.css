@@ -1973,3 +1973,8 @@ body.fullscreen {
     font-size: 0.85rem;
     line-height: 1.6;
 }
+
+/* 分類タグから飛んだとき、見出しが上のメニューに隠れないようにする */
+.section-title.library-category {
+    scroll-margin-top: 100px;
+}
