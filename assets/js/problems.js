@@ -16,10 +16,13 @@ let problemKind = 'all';
 let problemPage = 1;
 
 // 箱の中身が上限の高さを超えているときだけ「全て表示」を出す
+// scrollHeight で測ると、数式の文字が行の下へ数px はみ出すだけで「長い」と判定されてしまうので、
+// 問題文そのものの高さ（offsetHeight）と、箱の中で見えている高さを比べる
 function updateExpandButton(box) {
     if (box.hidden || box.classList.contains('is-open')) return;
     const body = box.querySelector('.problem-body');
-    const isLong = body.scrollHeight > body.clientHeight + 1;
+    const statement = box.querySelector('.problem-statement');
+    const isLong = statement.offsetHeight > body.clientHeight + 1;
     box.classList.toggle('is-long', isLong);
     box.querySelector('.problem-expand').hidden = !isLong;
 }
