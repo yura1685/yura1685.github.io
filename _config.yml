@@ -1,6 +1,7 @@
 # サイトのアドレス（ローカルで jekyll build したときもリンクが正しくなるように明記）
 url: "https://yura1685.github.io"
 baseurl: ""
+repository: "yura1685/yura1685.github.io"
 
 plugins:
   - jekyll-sitemap
