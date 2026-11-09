@@ -1,0 +1,11 @@
+{
+    // Live Server は Jekyll を動かせないので、Jekyll が作った完成品フォルダ _site を表示する
+    "liveServer.settings.root": "/_site",
+    // _site の中身は Jekyll が書き換えるので、編集候補や検索に出さない
+    "files.exclude": {
+        ".jekyll-cache": true
+    },
+    "search.exclude": {
+        "_site": true
+    }
+}
