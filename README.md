@@ -18,7 +18,7 @@
 
 ## Previewing locally (VS Code Live Server)
 
-The pages use Jekyll (layouts, `{% include %}`, front matter), which Live Server cannot run by itself.
+The pages use Jekyll (layouts, includes, front matter), which Live Server cannot run by itself.
 So Jekyll builds the finished site into `_site/`, and Live Server shows `_site/` (set in `.vscode/settings.json`).
 
 First time only:
