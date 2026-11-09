@@ -1,0 +1,10 @@
+---
+title: OMCB075(F)
+kind: math
+color: cyan
+link: https://onlinemathcontest.com/contests/omcb075/tasks/13267
+source: OMC
+---
+$1\le x\lt y\lt z\le 101$ を満たす整数の組 $(x, y, z)$ であって、$6$ つの整数
+$$x^{y^z},x^{z^y},y^{z^x},y^{x^z},z^{x^y},z^{y^x}$$
+が全て平方数となるようなものの個数を解答してください。ただし、$a^{b^c}=a^{(b^c)}$ です。

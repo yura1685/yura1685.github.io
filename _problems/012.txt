@@ -1,0 +1,8 @@
+---
+title: SOMC009(C)
+kind: math
+color: black
+link: https://onlinemathcontest.com/contests/somc009/tasks/13509
+source: OMC
+---
+素数 $p,q,r$ に対し、$16^p+8^q+5^r$ が $3$ で割り切れる最大の回数を $f(p,q,r)$ で表します。このとき、$f(p,q,r)$ の最大値が存在するのでこの値を $M$ とします。$f(p,q,r)=M$ となる素数の組 $(p,q,r)$ すべてについて、$\dfrac{16^p+8^q+5^r}{3^M}$ の総和を解答してください。

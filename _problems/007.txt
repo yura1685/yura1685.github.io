@@ -1,0 +1,10 @@
+---
+title: OMCB067(G)
+kind: math
+color: cyan
+link: https://onlinemathcontest.com/contests/omcb067/tasks/13159
+source: OMC
+---
+正の整数 $c$ に対し、次の等式を満たす最小の正の整数 $n$ を $f(c)$ とします。
+$$\lfloor{10^c\sqrt{n}}\rfloor - 10^c\lfloor{\sqrt{n}}\rfloor = 10^c-1$$
+このとき、$\displaystyle\prod_{c=1}^{100}(f(c)-10^c)$ の正の約数の個数を求めてください。ただし、実数 $x$ に対して $\lfloor x \rfloor$ で $x$ を超えない最大の整数を表します。

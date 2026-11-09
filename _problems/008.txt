@@ -1,0 +1,8 @@
+---
+title: OMC274(B)
+kind: math
+color: green
+link: https://onlinemathcontest.com/contests/omc274/tasks/13225
+source: OMC
+---
+$2\times 100$ のマス目のうち $103$ マスを黒く塗る方法であって、どの辺を共有して隣り合う $2$ マスについてもそのうち少なくとも一方は黒色となるものは何通りありますか？ただし、回転や反転によって一致するものも区別します。

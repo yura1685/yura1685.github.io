@@ -1,0 +1,8 @@
+---
+title: OMCB058(C)
+kind: math
+color: brown
+link: https://onlinemathcontest.com/contests/omcb058/tasks/14554
+source: OMC
+---
+$10$ 以上の正の整数 $n$ であって、$1199_{(n)}$ が $19_{(n)}$ で割り切れるものはいくつありますか？

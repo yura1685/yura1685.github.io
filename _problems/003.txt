@@ -1,0 +1,8 @@
+---
+title: OMCB055(H)
+kind: math
+color: blue
+link: https://onlinemathcontest.com/contests/omcb055/tasks/11629
+source: OMC
+---
+$n$ を正の整数とします。座標平面において円 $x^2+(y-13)^2=12^2$ と放物線 $y=\dfrac{1}{n}x^2$ が相異なる $4$ つの共有点をもち、それらの共有点を結んでできる四角形の面積を $S(n)$ とすると $\sqrt{n}S(n)$ の値は整数になりました。このような全ての正の整数 $n$ について、$\sqrt{n}S(n)$ の総和を解答してください。

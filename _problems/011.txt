@@ -1,0 +1,9 @@
+---
+title: OMC284(D)
+kind: math
+color: cyan
+link: https://onlinemathcontest.com/contests/omc284/tasks/12584
+source: OMC
+---
+正の整数 $n$ に対し、各位の偶数の和を $e(n)$、各位の奇数の和を $o(n)$ と表します。ただし、$n$ のどの桁にも偶数が現れない場合と奇数が現れない場合はそれぞれ $e(n)=0, o(n)=0$ とします。このとき、以下の値を求めてください。
+$$\sum_{n=1}^{10^{1111}}e(n)o(n)$$

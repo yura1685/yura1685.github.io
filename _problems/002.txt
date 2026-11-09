@@ -1,0 +1,10 @@
+---
+title: OMCB055(E)
+kind: math
+color: cyan
+link: https://onlinemathcontest.com/contests/omcb055/tasks/14028
+source: OMC
+---
+次の $10$ 次方程式の（重解を含む）解を $x=x_1, x_2, \cdots, x_{10}$ とします。
+$$x^{10} + 2x^9 + 2^2x^8 + \cdots + 2^9x + 2^{10} = 1685x - 1$$
+このとき、$x_1^{11}+x_2^{11}+\cdots+x_{10}^{11}$ の値は正の整数となるのでこの値を解答してください。

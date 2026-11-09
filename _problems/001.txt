@@ -1,0 +1,14 @@
+---
+title: OMCB055(D)
+kind: math
+color: brown
+link: https://onlinemathcontest.com/contests/omcb055/tasks/14334
+source: OMC
+---
+各面に $1$ より大きな実数が書かれた歪な $6$ 面体のサイコロがあり、以下の条件を満たしています。
+
+- 各目が出る確率は、その目の逆数に等しい。
+- 各目の総和は $100$ に等しい。
+- 各目は等比数列をなす。
+
+このとき、サイコロの各目の総積を求めてください。

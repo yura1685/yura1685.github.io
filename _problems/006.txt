@@ -1,0 +1,10 @@
+---
+title: OMCB067(E)
+kind: math
+color: brown
+link: https://onlinemathcontest.com/contests/omcb067/tasks/13237
+source: OMC
+---
+$x$ についての $4$ 次方程式
+$$x^4-20x^3-x^2-200x+100=0$$
+を満たす**実数** $x$ であって、最も大きいものを求めてください。

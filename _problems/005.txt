@@ -1,0 +1,10 @@
+---
+title: OMCB058(F)
+kind: math
+color: green
+link: https://onlinemathcontest.com/contests/omcb058/tasks/13178
+source: OMC
+---
+$xy$ 平面上の点 $(0, 0)$ から点 $(6, 6)$ まで、次の $2$ つの条件を満たしながら格子点上を移動する方法は何通りありますか？
+- 格子点 $(x, y)$ にいるとき、次に移動できる格子点は $(x+1, y), (x, y+1)$ のいずれかである。
+- $x$ 座標、$y$ 座標がともに奇数である点をちょうど $4$ 回通る。
