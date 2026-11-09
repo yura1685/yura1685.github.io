@@ -1,6 +1,8 @@
 {
     // Live Server は Jekyll を動かせないので、Jekyll が作った完成品フォルダ _site を表示する
     "liveServer.settings.root": "/_site",
+    // Jekyll が _site を書き終えるまで少し待ってからブラウザを再読み込みする（ミリ秒）
+    "liveServer.settings.wait": 1000,
     // _site の中身は Jekyll が書き換えるので、編集候補や検索に出さない
     "files.exclude": {
         ".jekyll-cache": true
