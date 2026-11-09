@@ -5,4 +5,4 @@ gem "github-pages", group: :jekyll_plugins
 gem "webrick"
 
 # Windows 用（タイムゾーンのデータ）
-gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin]
+gem "tzinfo-data", platforms: :windows
