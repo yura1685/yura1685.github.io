@@ -1,0 +1,14 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // メニューの「ターミナル」→「タスクの実行」→「Jekyll 自動ビルド」で起動
+            // ファイルを保存するたびに _site が作り直され、Live Server が自動で再読み込みする
+            "label": "Jekyll 自動ビルド",
+            "type": "shell",
+            "command": "bundle exec jekyll build --watch",
+            "isBackground": true,
+            "problemMatcher": []
+        }
+    ]
+}
