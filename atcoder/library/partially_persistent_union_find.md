@@ -1,5 +1,5 @@
 ---
-title: 部分永続Union-Find
+title: 部分永続 Union-Find
 category: データ構造
 description: 過去の好きな時刻での連結性や集合の大きさを求められる Union-Find。経路圧縮をせず、各操作 $O(\log N)$
 order: 18
@@ -7,9 +7,9 @@ order: 18
 
 経路圧縮をせず union by size だけを行うと、根でなくなった頂点の親はその後ずっと変わりません。そこで、各頂点が根でなくなった時刻を覚えておくと、時刻 $t$ での根は、根でなくなった時刻が $t$ 以下である間だけ親をたどれば求まります。集合の大きさは、各根について、大きさが変わった時刻と変わった後の大きさの履歴を持っておき、二分探索で求めます。
 
-`unite` を $t$ 回呼んだ直後を時刻 $t$ とします（初期状態が時刻 $0$）。すでに同じ集合にある 2 頂点を `unite` しても、時刻は 1 進みます。過去の状態は聞けるだけで、過去の状態から `unite` することはできません（それには [完全永続Union-Find](persistent_union_find.html) を使います）。
+`unite` を $t$ 回呼んだ直後を時刻 $t$ とします（初期状態が時刻 $0$）。すでに同じ集合にある 2 頂点を `unite` しても、時刻は 1 進みます。過去の状態は聞けるだけで、過去の状態から `unite` することはできません（それには [完全永続 Union-Find](persistent_union_find.html) を使います）。
 
-- `PartiallyPersistentUnionFind(N)`: $N$ 頂点で初期化（時刻 $0$）
+- `PartiallyPersistentUnionFind(n)`: $n$ 頂点で初期化（時刻 $0$）
 - `unite(a, b)`: 時刻を 1 進めて、 $a$ と $b$ をつなぐ。すでに同じ集合なら `False`（このときも時刻は進む）。 $O(\log N)$
 - `now()`: 今の時刻（これまでに `unite` を呼んだ回数）。 $O(1)$
 - `find(t, x)`: 時刻 $t$ での $x$ の根。 $O(\log N)$

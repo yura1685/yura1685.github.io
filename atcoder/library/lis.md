@@ -10,7 +10,7 @@ order: 1
 - `lis(a, strict=True)`: 最長増加部分列を 1 つ、値のリストで返す（長さは `len(lis(a))`）。`strict=False` にすると、等しい値を許す広義単調増加になる
 - `lis_indices(a, strict=True)`: 最長増加部分列を 1 つ、添字の昇順のリストで返す
 - `lis_lengths(a, strict=True)`: `res[i]` が「`a[i]` で終わる最長増加部分列の長さ」であるリストを返す
-- 計算量: $O(N \log N)$
+- 計算量: どれも $O(N \log N)$
 
 最長減少部分列は、各要素の符号を反転した列の LIS として求まります。
 

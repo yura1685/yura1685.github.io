@@ -1,5 +1,5 @@
 ---
-title: ロールバック付きUnion-Find
+title: ロールバック付き Union-Find
 category: データ構造
 description: 最後に行った merge を取り消せる Union-Find。経路圧縮をしないので、各操作 $O(\log N)$
 order: 7
@@ -7,8 +7,8 @@ order: 7
 
 union by size だけを行い経路圧縮をしないことで、merge で書き換えた値を履歴に積んでおき、あとから取り消せるようにしたものです。
 
-- `RollbackUnionFind(N)`: $N$ 頂点で初期化
-- `merge(a, b)`: $a$ と $b$ をつなぐ。すでに同じ集合なら `False`（このときも履歴には積むので、`undo` 1 回で取り消せる）
+- `RollbackUnionFind(n)`: $n$ 頂点で初期化
+- `merge(a, b)`: $a$ と $b$ をつなぐ。すでに同じ集合なら `False`（このときも履歴には積むので、`undo` 1 回で取り消せる）。 $O(\log N)$
 - `undo()`: 最後の `merge` を取り消す。 $O(1)$
 - `snapshot()`: 今の状態を表す値を返す。 $O(1)$
 - `rollback(t)`: `snapshot()` が $t$ を返したときの状態に戻す（既定は $t = 0$ で、何もつないでいない状態）。取り消す `merge` 1 回につき $O(1)$

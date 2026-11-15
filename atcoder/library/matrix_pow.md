@@ -5,9 +5,10 @@ description: 行列の積と累乗を mod で計算し、線形漸化式の第 $
 order: 1
 ---
 
+行列の積を定義どおりに計算し、累乗は繰り返し二乗法で求めます。`mod` の既定値は $998244353$ です。
+
 - `mat_mul(A, B, mod)`: 行列の積 $AB$ を mod で求める。 $A$ が $N \times M$、 $B$ が $M \times K$ のとき $O(NMK)$
 - `mat_pow(A, k, mod)`: 正方行列 $A$ の $k$ 乗（ $k \ge 0$）を求める。 $A$ が $K \times K$ のとき $O(K^3 \log k)$
-- mod の既定値は $998244353$
 
 $K$ 項間の線形漸化式は、 $K \times K$ の行列の累乗で第 $N$ 項を $O(K^3 \log N)$ で求められます。
 

@@ -1,12 +1,12 @@
 class Combination:
-    def __init__(self, n, mod=998244353):
+    def __init__(self, N, mod=998244353):
         self.mod = mod
-        self.fact = [1] * (n + 1)
-        for i in range(1, n + 1):
+        self.fact = [1] * (N + 1)
+        for i in range(1, N + 1):
             self.fact[i] = self.fact[i - 1] * i % mod
-        self.inv_fact = [1] * (n + 1)
-        self.inv_fact[n] = pow(self.fact[n], mod - 2, mod)
-        for i in range(n, 0, -1):
+        self.inv_fact = [1] * (N + 1)
+        self.inv_fact[N] = pow(self.fact[N], mod - 2, mod)
+        for i in range(N, 0, -1):
             self.inv_fact[i - 1] = self.inv_fact[i] * i % mod
 
     def C(self, n, r):
