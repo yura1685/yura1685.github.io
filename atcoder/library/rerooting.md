@@ -1,5 +1,5 @@
 ---
-title: 全方位木DP
+title: 全方位木 DP
 category: 木
 description: すべての頂点について、その頂点を根としたときの木 DP の値を $O(N)$ で求める
 order: 4

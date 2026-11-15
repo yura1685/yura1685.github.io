@@ -12,6 +12,8 @@ order: 15
 
 二重辺連結成分は、どの辺を 1 本取り除いても連結なままの頂点の集まりです。成分を 1 つの頂点にまとめると、橋だけが残って森になります。
 
+例（二重辺連結成分を 1 つの頂点にまとめた森を作る）:
+
 ```python
 k, comp = two_edge_connected_components(n, edges)
 tree = [[] for _ in range(k)]

@@ -1,10 +1,11 @@
 from heapq import heappush, heappop
 
+INF = 1 << 60
+
 
 def dijkstra(g, s):
     # g[v] = [(to, cost), ...]、cost は非負整数
     n = len(g)
-    INF = 1 << 62
     dist = [INF] * n
     prev = [-1] * n
     dist[s] = 0

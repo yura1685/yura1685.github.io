@@ -1,7 +1,7 @@
 ---
 title: Miller–Rabin 素数判定
 category: 整数論
-description: $N < 2^{64}$ の素数判定を、底を固定した Miller–Rabin 法で確実に $O(\log N)$ で行う
+description: $n < 2^{64}$ の素数判定を、底を固定した Miller–Rabin 法で確実に $O(\log n)$ で行う
 order: 7
 ---
 

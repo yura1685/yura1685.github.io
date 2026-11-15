@@ -2,6 +2,7 @@ from collections import deque
 
 DIR4 = [(1, 0), (-1, 0), (0, 1), (0, -1)]
 DIR8 = DIR4 + [(1, 1), (1, -1), (-1, 1), (-1, -1)]
+INF = 1 << 60
 
 
 def grid_bfs(grid, sy, sx, wall="#", dirs=DIR4):
@@ -31,7 +32,6 @@ def grid_bfs_multi(grid, starts, wall="#", dirs=DIR4):
 def bfs01(g, s):
     # g[v] = [(to, cost), ...]、cost は 0 か 1
     n = len(g)
-    INF = 1 << 62
     dist = [INF] * n
     dist[s] = 0
     dq = deque([s])
