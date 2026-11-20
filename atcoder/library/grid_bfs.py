@@ -29,6 +29,40 @@ def grid_bfs_multi(grid, starts, wall="#", dirs=DIR4):
     return dist
 
 
+def bfs(g, s):
+    # 重みなしグラフ g[v] = [to, ...] で、s からの最短距離と最短路木での親。到達できない頂点は距離 -1
+    return bfs_multi(g, [s])
+
+
+def bfs_multi(g, starts):
+    # starts のどれかから各頂点への最短距離と、最短路木での親（始点と到達できない頂点は -1）
+    n = len(g)
+    dist = [-1] * n
+    prev = [-1] * n
+    q = []
+    for s in starts:
+        if dist[s] == -1:
+            dist[s] = 0
+            q.append(s)
+    for v in q:
+        d = dist[v] + 1
+        for to in g[v]:
+            if dist[to] == -1:
+                dist[to] = d
+                prev[to] = v
+                q.append(to)
+    return dist, prev
+
+
+def restore_path(prev, t):
+    # 始点から t までの最短路の頂点列（t に到達できるときだけ使う）
+    path = []
+    while t != -1:
+        path.append(t)
+        t = prev[t]
+    return path[::-1]
+
+
 def bfs01(g, s):
     # g[v] = [(to, cost), ...]、cost は 0 か 1
     n = len(g)
