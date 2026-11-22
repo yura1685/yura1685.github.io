@@ -22,7 +22,6 @@ def subtree_ids(g, root=0, table=None):
             ch[par[v]].append(res[v])
     return res
 
-
 def centroids(g):
     # 木の重心（1 個か 2 個）のリスト
     n = len(g)
@@ -45,7 +44,6 @@ def centroids(g):
         if 2 * mx <= n:
             res.append(v)
     return res
-
 
 def isomorphic(g1, g2):
     # 根のない木 g1, g2 が同型か

@@ -12,7 +12,6 @@ def euler_phi(n):
         res -= res // n
     return res
 
-
 def phi_table(n):
     # phi[x] = φ(x)（0 <= x <= n、phi[0] = 0）
     phi = list(range(n + 1))

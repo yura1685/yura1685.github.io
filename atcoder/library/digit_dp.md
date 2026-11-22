@@ -26,7 +26,6 @@ def step(s, d):
     s += d != 0
     return s if s <= k else None
 
-
 ans = digit_dp(n, 0, step, lambda s: s == k)
 ```
 
@@ -44,7 +43,6 @@ $x = 0$ も数えられてしまうので $1$ を引いています。
 def step(st, d):
     r, has3 = st
     return ((r + d) % 3, has3 or d == 3)
-
 
 ans = digit_dp(n, (0, False), step, lambda st: st[0] == 0 or st[1]) - 1
 ```

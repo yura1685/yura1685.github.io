@@ -43,11 +43,9 @@ print(lct.lca(0, 2, 3), lct.parent(0, 3))  # 0 4
 ```python
 MOD = 998244353
 
-
 # 値 (b, c) は x を b x + c にする関数。op(f, g) は f のあとに g をする関数
 def op(f, g):
     return (f[0] * g[0] % MOD, (f[1] * g[0] + g[1]) % MOD)
-
 
 lct = LinkCutTree(n, op, (1, 0), fs)
 for u, v in edges:

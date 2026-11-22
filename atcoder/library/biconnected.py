@@ -38,7 +38,6 @@ def _lowlink(n, edges):
                     low[p] = low[v]
     return ord_, low, par, order
 
-
 def two_edge_connected_components(n, edges):
     # 橋を取り除いたときの連結成分（二重辺連結成分）。(成分の個数, 各頂点の成分番号) を返す
     ord_, low, par, order = _lowlink(n, edges)
@@ -52,7 +51,6 @@ def two_edge_connected_components(n, edges):
             comp[v] = k
             k += 1
     return k, comp
-
 
 def block_cut_tree(n, edges):
     # 二重頂点連結成分（ブロック）のリストと、Block-Cut Tree の隣接リストを返す

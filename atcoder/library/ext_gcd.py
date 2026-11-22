@@ -10,7 +10,6 @@ def ext_gcd(a, b):
         return -a, -x0, -y0
     return a, x0, y0
 
-
 def linear_congruence(a, b, m):
     # a x ≡ b (mod m) の解を x ≡ x0 (mod m') として (x0, m') で返す。解がなければ None
     g, x, _ = ext_gcd(a % m, m)
@@ -18,7 +17,6 @@ def linear_congruence(a, b, m):
         return None
     m //= g
     return x * (b // g) % m, m
-
 
 def crt(r, m):
     # x ≡ r[i] (mod m[i]) をすべて満たす x を x ≡ x0 (mod M) として (x0, M) で返す（M = lcm(m)）。解がなければ None

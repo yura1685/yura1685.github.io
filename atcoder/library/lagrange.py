@@ -14,7 +14,6 @@ def lagrange(xs, ys, x, mod):
         res += ys[i] * num * pow(den, mod - 2, mod)
     return res % mod
 
-
 def lagrange_iota(ys, x, mod):
     # xs = 0, 1, ..., d のとき（ys[i] = f(i)）。mod は d より大きい素数
     d = len(ys) - 1

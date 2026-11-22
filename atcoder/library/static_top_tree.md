@@ -30,28 +30,22 @@ heavy path の一番下はいつも葉なので、`add_edge` と `get` で使う
 ```python
 MOD = 998244353
 
-
 # パスクラスタ (s, t): 穴の値 x から、上の端の頂点の値 s x + t を返す 1 次関数
 def vertex(v):
     return (1, a[v])
-
 
 def compress(p, c):
     # x を c に通してから p に通す
     return (p[0] * c[0] % MOD, (p[0] * c[1] + p[1]) % MOD)
 
-
 def rake(x, y):
     return x * y % MOD
-
 
 def add_edge(p):
     return p[1]  # 穴が空（x = 0）のときの値
 
-
 def add_vertex(m, v):
     return (m, a[v])  # m は light な子の f の積
-
 
 edges = [(p[i], i) for i in range(1, n)]  # p[i] は頂点 i の親（根は 0）
 stt = StaticTopTree(n, edges, 0, vertex, compress, rake, add_edge, add_vertex)

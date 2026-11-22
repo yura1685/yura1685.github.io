@@ -3,14 +3,12 @@ from atcoder.lazysegtree import LazySegTree
 # 区間加算・区間最小値とその個数。値は (最小値, 個数)
 INF = 1 << 60
 
-
 def op(x, y):
     if x[0] < y[0]:
         return x
     if x[0] > y[0]:
         return y
     return (x[0], x[1] + y[1])
-
 
 e = (INF, 0)
 mapping = lambda f, x: (x[0] + f, x[1])

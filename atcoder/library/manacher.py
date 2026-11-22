@@ -15,7 +15,6 @@ def manacher(s):
         j -= k
     return r
 
-
 def palindromes(s):
     # res[c] = 中心が c / 2 の最長回文の長さ（長さ 2N - 1）
     n = len(s)

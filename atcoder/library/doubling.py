@@ -44,7 +44,6 @@ class Doubling:
                 k += 1 << i
         return k, v
 
-
 def kth_all(nxt, k):
     # すべての v について、v の k 回先を求める
     res = list(range(len(nxt)))

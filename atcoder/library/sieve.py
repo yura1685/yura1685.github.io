@@ -1,6 +1,5 @@
 from math import isqrt
 
-
 class Sieve:
     def __init__(self, n):
         spf = list(range(n + 1))
@@ -38,7 +37,6 @@ class Sieve:
                     res.append(res[i] * q)
         res.sort()
         return res
-
 
 def segment_sieve(l, r):
     # l <= x < r の素数のリスト

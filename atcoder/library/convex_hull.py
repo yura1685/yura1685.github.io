@@ -1,10 +1,8 @@
 from math import gcd
 
-
 def cross(a, b, c):
     # ベクトル ab と ac の外積
     return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
-
 
 def convex_hull(ps, include_collinear=False):
     # 凸包の頂点を反時計回りに返す（include_collinear=True なら辺上の点も含める）
@@ -29,7 +27,6 @@ def convex_hull(ps, include_collinear=False):
     upper = chain(reversed(ps))
     return lower[:-1] + upper[:-1]
 
-
 def area2(ps):
     # 多角形の面積の 2 倍（反時計回りなら正）
     res = 0
@@ -38,7 +35,6 @@ def area2(ps):
         x2, y2 = ps[i]
         res += x1 * y2 - x2 * y1
     return res
-
 
 def lattice_points(ps):
     # 頂点が格子点の多角形の (内部の格子点の数, 周上の格子点の数)。ピックの定理 S = I + B/2 - 1 を使う

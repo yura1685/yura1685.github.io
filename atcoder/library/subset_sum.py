@@ -7,7 +7,6 @@ def subset_sums(a, s):
         bits = (bits | bits << x) & mask
     return bits
 
-
 def subset_sum_restore(a, s):
     # 和がちょうど s になる部分集合を、添字のリストで 1 つ返す。作れなければ None
     mask = (1 << (s + 1)) - 1

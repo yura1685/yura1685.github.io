@@ -11,7 +11,6 @@ def prefix_function(s):
         pi[i] = k
     return pi
 
-
 def find_all(t, p):
     # t の中で p が現れる位置（先頭の添字）のリスト。p は空でないこと
     pi = prefix_function(p)
@@ -27,11 +26,9 @@ def find_all(t, p):
             k = pi[k - 1]
     return res
 
-
 def min_period(s):
     # すべての i で s[i] == s[i + p] となる最小の p
     return len(s) - prefix_function(s)[-1] if s else 0
-
 
 def z_algorithm(s):
     # z[i] = s と s[i:] の最長共通接頭辞の長さ（z[0] = len(s)）

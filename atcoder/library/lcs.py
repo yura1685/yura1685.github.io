@@ -14,7 +14,6 @@ def lcs_length(s, t):
         dp = ndp
     return dp[m]
 
-
 def edit_distance(s, t):
     # 挿入・削除・置換をそれぞれコスト 1 として、s を t に変える最小コスト
     m = len(t)
@@ -30,7 +29,6 @@ def edit_distance(s, t):
             ndp[j + 1] = y if y < x else x
         dp = ndp
     return dp[m]
-
 
 def edit_distance_bit(s, t):
     # edit_distance と同じ値を、t の位置を 1 ビットずつに対応させたビット並列（Myers の方法）で求める
@@ -58,7 +56,6 @@ def edit_distance_bit(s, t):
         pv = mh | (~(xv | ph) & mask)
         mv = ph & xv
     return score
-
 
 def lcs(s, t):
     # s と t の最長共通部分列を 1 つ返す（s が文字列なら文字列、そうでなければリスト）

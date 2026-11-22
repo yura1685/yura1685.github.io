@@ -2,7 +2,6 @@ from heapq import heappush, heappop
 
 INF = 1 << 60
 
-
 def dijkstra(g, s):
     # g[v] = [(to, cost), ...]、cost は非負整数
     n = len(g)
@@ -22,7 +21,6 @@ def dijkstra(g, s):
                 prev[to] = v
                 heappush(hq, nd * n + to)
     return dist, prev
-
 
 def restore_path(prev, t):
     path = []

@@ -1,6 +1,5 @@
 INF = 1 << 60
 
-
 def bellman_ford(n, edges, s):
     # edges = [(u, v, w), ...]（有向）
     # 到達できない頂点は INF、負閉路を通っていくらでも小さくできる頂点は -INF

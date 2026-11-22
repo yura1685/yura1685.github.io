@@ -12,7 +12,6 @@ def next_permutation(a):
     a[i + 1:] = a[i + 1:][::-1]
     return True
 
-
 def multiset_permutations(a, r=None):
     # a から r 個（省略すると全部）選んで並べたものを、同じ並びは 1 回だけ、辞書順に列挙する
     a = sorted(a)

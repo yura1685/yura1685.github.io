@@ -24,7 +24,6 @@ def cycle_directed(g):
                 stack.pop()
     return None
 
-
 def cycle_undirected(n, edges):
     # 無向グラフ edges = [(u, v), ...] の閉路を 1 つ、頂点のリストで返す。閉路がなければ None
     # 多重辺は長さ 2 の閉路、自己ループは長さ 1 の閉路とみなす

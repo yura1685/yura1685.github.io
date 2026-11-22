@@ -1,6 +1,5 @@
 INF = 1 << 60
 
-
 def warshall_floyd(n, edges):
     # edges = [(u, v, w), ...]（有向）
     d = [[INF] * n for _ in range(n)]
@@ -20,7 +19,6 @@ def warshall_floyd(n, edges):
                 if dk[j] != INF and dik + dk[j] < di[j]:
                     di[j] = dik + dk[j]
     return d
-
 
 def add_edge(d, u, v, w):
     # warshall_floyd の結果 d に有向辺 (u, v, w) を加えたときの更新（負閉路ができないとき）

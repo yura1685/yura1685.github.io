@@ -2,7 +2,6 @@ def cross(a, b, c):
     # ベクトル ab と ac の外積
     return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
 
-
 def convex_hull(ps):
     # 凸包の頂点を反時計回りに返す（辺上の点は含めない）
     ps = sorted(set(ps))
@@ -18,7 +17,6 @@ def convex_hull(ps):
         return res
 
     return chain(ps)[:-1] + chain(reversed(ps))[:-1]
-
 
 def farthest_pair(ps):
     # 最も遠い 2 点の (距離の 2 乗, 点, 点)

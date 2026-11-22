@@ -1,6 +1,5 @@
 from sortedcontainers import SortedList
 
-
 class RangeSet:
     # 整数の集合を、互いに重ならず隣り合わない半開区間 [l, r) の集まりとして持つ
     def __init__(self):

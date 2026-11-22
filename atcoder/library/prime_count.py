@@ -1,6 +1,5 @@
 from math import isqrt
 
-
 def prime_count(n):
     # n 以下の素数の個数 π(n)（Lucy DP）
     if n < 2:
@@ -18,7 +17,6 @@ def prime_count(n):
         large[b + 1:m + 1] = [large[i] - small[n // (i * p)] + c for i in range(b + 1, m + 1)]
         small[p * p:] = [small[v] - small[v // p] + c for v in range(p * p, r + 1)]
     return large[1]
-
 
 def prime_sum(n):
     # n 以下の素数の和（prime_count と同じ DP で、個数の代わりに和を持つ）

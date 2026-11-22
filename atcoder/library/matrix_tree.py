@@ -24,7 +24,6 @@ def _det_mod(M, mod):
                     Mi[k] = (Mi[k] - f * row[k]) % mod
     return det % mod
 
-
 def count_spanning_trees(n, edges, mod):
     # 頂点 0..n-1（n >= 1）、無向辺 edges = [(u, v), ...] のグラフの全域木の個数 mod（mod は素数）
     # 自己ループは無視し、多重辺は別々の辺として数える
@@ -37,7 +36,6 @@ def count_spanning_trees(n, edges, mod):
             L[v][u] -= 1
     # ラプラシアン行列から頂点 0 の行と列を除いた行列の行列式
     return _det_mod([[x % mod for x in L[i][1:]] for i in range(1, n)], mod)
-
 
 def count_arborescences(n, edges, root, mod):
     # 頂点 0..n-1、有向辺 edges = [(u, v), ...]（u から v への辺）のグラフで、

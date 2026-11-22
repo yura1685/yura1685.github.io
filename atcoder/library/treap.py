@@ -1,6 +1,5 @@
 from random import random
 
-
 class Treap:
     # 列を持つ平衡二分木（位置で分割・結合する）。区間の op での積と区間反転ができる
     def __init__(self, op, e, a=()):

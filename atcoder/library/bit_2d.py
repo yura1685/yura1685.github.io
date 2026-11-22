@@ -67,7 +67,6 @@ class BIT2D:
     def set(self, x, y, v):
         self.add(x, y, v - self.get(x, y))
 
-
 class RangeBIT2D:
     # 長方形加算・長方形の和
     def __init__(self, h, w):
@@ -133,7 +132,6 @@ class RangeBIT2D:
 
     def get(self, x, y):
         return self.sum(x, y, x + 1, y + 1)
-
 
 class DualBIT2D:
     # 長方形加算・一点取得

@@ -11,7 +11,6 @@ def manhattan_farthest(ps):
             best = (a[i] - a[j], i, j)
     return best
 
-
 def manhattan_mst(ps):
     # マンハッタン距離の最小全域木に使われうる辺 (w, i, j) のリスト（4N 本以下）
     n = len(ps)

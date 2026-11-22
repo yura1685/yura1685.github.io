@@ -16,10 +16,8 @@ order: 6
 ```python
 INF = float("inf")
 
-
 def f(k, i):
     return a[i] + b[k - i] if 0 <= k - i < len(b) else INF
-
 
 idx = monotone_minima(len(a) + len(b) - 1, len(a), f)
 c = [f(k, i) for k, i in enumerate(idx)]

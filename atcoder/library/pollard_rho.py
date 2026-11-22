@@ -1,7 +1,6 @@
 from math import gcd
 from random import randrange
 
-
 def is_prime(n):
     # 決定的 Miller–Rabin（n < 2^64 で正しい）
     if n < 2:
@@ -31,7 +30,6 @@ def is_prime(n):
         else:
             return False
     return True
-
 
 def pollard_rho(n):
     # 合成数 n の、1 と n 以外の約数を 1 つ返す
@@ -63,7 +61,6 @@ def pollard_rho(n):
         if g != n:
             return g
 
-
 def factorize(n):
     # [(素因数, 指数), ...] を素因数の昇順で返す（n >= 1）
     cnt = {}
@@ -81,7 +78,6 @@ def factorize(n):
             st.append(d)
             st.append(m // d)
     return sorted(cnt.items())
-
 
 def divisors(n):
     # n の約数を昇順で返す（n >= 1）

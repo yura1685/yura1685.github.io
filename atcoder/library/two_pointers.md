@@ -18,20 +18,16 @@ order: 10
 ```python
 s = 0
 
-
 def can_add(r):
     return s + a[r] <= k
-
 
 def add(r):
     global s
     s += a[r]
 
-
 def remove(l):
     global s
     s -= a[l]
-
 
 res = two_pointers(n, can_add, add, remove)
 ans = sum(res[l] - l for l in range(n))
@@ -42,20 +38,16 @@ ans = sum(res[l] - l for l in range(n))
 ```python
 cnt = {}
 
-
 def can_add(r):
     return a[r] in cnt or len(cnt) < k
 
-
 def add(r):
     cnt[a[r]] = cnt.get(a[r], 0) + 1
-
 
 def remove(l):
     cnt[a[l]] -= 1
     if cnt[a[l]] == 0:
         del cnt[a[l]]
-
 
 res = two_pointers(n, can_add, add, remove)
 ans = max(res[l] - l for l in range(n))

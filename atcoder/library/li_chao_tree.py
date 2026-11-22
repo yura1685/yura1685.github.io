@@ -1,6 +1,5 @@
 from bisect import bisect_left
 
-
 class LiChaoTree:
     # 直線 y = ax + b を加え、ある x での最小値を求める（x として使う値はすべて前もって渡す）
     def __init__(self, xs):

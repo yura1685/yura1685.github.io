@@ -1,6 +1,5 @@
 from heapq import heapify, heappush, heappop
 
-
 def topological_sort(g):
     # 閉路があれば None
     n = len(g)
@@ -15,7 +14,6 @@ def topological_sort(g):
             if indeg[to] == 0:
                 order.append(to)
     return order if len(order) == n else None
-
 
 def topological_sort_lex(g):
     # 辞書順最小のトポロジカル順序。閉路があれば None
