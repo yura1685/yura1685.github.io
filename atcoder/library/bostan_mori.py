@@ -9,7 +9,6 @@ def _mul(f, g, mod):
                 res[i + j] = (res[i + j] + x * y) % mod
     return res
 
-
 def bostan_mori(P, Q, n, mod):
     # 形式的冪級数 P(x) / Q(x) の x^n の係数（Q[0] は mod で逆元を持つ）
     while n:
@@ -18,7 +17,6 @@ def bostan_mori(P, Q, n, mod):
         Q = _mul(Q, R, mod)[::2]
         n >>= 1
     return P[0] * pow(Q[0], -1, mod) % mod if P else 0
-
 
 def linear_recurrence(a, c, n, mod):
     # a[i] = c[0] a[i - 1] + c[1] a[i - 2] + ... + c[d - 1] a[i - d]（i >= d）を満たす数列の第 n 項
@@ -29,7 +27,6 @@ def linear_recurrence(a, c, n, mod):
     Q = [1] + [-x % mod for x in c]
     P = _mul(a[:d], Q, mod)[:d]
     return bostan_mori(P, Q, n, mod)
-
 
 def berlekamp_massey(a, mod):
     # 数列 a を満たす最短の線形漸化式の係数 c（a[i] = c[0] a[i - 1] + ... + c[d - 1] a[i - d]）。mod は素数

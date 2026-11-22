@@ -35,7 +35,6 @@ def euler_path_directed(n, edges, s=None):
         return None
     return vs[::-1], es[-2::-1]
 
-
 def euler_path_undirected(n, edges, s=None):
     # 無向グラフ版。返り値は euler_path_directed と同じ
     g = [[] for _ in range(n)]

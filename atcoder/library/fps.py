@@ -1,7 +1,6 @@
 MOD = 998244353
 _INV = [0, 1]  # _INV[i] = i の逆元（必要な分だけ伸ばす）
 
-
 def _rates():
     # NTT の回転因子の表（原始根 3、MOD - 1 = 2^23 * 119）
     es, ies = [0] * 30, [0] * 30
@@ -19,9 +18,7 @@ def _rates():
         inow = inow * es[i] % MOD
     return se, sie
 
-
 _SUM_E, _SUM_IE = _rates()
-
 
 def _butterfly(a):
     # NTT（長さは 2 べき。結果はビットを逆にした順に並ぶ）
@@ -39,7 +36,6 @@ def _butterfly(a):
                 a[i + p] = (l - r) % mod
             now = now * _SUM_E[(~s & (s + 1)).bit_length() - 1] % mod
 
-
 def _butterfly_inv(a):
     # _butterfly の逆変換（長さ倍されたまま）
     mod = MOD
@@ -55,7 +51,6 @@ def _butterfly_inv(a):
                 a[i] = (l + r) % mod
                 a[i + p] = (l - r) * inow % mod
             inow = inow * _SUM_IE[(~s & (s + 1)).bit_length() - 1] % mod
-
 
 def _convolution(a, b):
     # a と b の畳み込み（mod 998244353）。短い方が 40 以下なら素朴に掛ける
@@ -81,11 +76,9 @@ def _convolution(a, b):
     iz = pow(z, MOD - 2, MOD)
     return [a[i] * iz % MOD for i in range(n + m - 1)]
 
-
 def fps_diff(f):
     # 微分 f'
     return [f[i] * i % MOD for i in range(1, len(f))]
-
 
 def fps_integral(f):
     # 積分（定数項は 0）
@@ -93,7 +86,6 @@ def fps_integral(f):
         i = len(_INV)
         _INV.append(-(MOD // i) * _INV[MOD % i] % MOD)
     return [0] + [f[i] * _INV[i + 1] % MOD for i in range(len(f))]
-
 
 def fps_inv(f, n):
     # 1 / f の最初の n 項（f[0] は 0 でない）
@@ -108,14 +100,12 @@ def fps_inv(f, n):
         m = m2
     return g[:n]
 
-
 def fps_log(f, n):
     # log f の最初の n 項（f[0] = 1）
     if n <= 1:
         return [0] * n
     g = _convolution(fps_diff(f[:n]), fps_inv(f, n - 1))[:n - 1]
     return fps_integral(g + [0] * (n - 1 - len(g)))
-
 
 def fps_exp(f, n):
     # exp f の最初の n 項（f[0] = 0）
@@ -131,7 +121,6 @@ def fps_exp(f, n):
         g += h + [0] * (m2 - m - len(h))
         m = m2
     return g[:n]
-
 
 def fps_pow(f, k, n):
     # f^k の最初の n 項（k >= 0。k = 0 なら 1）
@@ -150,7 +139,6 @@ def fps_pow(f, k, n):
     g = fps_exp([x * (k % MOD) % MOD for x in g], m)
     ck = pow(c, k, MOD)
     return [0] * (d * k) + [x * ck % MOD for x in g]
-
 
 def fps_sqrt(f, n):
     # f[0] = 1 のとき、定数項が 1 の f^(1/2) の最初の n 項

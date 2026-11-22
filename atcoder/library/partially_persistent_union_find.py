@@ -1,6 +1,5 @@
 from bisect import bisect_right
 
-
 class PartiallyPersistentUnionFind:
     # unite を t 回呼んだ直後を時刻 t とする（初期状態は時刻 0）
     # union by size で経路圧縮をしないので、根でなくなった頂点の親はその後変わらない

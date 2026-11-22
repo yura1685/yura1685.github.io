@@ -5,7 +5,6 @@ def mat_mul(A, B, mod=998244353):
         C.append([sum(a * b for a, b in zip(row, col)) % mod for col in Bt])
     return C
 
-
 def mat_pow(A, k, mod=998244353):
     n = len(A)
     R = [[int(i == j) for j in range(n)] for i in range(n)]

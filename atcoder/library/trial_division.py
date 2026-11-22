@@ -8,7 +8,6 @@ def is_prime(n):
         i += 1
     return True
 
-
 def divisors(n):
     small = []
     large = []
@@ -20,7 +19,6 @@ def divisors(n):
                 large.append(n // i)
         i += 1
     return small + large[::-1]
-
 
 def factorize(n):
     # [(素因数, 指数), ...]

@@ -12,7 +12,6 @@ def subset_zeta(f, mod=0):
         b *= 2
     return f
 
-
 def subset_mobius(g, mod=0):
     # subset_zeta の逆変換
     g = [x % mod for x in g] if mod else list(g)
@@ -27,7 +26,6 @@ def subset_mobius(g, mod=0):
         b *= 2
     return g
 
-
 def superset_zeta(f, mod=0):
     # g[S] = (S を含む集合 T すべてについての f[T] の和)
     f = [x % mod for x in f] if mod else list(f)
@@ -41,7 +39,6 @@ def superset_zeta(f, mod=0):
             f = [x % mod for x in f]
         b *= 2
     return f
-
 
 def superset_mobius(g, mod=0):
     # superset_zeta の逆変換

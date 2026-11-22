@@ -1,6 +1,5 @@
 from heapq import heapify, heappush, heappop
 
-
 class ErasableHeap:
     def __init__(self, a=()):
         self.hq = list(a)

@@ -1,6 +1,5 @@
 from collections import deque
 
-
 def knapsack_01(items, W):
     # items = [(重さ, 価値), ...]（各品物 1 個まで）。dp[j] = 重さの合計 j 以下での価値の最大値
     dp = [0] * (W + 1)
@@ -10,7 +9,6 @@ def knapsack_01(items, W):
                 dp[j] = dp[j - w] + v
     return dp
 
-
 def knapsack_unbounded(items, W):
     # items = [(重さ, 価値), ...]（各品物いくつでも、重さは 1 以上）
     dp = [0] * (W + 1)
@@ -19,7 +17,6 @@ def knapsack_unbounded(items, W):
             if dp[j - w] + v > dp[j]:
                 dp[j] = dp[j - w] + v
     return dp
-
 
 def knapsack_bounded(items, W):
     # items = [(重さ, 価値, 個数), ...]（各品物を個数まで、重さは 1 以上）
@@ -41,7 +38,6 @@ def knapsack_bounded(items, W):
                 t += 1
         dp = ndp
     return dp
-
 
 def knapsack_01_by_value(items, W):
     # items = [(重さ, 価値), ...]（各品物 1 個まで）。重さが大きく価値が小さいとき用

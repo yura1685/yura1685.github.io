@@ -28,12 +28,10 @@ def _eliminate(M, m, p):
             break
     return cols
 
-
 def rank_mod(A, p):
     # 行列 A の mod p でのランク
     M = [[x % p for x in row] for row in A]
     return len(_eliminate(M, len(A[0]), p))
-
 
 def det_mod(A, p):
     # 正方行列 A の行列式 mod p
@@ -62,7 +60,6 @@ def det_mod(A, p):
                     Mi[k] = (Mi[k] - f * row[k]) % p
     return det % p
 
-
 def inverse_mod(A, p):
     # 正方行列 A の mod p での逆行列。正則でなければ None
     n = len(A)
@@ -70,7 +67,6 @@ def inverse_mod(A, p):
     if len(_eliminate(M, n, p)) < n:
         return None
     return [row[n:] for row in M]
-
 
 def solve_mod(A, b, p):
     # A x ≡ b (mod p) の解を 1 つと、A x ≡ 0 の解全体の基底を (x, basis) で返す。解がなければ None

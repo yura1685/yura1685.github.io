@@ -1,6 +1,5 @@
 from bisect import bisect_left
 
-
 class MergeSortTree:
     # 値の更新のない列 a に対する、区間の中の値についてのクエリ
     def __init__(self, a):

@@ -1,6 +1,5 @@
 from bisect import bisect_left, bisect_right
 
-
 def lis_indices(a, strict=True):
     # 最長増加部分列を 1 つ、添字のリストで返す（strict=False なら広義単調増加）
     bis = bisect_left if strict else bisect_right
@@ -24,11 +23,9 @@ def lis_indices(a, strict=True):
         i = prev[i]
     return res[::-1]
 
-
 def lis(a, strict=True):
     # 最長増加部分列を 1 つ、値のリストで返す
     return [a[i] for i in lis_indices(a, strict)]
-
 
 def lis_lengths(a, strict=True):
     # res[i] = a[i] で終わる最長増加部分列の長さ

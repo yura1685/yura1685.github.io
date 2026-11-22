@@ -1,6 +1,5 @@
 from bisect import bisect_left
 
-
 class SegTree2D:
     # 前もって与えた点 (x, y) に値を置き、長方形の中の点の値を op でまとめる（op は結合的かつ可換）
     def __init__(self, points, op, e, vals=None):

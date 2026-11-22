@@ -1,6 +1,5 @@
 from math import gcd, isqrt
 
-
 def discrete_log(a, b, m):
     # a^x ≡ b (mod m) となる最小の x >= 0（なければ None）。m は素数でなくてもよい
     a %= m

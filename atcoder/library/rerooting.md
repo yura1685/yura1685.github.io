@@ -23,13 +23,11 @@ order: 4
 def merge(a, b):
     return (a[0] + b[0], a[1] + b[1])
 
-
 def add_root(x, v, p):
     # x = (子の側の頂点数, v からその頂点たちへの距離の和)
     if p == -1:
         return x
     return (x[0] + 1, x[1] + x[0] + 1)
-
 
 res = rerooting(g, merge, (0, 0), add_root)
 # res[v][1] が v から他のすべての頂点への距離の和

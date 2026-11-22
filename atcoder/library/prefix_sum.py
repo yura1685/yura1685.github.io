@@ -8,7 +8,6 @@ class PrefixSum:
         # l <= i < r の a[i] の和
         return self.s[r] - self.s[l]
 
-
 class PrefixSum2D:
     def __init__(self, a):
         h = len(a)
@@ -23,7 +22,6 @@ class PrefixSum2D:
         # x1 <= i < x2, y1 <= j < y2 の a[i][j] の和
         s = self.s
         return s[x2][y2] - s[x1][y2] - s[x2][y1] + s[x1][y1]
-
 
 class PrefixSum3D:
     def __init__(self, a):

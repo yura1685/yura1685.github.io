@@ -16,7 +16,6 @@ $g(i)$ を「ちょうど $i$ 個選ぶときのコストの最小値」とし�
 ```python
 INF = 1 << 60
 
-
 def solve(lam):
     # 1 個選ぶごとにコスト -a[i] + lam。状態は (コスト, -個数)
     no, yes = (0, 0), (INF, 0)  # 直前を選んでいない・選んだ
@@ -24,7 +23,6 @@ def solve(lam):
         no, yes = min(no, yes), (no[0] - x + lam, no[1] - 1)
     v, c = min(no, yes)
     return v, -c
-
 
 D = 2 * sum(abs(x) for x in a) + 1
 print(-alien_dp(solve, K, -D - 1, D + 1))

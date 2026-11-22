@@ -3,7 +3,6 @@ import random
 MOD = (1 << 61) - 1
 BASE = random.randrange(1 << 20, MOD - 1)
 
-
 class RollingHash:
     def __init__(self, s):
         if type(s) is str:
@@ -29,7 +28,6 @@ class RollingHash:
             else:
                 ng = m
         return ok
-
 
 def connect(h1, h2, len2):
     # 長さ len2 の文字列のハッシュ h2 を、ハッシュ h1 の文字列の後ろにつなげる

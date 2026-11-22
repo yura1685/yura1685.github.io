@@ -24,7 +24,6 @@ def tree_diameter_weighted(g):
         path.append(par[path[-1]])
     return dist[v], path
 
-
 def tree_diameter(g):
     # g[v] = [to, ...]（重みなし）
     return tree_diameter_weighted([[(to, 1) for to in gv] for gv in g])

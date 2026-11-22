@@ -20,7 +20,6 @@ def kruskal(n, edges):
             used.append(i)
     return cost, used
 
-
 def prim(n, cost):
     # 完全グラフ（u と v を結ぶ辺の重みが cost(u, v)）の最小全域木
     # (重みの和, par) を返す。par[v] は木で v とつながる頂点（par[0] = -1）

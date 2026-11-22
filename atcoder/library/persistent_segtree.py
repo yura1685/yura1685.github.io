@@ -83,7 +83,6 @@ class PersistentSegTree:
                 v = lch[v]
         return op(op(d[u], sl), op(sr, d[v]))
 
-
 class RangeKth:
     # a[l:r] の小さい方から k 番目の値を求める
     # 版 i が a[:i] の各値（座標圧縮したもの）の個数を持つ永続セグ木を使う

@@ -1,6 +1,5 @@
 from heapq import heappush, heappop
 
-
 class SlopeTrick:
     # 区分線形な凸関数 f(x) を持つ（最初は f(x) = 0）
     INF = 1 << 62

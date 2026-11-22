@@ -21,7 +21,6 @@ def xor_convolution(f, g, mod=0):
         return [x * inv % mod for x in h]
     return [x // n for x in h]
 
-
 def and_convolution(f, g, mod=0):
     # h[k] = (i and j = k となるすべての組についての f[i] g[j] の和)。長さは同じ 2 べき
     n = len(f)
@@ -41,7 +40,6 @@ def and_convolution(f, g, mod=0):
                 h[j] -= h[j + b]
         b *= 2
     return [x % mod for x in h] if mod else h
-
 
 def or_convolution(f, g, mod=0):
     # h[k] = (i or j = k となるすべての組についての f[i] g[j] の和)。長さは同じ 2 べき

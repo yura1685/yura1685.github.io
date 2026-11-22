@@ -1,6 +1,5 @@
 from collections import deque
 
-
 def sliding_window_min(a, k):
     # res[i] = min(a[i:i + k])（0 <= i <= len(a) - k）
     dq = deque()  # 値が昇順になるように添字を持つ
@@ -15,7 +14,6 @@ def sliding_window_min(a, k):
             res.append(a[dq[0]])
     return res
 
-
 def sliding_window_max(a, k):
     # res[i] = max(a[i:i + k])（0 <= i <= len(a) - k）
     dq = deque()  # 値が降順になるように添字を持つ
@@ -29,7 +27,6 @@ def sliding_window_max(a, k):
         if i >= k - 1:
             res.append(a[dq[0]])
     return res
-
 
 def prev_smaller(a, strict=True):
     # res[i] = a[j] < a[i] となる最大の j < i（なければ -1）。strict=False なら a[j] <= a[i]
@@ -46,7 +43,6 @@ def prev_smaller(a, strict=True):
             res[i] = st[-1]
         st.append(i)
     return res
-
 
 def next_smaller(a, strict=True):
     # res[i] = a[j] < a[i] となる最小の j > i（なければ len(a)）。strict=False なら a[j] <= a[i]

@@ -14,14 +14,12 @@ def _merge(a, b):
     res += b[j:]
     return res
 
-
 def all_subset_sums(a):
     # a の部分集合 2^N 個それぞれの和を昇順に並べたリスト（同じ値も重ねて含む）
     res = [0]
     for x in a:
         res = _merge(res, [y + x for y in res])  # x を足しても昇順のまま
     return res
-
 
 def count_subset_sum_le(a, s):
     # 和が s 以下になる部分集合（空集合も含む）の個数
@@ -35,7 +33,6 @@ def count_subset_sum_le(a, s):
             j -= 1
         res += j
     return res
-
 
 def knapsack_mitm(items, W):
     # items = [(重さ, 価値), ...]（各品物 1 個まで、重さと W は 0 以上）

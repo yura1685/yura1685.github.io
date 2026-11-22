@@ -2,7 +2,6 @@ from random import randrange
 
 MOD = (1 << 61) - 1
 
-
 class ZobristHash:
     def __init__(self):
         self.table = {}

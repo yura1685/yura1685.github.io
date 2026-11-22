@@ -2,7 +2,6 @@ def cross(a, b, c):
     # ベクトル ab と ac の外積
     return (b[0] - a[0]) * (c[1] - a[1]) - (b[1] - a[1]) * (c[0] - a[0])
 
-
 def point_in_polygon(ps, p):
     # 多角形 ps（頂点を順に並べたもの）に対して、点 p が内部なら 2、辺上なら 1、外部なら 0
     x, y = p
@@ -16,7 +15,6 @@ def point_in_polygon(ps, p):
         if (a[1] > y) != (b[1] > y) and (c > 0) == (b[1] > a[1]):
             inside = not inside
     return 2 if inside else 0
-
 
 def point_in_convex(ps, p):
     # 反時計回りに頂点を並べた凸多角形 ps（3 頂点以上、どの 3 頂点も一直線上にない）に対して、内部なら 2、辺上なら 1、外部なら 0

@@ -1,6 +1,5 @@
 from bisect import bisect_left
 
-
 class StaticTopTree:
     # 根付き木の DP を、頂点のデータを変えるたびに O(log N) で計算し直す
     # heavy path を compress で、light な子の部分木を rake でまとめた、深さ O(log N) の二分木を作る

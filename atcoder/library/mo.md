@@ -21,20 +21,17 @@ order: 6
 cnt = [0] * (max(a) + 1)
 kinds = 0
 
-
 def add(i):
     global kinds
     cnt[a[i]] += 1
     if cnt[a[i]] == 1:
         kinds += 1
 
-
 def remove(i):
     global kinds
     cnt[a[i]] -= 1
     if cnt[a[i]] == 0:
         kinds -= 1
-
 
 ans = mo(n, queries, add, remove, lambda k: kinds)
 ```
