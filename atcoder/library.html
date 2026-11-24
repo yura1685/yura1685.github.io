@@ -22,7 +22,10 @@ scripts:
         </div>
     </section>
 
-    {% assign groups = site.pages | where: "library", true | group_by: "category" %}
+    {% assign all_groups = site.pages | where: "library", true | group_by: "category" %}
+    {% assign top_groups = all_groups | where: "name", "テンプレート" %}
+    {% assign other_groups = all_groups | where_exp: "g", "g.name != 'テンプレート'" %}
+    {% assign groups = top_groups | concat: other_groups %}
     {% for group in groups %}
     <section>
         {% assign cat = group.name | default: "その他" %}
