@@ -1,7 +1,7 @@
 ---
 title: Treap
 category: データ構造
-description: 列を好きな位置で分割・結合できる平衡二分木。挿入・削除・区間の積・区間反転を $O(\log N)$ で行う
+description: 分割・結合・挿入・削除・区間の積・区間反転を $O(\log N)$ で行う平衡二分木
 order: 12
 ---
 

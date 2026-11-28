@@ -1,7 +1,7 @@
 ---
 title: mod 平方根
 category: 整数論
-description: 素数 $p$ を法として $x^2 \equiv a \pmod{p}$ となる $x$ を、Tonelli–Shanks のアルゴリズムで $O(\log^2 p)$ で求める
+description: $x^2 \equiv a \pmod{p}$ となる $x$ を Tonelli–Shanks で求める
 order: 13
 ---
 

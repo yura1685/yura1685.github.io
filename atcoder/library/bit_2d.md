@@ -1,7 +1,7 @@
 ---
 title: 2 次元 BIT
 category: データ構造
-description: $H \times W$ のマス目で、1 点加算・長方形の和、長方形加算・長方形の和、長方形加算・1 点取得を $O(\log H \log W)$ で行う
+description: 長方形の加算・和を $O(\log H \log W)$ で行う 2 次元 BIT
 order: 15
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: ダブリング
 category: 基礎
-description: 各頂点の $1$ 回先が決まっているときに、 $K$ 回先の頂点や、通った重みの和を $O(\log K)$ で求める
+description: $K$ 回先の頂点や、通った重みの和を $O(\log K)$ で求める
 order: 3
 ---
 

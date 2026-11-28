@@ -1,7 +1,7 @@
 ---
 title: 最小全域木（Kruskal・Prim）
 category: グラフ
-description: 重みの小さい辺から使う Kruskal 法と、密なグラフ向けの $O(N^2)$ の Prim 法で最小全域木を求める
+description: Kruskal 法と、密なグラフ向けの $O(N^2)$ の Prim 法で最小全域木を求める
 order: 9
 ---
 

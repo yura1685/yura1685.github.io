@@ -1,7 +1,7 @@
 ---
 title: 離散対数
 category: 整数論
-description: $a^x \equiv b \pmod{m}$ となる最小の $x$ を、Baby-step Giant-step で $O(\sqrt{m})$ で求める
+description: $a^x \equiv b \pmod{m}$ となる最小の $x$ を $O(\sqrt{m})$ で求める
 order: 9
 ---
 

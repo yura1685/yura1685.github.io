@@ -1,7 +1,7 @@
 ---
 title: オイラーツアー
 category: 木
-description: 木を DFS の行きがけ順に並べて、部分木を列の区間に対応させる
+description: 木を DFS の行きがけ順に並べ、部分木を列の区間に対応させる
 order: 3
 ---
 

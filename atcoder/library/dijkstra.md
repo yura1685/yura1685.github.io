@@ -1,7 +1,7 @@
 ---
 title: Dijkstra
 category: グラフ
-description: 非負整数の重みを持つグラフの単一始点最短路（経路復元付き）
+description: 非負の重みのグラフの単一始点最短路（経路復元付き）
 order: 1
 ---
 

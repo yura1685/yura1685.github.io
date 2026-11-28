@@ -1,7 +1,7 @@
 ---
 title: Aho–Corasick
 category: 文字列
-description: 複数のパターン文字列を Trie にまとめ、テキストの中に各パターンが何回現れるかを $O(\lvert T \rvert + \sum \lvert P \rvert)$ で数える
+description: 複数のパターン文字列の出現回数を $O(\lvert T \rvert + \sum \lvert P \rvert)$ で数える
 order: 5
 ---
 

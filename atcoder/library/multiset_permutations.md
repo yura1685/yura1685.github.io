@@ -1,7 +1,7 @@
 ---
 title: 同じものを含む順列の列挙
 category: 基礎
-description: 同じ値を含む列の並べ替えを、同じ並びを出さずに辞書順に列挙する（itertools.permutations の重複なし版）
+description: 同じ値を含む列の並べ替えを、重複なく辞書順に列挙する
 order: 8
 ---
 

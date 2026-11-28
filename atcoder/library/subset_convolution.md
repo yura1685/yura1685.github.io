@@ -1,7 +1,7 @@
 ---
 title: Subset Convolution
 category: 数学
-description: 集合を添字とする長さ $2^N$ の 2 つの列について、 $h(S) = \sum_{T \subseteq S} f(T) g(S \setminus T)$ をすべての $S$ について $O(N^2 2^N)$ で求める
+description: $h(S) = \sum_{T \subseteq S} f(T) g(S \setminus T)$ を $O(N^2 2^N)$ で求める
 order: 9
 ---
 

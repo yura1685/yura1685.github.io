@@ -1,7 +1,7 @@
 ---
 title: 線形漸化式（Bostan–Mori・Berlekamp–Massey）
 category: 数学
-description: $d$ 項間の線形漸化式の第 $N$ 項を $O(d^2 \log N)$ で求め、数列の最初の $2d$ 項から漸化式そのものを $O(d^2)$ で求める
+description: 線形漸化式の第 $N$ 項（Bostan–Mori）と、漸化式の復元（Berlekamp–Massey）
 order: 7
 ---
 

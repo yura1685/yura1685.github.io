@@ -1,7 +1,7 @@
 ---
 title: Li Chao Tree
 category: データ構造
-description: 直線 $y = ax + b$ の追加と、ある $x$ での最小値を $O(\log N)$ で求める（Convex Hull Trick）
+description: 直線の追加と、ある $x$ での最小値を $O(\log N)$ で求める
 order: 8
 ---
 

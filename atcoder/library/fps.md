@@ -1,7 +1,7 @@
 ---
 title: 形式的冪級数（FPS）
 category: 数学
-description: mod $998244353$ の形式的冪級数 $f$ について、 $1 / f$・ $\log f$・ $\exp f$・ $f^k$ の最初の $N$ 項をニュートン法で $O(N \log N)$ で求める
+description: mod $998244353$ の FPS の $1 / f$・ $\log f$・ $\exp f$・ $f^k$ を $O(N \log N)$ で求める
 order: 8
 ---
 

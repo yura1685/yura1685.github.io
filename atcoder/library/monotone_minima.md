@@ -1,7 +1,7 @@
 ---
 title: Monotone Minima
 category: DP
-description: 各行の最小値の位置が下の行ほど右にある行列について、すべての行の最小値の位置を $O((N + M) \log N)$ 回の評価で求める
+description: 最小値の位置が単調な行列で、各行の最小値の位置を $O((N + M) \log N)$ 回の評価で求める
 order: 6
 ---
 

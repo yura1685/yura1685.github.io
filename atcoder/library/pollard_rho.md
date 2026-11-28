@@ -1,7 +1,7 @@
 ---
 title: Pollard's rho 素因数分解
 category: 整数論
-description: $10^{18}$ 程度の整数 $n$ を、Pollard の rho 法で期待 $O(n^{1/4})$ 回ほどの掛け算で素因数分解し、約数を列挙する
+description: $10^{18}$ 程度の整数の素因数分解と約数の列挙
 order: 8
 ---
 

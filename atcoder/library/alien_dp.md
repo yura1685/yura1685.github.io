@@ -1,7 +1,7 @@
 ---
 title: Alien DP
 category: DP
-description: ちょうど $K$ 個選ぶときの最小値 $g(K)$ を、1 個選ぶごとにペナルティ $\lambda$ を足した問題を $\lambda$ について二分探索して解くことで求める
+description: ちょうど $K$ 個選ぶときの最小値を、ペナルティ $\lambda$ の二分探索で求める
 order: 8
 ---
 

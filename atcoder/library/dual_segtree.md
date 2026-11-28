@@ -1,7 +1,7 @@
 ---
 title: 双対セグ木
 category: データ構造
-description: 区間に作用を一括で適用し、1 点の値を求めるセグ木。各操作 $O(\log N)$
+description: 区間への作用と 1 点の取得を $O(\log N)$ で行うセグ木
 order: 14
 ---
 

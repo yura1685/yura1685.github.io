@@ -1,7 +1,7 @@
 ---
 title: 部分和（bitset）
 category: DP
-description: Python の整数をビット列として使い、いくつかを選んだ和として作れる値を高速に求める（復元付き）
+description: Python の整数を bitset として、作れる部分和を求める（復元付き）
 order: 4
 ---
 

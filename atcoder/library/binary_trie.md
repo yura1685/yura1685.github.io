@@ -1,7 +1,7 @@
 ---
 title: Binary Trie
 category: データ構造
-description: $2^B$ 未満の整数を上の桁から Trie に入れ、XOR した値の最小値・最大値や $k$ 番目に小さい値を $O(B)$ で求める
+description: 整数を 2 進の Trie で持ち、XOR の最小値・最大値や $k$ 番目を $O(B)$ で求める
 order: 6
 ---
 

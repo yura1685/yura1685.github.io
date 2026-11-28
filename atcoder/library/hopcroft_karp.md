@@ -1,7 +1,7 @@
 ---
 title: 二部マッチング（Hopcroft–Karp）
 category: グラフ
-description: 二部グラフの最大マッチングを、Hopcroft–Karp 法で $O(M \sqrt{N})$ で求める
+description: 二部グラフの最大マッチングを $O(M \sqrt{N})$ で求める
 order: 13
 ---
 

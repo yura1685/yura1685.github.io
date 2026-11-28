@@ -1,7 +1,7 @@
 ---
 title: bit DP（巡回セールスマン）
 category: DP
-description: 訪れた頂点の集合をビットで持つ DP で、全頂点を回る最小コストを求める
+description: 訪れた頂点の集合を持つ bit DP で、巡回セールスマン問題を解く
 order: 2
 ---
 

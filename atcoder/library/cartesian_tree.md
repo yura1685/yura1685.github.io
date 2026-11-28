@@ -1,7 +1,7 @@
 ---
 title: Cartesian Tree
 category: 木
-description: 列の最小値を根とし、その左側と右側からそれぞれ左右の部分木を作る二分木を、スタックを使って $O(N)$ で求める
+description: 列の Cartesian Tree をスタックで $O(N)$ で作る
 order: 11
 ---
 

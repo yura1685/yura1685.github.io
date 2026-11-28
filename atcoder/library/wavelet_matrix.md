@@ -1,7 +1,7 @@
 ---
 title: Wavelet Matrix
 category: データ構造
-description: 値の更新がない整数列について、区間で $k$ 番目に小さい値や、ある範囲にある値の個数・和を $O(\log A)$ で求める
+description: 静的な列で、区間の $k$ 番目の値や範囲内の値の個数・和を $O(\log A)$ で求める
 order: 9
 ---
 

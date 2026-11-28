@@ -1,7 +1,7 @@
 ---
 title: オイラーの φ 関数
 category: 整数論
-description: $1$ 以上 $n$ 以下で $n$ と互いに素な整数の個数 $\varphi(n)$ を、1 つなら $O(\sqrt{n})$、表なら $O(n \log \log n)$ で求める
+description: $\varphi(n)$ を 1 つなら $O(\sqrt{n})$ 、表なら $O(n \log \log n)$ で求める
 order: 5
 ---
 

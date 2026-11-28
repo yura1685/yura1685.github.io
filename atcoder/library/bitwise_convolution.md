@@ -1,7 +1,7 @@
 ---
 title: XOR・AND・OR 畳み込み
 category: 数学
-description: 長さ $2^N$ の 2 つの列について、添字の XOR・AND・OR が $k$ になる組の積の和を $O(N 2^N)$ で求める
+description: 長さ $2^N$ の列の XOR・AND・OR 畳み込みを $O(N 2^N)$ で求める
 order: 5
 ---
 

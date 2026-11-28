@@ -1,7 +1,7 @@
 ---
 title: Functional Graph
 category: グラフ
-description: 各頂点から辺が 1 本だけ出ているグラフで、閉路と、各頂点から閉路までの距離を求める
+description: 各頂点から辺が 1 本出るグラフの閉路と、閉路までの距離を求める
 order: 12
 ---
 

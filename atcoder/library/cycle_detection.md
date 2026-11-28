@@ -1,7 +1,7 @@
 ---
 title: 閉路検出
 category: グラフ
-description: 有向グラフ・無向グラフの閉路を DFS で 1 つ見つけ、閉路上の頂点を順に返す
+description: 有向・無向グラフの閉路を DFS で 1 つ見つける
 order: 10
 ---
 

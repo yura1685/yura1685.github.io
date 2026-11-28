@@ -27,7 +27,7 @@ scripts:
     {% assign other_groups = all_groups | where_exp: "g", "g.name != 'テンプレート'" %}
     {% assign groups = top_groups | concat: other_groups %}
     {% for group in groups %}
-    <section>
+    <section class="library-section">
         {% assign cat = group.name | default: "その他" %}
         <h2 class="section-title library-category" id="{{ cat }}">{{ cat }}</h2>
         <div class="recent-updates-list">

@@ -1,7 +1,7 @@
 ---
 title: Lagrange 補間
 category: 数学
-description: $d + 1$ 点を通る $d$ 次以下の多項式 $f$ について、係数を求めずに $f(x)$ を求める。点が $x = 0, 1, \ldots, d$ なら $O(d)$
+description: $d + 1$ 点を通る $d$ 次以下の多項式の値 $f(x)$ を、係数を求めずに計算する
 order: 6
 ---
 

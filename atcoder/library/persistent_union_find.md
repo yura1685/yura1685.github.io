@@ -1,7 +1,7 @@
 ---
 title: 完全永続 Union-Find
 category: データ構造
-description: どの版からでも unite して新しい版を作れて、元の版もそのまま使える Union-Find。各操作 $O(\log^2 N)$
+description: どの版からでも unite して新しい版を作れる Union-Find。各操作 $O(\log^2 N)$
 order: 19
 ---
 

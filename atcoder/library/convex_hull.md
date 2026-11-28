@@ -1,7 +1,7 @@
 ---
 title: 凸包
 category: 幾何
-description: Andrew のアルゴリズム（Monotone Chain）で凸包を求める（外積・面積・格子点の数付き）
+description: Andrew のアルゴリズムで凸包を求める（面積・格子点の数付き）
 order: 1
 ---
 

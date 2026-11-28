@@ -1,7 +1,7 @@
 ---
 title: Lucas の定理
 category: 整数論
-description: 小さい素数 $p$ を法とする二項係数 ${}_n\mathrm{C}_r$ を、 $n$ と $r$ を $p$ 進数で表して求める
+description: 小さい素数 $p$ を法とする ${}_n\mathrm{C}_r$ を、 $p$ 進数で表して求める
 order: 10
 ---
 

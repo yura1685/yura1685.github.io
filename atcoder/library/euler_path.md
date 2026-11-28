@@ -1,7 +1,7 @@
 ---
 title: オイラー路・オイラー閉路
 category: グラフ
-description: すべての辺をちょうど 1 回ずつ通る路を、Hierholzer のアルゴリズムで $O(N + M)$ で求める（有向・無向）
+description: オイラー路・オイラー閉路を $O(N + M)$ で求める（有向・無向）
 order: 11
 ---
 

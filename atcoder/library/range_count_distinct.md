@@ -1,7 +1,7 @@
 ---
 title: 区間の種類数
 category: データ構造
-description: 列の区間に含まれる値の種類数を、クエリを右端の順に処理して BIT で $O((N + Q) \log N)$ で求める
+description: 区間に含まれる値の種類数を、オフラインで $O((N + Q) \log N)$ で求める
 order: 23
 ---
 

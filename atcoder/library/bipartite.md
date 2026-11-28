@@ -1,7 +1,7 @@
 ---
 title: 二部グラフ判定
 category: グラフ
-description: BFS で頂点を 2 色に塗り分け、二部グラフかどうかを判定する
+description: BFS で 2 色に塗り分け、二部グラフかを判定する
 order: 7
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 最近点対
 category: 幾何
-description: 分割統治で、最も近い 2 点を $O(N \log N)$ で求める
+description: 最近点対を分割統治で $O(N \log N)$ で求める
 order: 7
 ---
 

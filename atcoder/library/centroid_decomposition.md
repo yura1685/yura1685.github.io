@@ -1,7 +1,7 @@
 ---
 title: 重心分解
 category: 木
-description: 木の重心を取り除いて分割することを繰り返し、深さ $O(\log N)$ の重心分解の木を作る
+description: 深さ $O(\log N)$ の重心分解の木を作る
 order: 6
 ---
 

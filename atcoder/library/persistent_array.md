@@ -1,7 +1,7 @@
 ---
 title: 永続配列
 category: データ構造
-description: 書き換える前の版をすべて残す配列。どの版からでも 1 点を書き換えた新しい版を作れ、取得・更新とも $O(\log N)$
+description: 過去の版をすべて残す配列。取得・更新とも $O(\log N)$
 order: 16
 ---
 
