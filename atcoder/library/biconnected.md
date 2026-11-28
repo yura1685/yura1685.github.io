@@ -1,7 +1,7 @@
 ---
 title: 二重辺連結成分分解・Block-Cut Tree
 category: グラフ
-description: 無向グラフを、橋で切った成分（二重辺連結成分）や、関節点で切ったブロック（二重頂点連結成分）に分け、木として扱えるようにする
+description: 二重辺連結成分分解と、関節点で分ける Block-Cut Tree
 order: 15
 ---
 

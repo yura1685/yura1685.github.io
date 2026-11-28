@@ -1,7 +1,7 @@
 ---
 title: Auxiliary Tree
 category: 木
-description: 木の頂点の集合 $S$ について、 $S$ の頂点とそれらの LCA だけからなる、頂点数 $O(\lvert S \rvert)$ の木を作る
+description: 頂点集合 $S$ とその LCA だけからなる、頂点数 $O(\lvert S \rvert)$ の木を作る
 order: 8
 ---
 

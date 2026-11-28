@@ -1,7 +1,7 @@
 ---
 title: HL 分解
 category: 木
-description: 木を heavy path に分けて頂点を並べ、パスや部分木に関するクエリを $O(\log N)$ 個の区間のクエリにする
+description: パスや部分木のクエリを、 $O(\log N)$ 個の区間のクエリにする
 order: 5
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 遅延セグ木（ACL）の使い方
 category: データ構造
-description: ACL の LazySegTree に渡す関数を、区間加算・区間更新・区間アフィン変換と、区間の最小値・最大値・和などの組み合わせごとにまとめる
+description: ACL の LazySegTree に渡す関数を、よく使う組み合わせごとにまとめたもの
 order: 1
 ---
 

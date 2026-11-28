@@ -1,7 +1,7 @@
 ---
 title: lowlink（橋・関節点）
 category: グラフ
-description: 無向グラフの橋と関節点を DFS の lowlink で求める
+description: 無向グラフの橋と関節点を求める
 order: 5
 ---
 

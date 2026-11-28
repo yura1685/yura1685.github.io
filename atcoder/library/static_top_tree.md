@@ -1,7 +1,7 @@
 ---
 title: Static Top Tree
 category: 木
-description: 根付き木を heavy path と light な子に分けて深さ $O(\log N)$ の二分木にまとめ、頂点のデータを 1 つ変えるたびに木 DP を $O(\log N)$ で求め直す
+description: 頂点のデータを 1 つ変えるたびに、木 DP を $O(\log N)$ で求め直す
 order: 10
 ---
 

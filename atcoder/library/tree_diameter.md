@@ -1,7 +1,7 @@
 ---
 title: 木の直径
 category: 木
-description: 2 回の BFS で木の直径と、その両端を結ぶパスを求める
+description: 2 回の BFS で、木の直径とその両端を結ぶパスを求める
 order: 2
 ---
 

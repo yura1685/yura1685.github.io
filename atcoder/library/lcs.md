@@ -1,7 +1,7 @@
 ---
 title: LCS・編集距離
 category: DP
-description: 2 つの列の最長共通部分列（復元付き）と編集距離を $O(NM)$ の DP で求める。編集距離はビット並列で $O(NM / w)$ にもできる
+description: 最長共通部分列（復元付き）と編集距離を $O(NM)$ で求める
 order: 3
 ---
 

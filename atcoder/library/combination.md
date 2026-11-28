@@ -1,7 +1,7 @@
 ---
 title: 二項係数 (nCr)
 category: 整数論
-description: 階乗テーブルを前計算して ${}_n\mathrm{C}_r$・${}_n\mathrm{P}_r$・${}_n\mathrm{H}_r$ や、同じものを含む順列の個数を素数 $p$ を法として求める
+description: 素数を法とする ${}_n\mathrm{C}_r$・${}_n\mathrm{P}_r$・${}_n\mathrm{H}_r$ を階乗の前計算で求める
 order: 1
 ---
 

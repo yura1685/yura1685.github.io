@@ -1,7 +1,7 @@
 ---
 title: 最遠点対
 category: 幾何
-description: 凸包の上で回転キャリパー法を使い、最も遠い 2 点を $O(N \log N)$ で求める
+description: 凸包と回転キャリパー法で、最遠点対を $O(N \log N)$ で求める
 order: 6
 ---
 

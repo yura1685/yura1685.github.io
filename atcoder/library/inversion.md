@@ -1,7 +1,7 @@
 ---
 title: 転倒数
 category: 基礎
-description: $i < j$ かつ $a_i > a_j$ となる組の個数を、BIT を使って $O(N \log N)$ で求める
+description: 転倒数を BIT で $O(N \log N)$ で求める
 order: 4
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Bellman–Ford
 category: グラフ
-description: 負の辺があるグラフの単一始点最短路と、負閉路の影響を受ける頂点を求める
+description: 負の辺があるグラフの単一始点最短路と、負閉路の影響を受ける頂点
 order: 8
 ---
 

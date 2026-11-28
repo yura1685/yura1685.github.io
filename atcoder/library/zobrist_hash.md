@@ -1,7 +1,7 @@
 ---
 title: Zobrist ハッシュ
 category: 基礎
-description: 値ごとに乱数を割り当て、集合や多重集合が等しいかをハッシュで $O(1)$ で判定する
+description: 集合や多重集合が等しいかを、ハッシュで $O(1)$ で判定する
 order: 5
 ---
 

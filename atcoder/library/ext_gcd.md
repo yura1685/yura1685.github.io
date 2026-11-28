@@ -1,7 +1,7 @@
 ---
 title: 拡張ユークリッドの互除法・中国剰余定理
 category: 整数論
-description: $ax + by = \gcd(a, b)$ となる整数 $x, y$ や、 $m$ を法とする 1 次合同式の解、中国剰余定理で連立合同式の解を求める
+description: $ax + by = \gcd(a, b)$ の解、1 次合同式、中国剰余定理
 order: 4
 ---
 

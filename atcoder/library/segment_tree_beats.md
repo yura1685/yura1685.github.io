@@ -1,7 +1,7 @@
 ---
 title: Segment Tree Beats
 category: データ構造
-description: 区間 chmin・区間 chmax・区間加算と、区間の和・最大値・最小値を求めるセグ木。各操作ならし $O(\log^2 N)$
+description: 区間 chmin・chmax・加算と、区間の和・最大値・最小値を求めるセグ木
 order: 20
 ---
 

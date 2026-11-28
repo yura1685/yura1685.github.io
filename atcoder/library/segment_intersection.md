@@ -1,7 +1,7 @@
 ---
 title: 線分の交差判定
 category: 幾何
-description: 2 つの線分が交わるかを外積で判定し、2 直線の交点を求める
+description: 2 つの線分の交差判定と、2 直線の交点を求める
 order: 3
 ---
 

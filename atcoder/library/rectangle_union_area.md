@@ -1,7 +1,7 @@
 ---
 title: 長方形の和集合の面積
 category: 幾何
-description: 軸に平行な長方形の和集合の面積を、 $x$ 座標の順に走査しながら $y$ 座標のセグ木で $O(N \log N)$ で求める
+description: 軸に平行な長方形の和集合の面積を $O(N \log N)$ で求める
 order: 9
 ---
 

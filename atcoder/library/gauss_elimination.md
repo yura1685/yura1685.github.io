@@ -1,7 +1,7 @@
 ---
 title: ガウスの消去法（mod p）
 category: 数学
-description: 素数 $p$ を法とする行列を掃き出して、連立 1 次方程式の解・ランク・行列式・逆行列を求める
+description: mod $p$ の連立 1 次方程式の解・ランク・行列式・逆行列を求める
 order: 3
 ---
 

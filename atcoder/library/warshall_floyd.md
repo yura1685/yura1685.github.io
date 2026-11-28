@@ -1,7 +1,7 @@
 ---
 title: Warshall–Floyd
 category: グラフ
-description: 全点対間の最短距離を $O(N^3)$ で求め、辺を 1 本加えたときの更新を $O(N^2)$ で行う（負の辺・負閉路の検出に対応）
+description: 全点対間の最短距離を $O(N^3)$ で求める（辺の追加は $O(N^2)$ ）
 order: 4
 ---
 

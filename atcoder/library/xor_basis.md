@@ -1,7 +1,7 @@
 ---
 title: XOR 基底
 category: 数学
-description: 整数の集合から XOR で作れる値を管理し、作れるかの判定や最小値・最大値を求める
+description: XOR で作れる値の判定や、最小値・最大値を求める
 order: 2
 ---
 

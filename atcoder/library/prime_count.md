@@ -1,7 +1,7 @@
 ---
 title: 素数の個数（Lucy DP）
 category: 整数論
-description: 整数 $n$ 以下の素数の個数 $\pi(n)$ を、 $\lfloor n / i \rfloor$ の形の値だけを持つ DP（Lucy DP）で $O(n^{3/4} / \log n)$ で求める
+description: $n$ 以下の素数の個数 $\pi(n)$ を $O(n^{3/4} / \log n)$ で求める
 order: 12
 ---
 

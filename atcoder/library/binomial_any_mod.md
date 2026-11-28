@@ -1,7 +1,7 @@
 ---
 title: 任意 mod の二項係数
 category: 整数論
-description: 素数とは限らない $m$ を法とする二項係数 $\binom{n}{k}$ を、 $m$ を素数べきに分けて $O(m)$ で前計算し、 $n \le 10^{18}$ でも 1 回 $O(\log n)$ 程度で求める
+description: 素数とは限らない $m$ を法とする $\binom{n}{k}$ を求める（ $n \le 10^{18}$ ）
 order: 14
 ---
 

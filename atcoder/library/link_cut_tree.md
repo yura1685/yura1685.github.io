@@ -1,7 +1,7 @@
 ---
 title: Link-Cut Tree
 category: データ構造
-description: 頂点に値を持つ森で、辺の追加・削除、根の変更、2 頂点を結ぶパス上の値をまとめることを、各操作ならし $O(\log N)$ で行う
+description: 森の辺の追加・削除と、パス上の値の集約をならし $O(\log N)$ で行う
 order: 22
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: 約数系ゼータ変換・メビウス変換
 category: 整数論
-description: $1$ から $N$ を添字とする値について、約数や倍数にわたる和と、その逆変換を $O(N \log \log N)$ で求める
+description: 約数・倍数にわたる和と、その逆変換を $O(N \log \log N)$ で求める
 order: 11
 ---
 

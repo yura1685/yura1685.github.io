@@ -1,7 +1,7 @@
 ---
 title: Mo's algorithm
 category: 基礎
-description: 区間の端を 1 つ動かしたときの答えの変化がすぐに求まるとき、 $Q$ 個の区間クエリをまとめて $O(N \sqrt{Q})$ 回の移動で処理する
+description: $Q$ 個の区間クエリを、区間の端の $O(N \sqrt{Q})$ 回の移動で処理する
 order: 6
 ---
 

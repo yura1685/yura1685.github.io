@@ -1,7 +1,7 @@
 ---
 title: 部分永続 Union-Find
 category: データ構造
-description: 過去の好きな時刻での連結性や集合の大きさを求められる Union-Find。経路圧縮をせず、各操作 $O(\log N)$
+description: 過去の時刻での連結性や集合の大きさを求められる Union-Find
 order: 18
 ---
 

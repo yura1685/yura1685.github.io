@@ -1,7 +1,7 @@
 ---
 title: 非再帰 DFS
 category: グラフ
-description: スタックで再帰を使わずに DFS を行い、行きがけ順・帰りがけ順・親を求める
+description: 再帰を使わない DFS で、行きがけ順・帰りがけ順・親を求める
 order: 2
 ---
 

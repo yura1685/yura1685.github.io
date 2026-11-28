@@ -1,7 +1,7 @@
 ---
 title: ロールバック付き Union-Find
 category: データ構造
-description: 最後に行った merge を取り消せる Union-Find。経路圧縮をしないので、各操作 $O(\log N)$
+description: 最後に行った merge を取り消せる Union-Find
 order: 7
 ---
 

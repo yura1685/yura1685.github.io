@@ -871,9 +871,16 @@ footer {
     margin: 0;
 }
 
-/* ライブラリ一覧（yura1685's Library）: 長いタイトルでも説明文と重ならないようにする */
+/* ライブラリ一覧（yura1685's Library）: 1 ライブラリ 1 行で、名前と説明を小さめの文字で並べる */
+main section.library-section {
+    margin-bottom: 28px;
+}
+
 .library-item {
-    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 14px;
+    align-items: baseline;
+    padding: 4px 14px;
 }
 
 .library-item[hidden] {
@@ -881,12 +888,29 @@ footer {
 }
 
 .library-item .recent-update-date {
+    font-family: inherit;
+    font-size: 0.85rem;
     white-space: normal;
+}
+
+/* 説明は 1 行に収め、はみ出す分は「…」で省略する（幅の狭い画面では折り返す） */
+.library-item .recent-update-content {
+    color: var(--text-sub);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media (max-width: 700px) {
     .library-item {
         grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .library-item .recent-update-content {
+        white-space: normal;
     }
 }
 
@@ -894,6 +918,7 @@ footer {
 .section-title.library-category {
     font-size: 1.4rem;
     color: var(--text-main);
+    margin-bottom: 10px;
 }
 
 /* コードブロックのコピーボタン */

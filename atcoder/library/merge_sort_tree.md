@@ -1,7 +1,7 @@
 ---
 title: Merge Sort Tree
 category: データ構造
-description: 値の更新がない列について、区間の中である範囲に入る値の個数・和や、ある値の直前・直後の値を $O(\log^2 N)$ で求める
+description: 区間で範囲に入る値の個数・和や、直前・直後の値を $O(\log^2 N)$ で求める
 order: 11
 ---
 

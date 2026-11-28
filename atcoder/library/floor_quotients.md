@@ -1,7 +1,7 @@
 ---
 title: floor(n/i) の商列挙
 category: 整数論
-description: $i = 1, \ldots, n$ を $\lfloor n / i \rfloor$ の値ごとに区間に分け、 $O(\sqrt{n})$ 個の区間として列挙する
+description: $\lfloor n / i \rfloor$ の値ごとの区間を、 $O(\sqrt{n})$ 個列挙する
 order: 6
 ---
 

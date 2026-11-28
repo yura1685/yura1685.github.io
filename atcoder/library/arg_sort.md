@@ -1,7 +1,7 @@
 ---
 title: 偏角ソート
 category: 幾何
-description: 整数座標の点を、浮動小数点数を使わずに外積で偏角の順に並べる
+description: 整数座標の点を、外積で偏角の順に並べる
 order: 2
 ---
 

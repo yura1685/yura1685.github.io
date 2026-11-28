@@ -1,7 +1,7 @@
 ---
 title: 点と直線・線分の距離
 category: 幾何
-description: 点と直線、点と線分、線分と線分の距離を、内積と外積を使って求める
+description: 点と直線、点と線分、線分と線分の距離を求める
 order: 4
 ---
 

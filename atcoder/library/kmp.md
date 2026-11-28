@@ -1,7 +1,7 @@
 ---
 title: KMP
 category: 文字列
-description: 接頭辞と接尾辞が一致する長さ（KMP）や、各位置からの文字列と全体の最長共通接頭辞の長さ（Z algorithm）を求め、文字列検索や最小周期の計算を $O(N)$ で行う
+description: KMP と Z algorithm で、文字列検索や最小周期を $O(N)$ で求める
 order: 2
 ---
 

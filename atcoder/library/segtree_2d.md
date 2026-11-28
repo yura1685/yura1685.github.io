@@ -1,7 +1,7 @@
 ---
 title: 2 次元セグ木
 category: データ構造
-description: 前もって与えた点に値を置き、長方形の中にある点の値の和や最大値を $O(\log^2 N)$ で求める
+description: 先に与えた点について、長方形の中の和や最大値を $O(\log^2 N)$ で求める
 order: 10
 ---
 

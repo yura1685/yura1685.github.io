@@ -1,7 +1,7 @@
 ---
 title: 一般グラフの最大マッチング
 category: グラフ
-description: 二部グラフとは限らない無向グラフの最大マッチングを、奇閉路（花）を縮めて扱う Edmonds のアルゴリズムで $O(N^3)$ で求める
+description: 一般グラフの最大マッチングを Edmonds のアルゴリズムで $O(N^3)$ で求める
 order: 17
 ---
 
